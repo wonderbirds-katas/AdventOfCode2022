@@ -1,17 +1,20 @@
+using MELT;
+using Microsoft.Extensions.Logging;
+
 namespace AdventOfCode202201.Tests;
 
-[UsesVerify]
-public class ProgramTests : VerifyBase
+public class ProgramTests
 {
-    public ProgramTests() : base()
-    {
-    }
-
     [Fact]
-    public async Task AnElf()
+    public void ProgramProcessesInputFile()
     {
-        var elf = new Elf();
-        elf.AddCalories(1000);
-        await Verify(elf);
+        var loggerFactory = TestLoggerFactory.Create();
+        var logger = loggerFactory.CreateLogger<Program>();
+
+        var program = new Program(logger);
+        program.Run(new[] { "SingleElf_SingleFoodItem.txt" });
+
+        var log = Assert.Single(loggerFactory.Sink.LogEntries);
+        Assert.Equal("SingleElf_SingleFoodItem.txt", log.Message);
     }
 }
