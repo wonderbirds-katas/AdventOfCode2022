@@ -1,6 +1,6 @@
 # Advent of Code '22, Day 1: Calorie Counting
 
-A solution for the puzzle [Advent of Code '22, Day 1: Calorie Counting](https://adventofcode.com/2022/day/1).
+git remote add origin git@github.com:wonderbirds-katas/AdventOfCode202201.git
 
 ## Thanks
 
@@ -19,3 +19,8 @@ dotnet run --project AdventOfCode202201
 # Re-run tests when a change is detected
 dotnet watch --project AdventOfCode202201.Tests test
 ```
+
+## Links
+
+- [Verify](https://github.com/VerifyTests/Verify) - an approval testing framework.
+- [Verify xUnit Intro](https://www.youtube.com/watch?v=uGVogEltSkY) - 8 min instructions to get started.
