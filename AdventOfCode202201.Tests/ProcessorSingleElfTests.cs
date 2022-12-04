@@ -1,6 +1,6 @@
 namespace AdventOfCode202201.Tests;
 
-public class ParserSingleElfTests
+public class ProcessorSingleElfTests
 {
     [Fact]
     public void SingleFoodItem()
@@ -8,7 +8,7 @@ public class ParserSingleElfTests
         const int expected = 1000;
         string[] input = { expected.ToString() };
         
-        var actual = Parser.Process(1, input);
+        var actual = Processor.Process(1, input);
         
         Assert.Equal(expected, actual);
     }
@@ -21,7 +21,7 @@ public class ParserSingleElfTests
         const int expected = firstItem + secondItem;
         string[] input = { firstItem.ToString(), secondItem.ToString() };
         
-        var actual = Parser.Process(1, input);
+        var actual = Processor.Process(1, input);
         
         Assert.Equal(expected, actual);
     }
