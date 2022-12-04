@@ -2,10 +2,10 @@ namespace AdventOfCode202201;
 
 public static class Parser
 {
-    public static int Process(string[] input)
+    public static int Process(int numberOfElves, IEnumerable<string> input)
     {
         var calorieSumsDescending = Parse(input);
-        return calorieSumsDescending.Take(1).Sum();
+        return calorieSumsDescending.Take(numberOfElves).Sum();
     }
 
     private static IEnumerable<int> Parse(IEnumerable<string> input)
