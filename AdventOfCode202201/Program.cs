@@ -1,5 +1,6 @@
 ﻿using AdventOfCode202201;
 
-var fileContents = new[] {"1000"};
+var filename = args[0];
+var fileContents = File.ReadAllLines(filename);
 var sumCalories = Parser.Parse(fileContents);
 Console.WriteLine(sumCalories);
