@@ -8,7 +8,7 @@ public class ParserSingleElfTests
         const int expected = 1000;
         string[] input = { expected.ToString() };
         
-        var actual = Parser.Parse(input);
+        var actual = Parser.Process(input);
         
         Assert.Equal(expected, actual);
     }
@@ -21,7 +21,7 @@ public class ParserSingleElfTests
         const int expected = firstItem + secondItem;
         string[] input = { firstItem.ToString(), secondItem.ToString() };
         
-        var actual = Parser.Parse(input);
+        var actual = Parser.Process(input);
         
         Assert.Equal(expected, actual);
     }

@@ -7,7 +7,7 @@ public class ParserTwoElvesTests
     {
         string[] input = { "1000", "", "2000" };
         
-        var actual = Parser.Parse(input);
+        var actual = Parser.Process(input);
         
         Assert.Equal(2000, actual);
     }
@@ -17,7 +17,7 @@ public class ParserTwoElvesTests
     {
         string[] input = { "1000", "2000", "", "2000", "3000", "4000" };
         
-        var actual = Parser.Parse(input);
+        var actual = Parser.Process(input);
         
         Assert.Equal(9000, actual);
     }

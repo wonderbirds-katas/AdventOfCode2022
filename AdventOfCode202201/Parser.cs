@@ -2,7 +2,7 @@ namespace AdventOfCode202201;
 
 public static class Parser
 {
-    public static int Parse(string[] input)
+    public static int Process(string[] input)
     {
         var calorieSums = new SortedSet<int>();
         var sum = 0;
@@ -19,6 +19,6 @@ public static class Parser
             }
         }
         calorieSums.Add(sum);
-        return calorieSums.LastOrDefault();
+        return calorieSums.Reverse().FirstOrDefault();
     }
 }

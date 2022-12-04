@@ -2,5 +2,5 @@
 
 var filename = args[0];
 var fileContents = File.ReadAllLines(filename);
-var sumCalories = Parser.Parse(fileContents);
+var sumCalories = Parser.Process(fileContents);
 Console.WriteLine(sumCalories);
