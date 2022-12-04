@@ -19,8 +19,3 @@ dotnet run --project AdventOfCode202201
 # Re-run tests when a change is detected
 dotnet watch --project AdventOfCode202201.Tests test
 ```
-
-## Links
-
-- [Verify](https://github.com/VerifyTests/Verify) - an approval testing framework.
-- [Verify xUnit Intro](https://www.youtube.com/watch?v=uGVogEltSkY) - 8 min instructions to get started.
