@@ -5,7 +5,7 @@ public static class Parser
     public static int Process(string[] input)
     {
         var calorieSumsDescending = Parse(input);
-        return calorieSumsDescending.FirstOrDefault();
+        return calorieSumsDescending.Take(1).Sum();
     }
 
     private static IEnumerable<int> Parse(IEnumerable<string> input)
