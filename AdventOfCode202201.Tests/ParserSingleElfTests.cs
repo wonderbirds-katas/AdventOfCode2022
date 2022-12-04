@@ -1,6 +1,6 @@
 namespace AdventOfCode202201.Tests;
 
-public class ParserTests
+public class ParserSingleElfTests
 {
     [Fact]
     public void SingleFoodItem()
