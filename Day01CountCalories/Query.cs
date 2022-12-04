@@ -1,4 +1,4 @@
-namespace AdventOfCode202201;
+namespace Day01CountCalories;
 
 public static class Query
 {

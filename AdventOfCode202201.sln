@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode202201", "AdventOfCode202201\AdventOfCode202201.csproj", "{816AE17B-048C-4FAB-B6D3-F89051AF91E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day01CountCalories", "Day01CountCalories\Day01CountCalories.csproj", "{816AE17B-048C-4FAB-B6D3-F89051AF91E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode202201.Tests", "AdventOfCode202201.Tests\AdventOfCode202201.Tests.csproj", "{CFC73CB5-DC2A-4C4F-BC8B-0551E13895A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day01CountCalories.Tests", "Day01CountCalories.Tests\Day01CountCalories.Tests.csproj", "{CFC73CB5-DC2A-4C4F-BC8B-0551E13895A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

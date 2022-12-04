@@ -1,4 +1,4 @@
-﻿using AdventOfCode202201;
+﻿using Day01CountCalories;
 
 var numberOfElves = int.Parse(args[0]);
 var filename = args[1];

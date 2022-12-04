@@ -1,4 +1,4 @@
-namespace AdventOfCode202201.Tests;
+namespace Day01CountCalories.Tests;
 
 public class ProcessorThreeElvesTests
 {
