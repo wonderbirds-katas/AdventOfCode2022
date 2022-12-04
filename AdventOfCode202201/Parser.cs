@@ -4,13 +4,20 @@ public static class Parser
 {
     public static int Process(string[] input)
     {
-        var calorieSums = new SortedSet<int>();
+        var calorieSumsDescending = Parse(input);
+        return calorieSumsDescending.FirstOrDefault();
+    }
+
+    private static IEnumerable<int> Parse(IEnumerable<string> input)
+    {
+        var calorieSumsAscending = new SortedSet<int>();
         var sum = 0;
+        
         foreach (var caloriesString in input)
         {
             if (caloriesString == "")
             {
-                calorieSums.Add(sum);
+                calorieSumsAscending.Add(sum);
                 sum = 0;
             }
             else
@@ -18,7 +25,9 @@ public static class Parser
                 sum += int.Parse(caloriesString);
             }
         }
-        calorieSums.Add(sum);
-        return calorieSums.Reverse().FirstOrDefault();
+
+        calorieSumsAscending.Add(sum);
+        
+        return calorieSumsAscending.Reverse();
     }
 }
