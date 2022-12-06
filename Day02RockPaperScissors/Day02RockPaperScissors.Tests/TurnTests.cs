@@ -2,12 +2,22 @@ namespace Day02RockPaperScissors.Tests;
 
 public class TurnTests
 {
-    [Fact]
-    public void RockVsRock()
+    [Theory]
+    [InlineData(Shape.Rock, Shape.Rock, ShapeScore.Rock, OutcomeScore.Draw)]
+    public void OpponentVsOwnShapes(Shape opponent, Shape own, ShapeScore shapeScore, OutcomeScore outcomeScore)
     {
-        var opponent = Shape.Rock;
-        var own = Shape.Rock;
         var actual = Turn.Score(opponent, own);
-        Assert.Equal(4, actual);
+        var expected = (int) shapeScore + (int) outcomeScore;
+        Assert.Equal(expected, actual);
+    }
+
+    public enum ShapeScore
+    {
+        Rock = 1
+    }
+
+    public enum OutcomeScore
+    {
+        Draw = 3
     }
 }
