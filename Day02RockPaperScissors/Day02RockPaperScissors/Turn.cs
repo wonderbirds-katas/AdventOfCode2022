@@ -2,7 +2,7 @@ namespace Day02RockPaperScissors;
 
 public static class Turn
 {
-    public static Score Score(Shape opponent, Shape own)
+    public static Score Score(ShapeScore opponent, ShapeScore own)
     {
         var outcomeScore = OutcomeScore.Draw;
         if (own > opponent)
@@ -10,14 +10,6 @@ public static class Turn
             outcomeScore = OutcomeScore.Win;
         }
 
-        var shapeScore = own switch
-        {
-            Shape.Rock => ShapeScore.Rock,
-            Shape.Paper => ShapeScore.Paper,
-            Shape.Scissors => ShapeScore.Scissors,
-            _ => ShapeScore.Invalid
-        };
-
-        return new Score(shapeScore, outcomeScore);
+        return new Score(own, outcomeScore);
     }
 }
