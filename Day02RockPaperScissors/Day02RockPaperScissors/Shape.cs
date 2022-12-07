@@ -3,5 +3,6 @@ namespace Day02RockPaperScissors;
 public enum Shape
 {
     Rock,
-    Paper
+    Paper,
+    Scissors
 }

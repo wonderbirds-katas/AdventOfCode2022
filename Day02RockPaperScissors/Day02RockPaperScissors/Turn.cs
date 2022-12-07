@@ -14,6 +14,7 @@ public static class Turn
         {
             Shape.Rock => ShapeScore.Rock,
             Shape.Paper => ShapeScore.Paper,
+            Shape.Scissors => ShapeScore.Scissors,
             _ => ShapeScore.Invalid
         };
 

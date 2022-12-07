@@ -5,6 +5,7 @@ public class TurnTests
     [Theory]
     [InlineData(Shape.Rock, Shape.Rock, ShapeScore.Rock, OutcomeScore.Draw, (int)ShapeScore.Rock + (int)OutcomeScore.Draw)]
     [InlineData(Shape.Rock, Shape.Paper, ShapeScore.Paper, OutcomeScore.Win, (int)ShapeScore.Paper + (int)OutcomeScore.Win)]
+    [InlineData(Shape.Rock, Shape.Scissors, ShapeScore.Scissors, OutcomeScore.Win, (int)ShapeScore.Scissors + (int)OutcomeScore.Win)]
     public void OpponentVsOwnShapes(Shape opponent, Shape own, ShapeScore shapeScore, OutcomeScore outcomeScore, int sumScore)
     {
         var actual = Turn.Score(opponent, own);
@@ -17,6 +18,7 @@ public class TurnTests
     {
         Rock = 1,
         Paper = 2,
+        Scissors = 3,
     }
 
     public enum OutcomeScore
