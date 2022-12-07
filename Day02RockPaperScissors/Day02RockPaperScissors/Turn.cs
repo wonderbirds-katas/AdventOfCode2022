@@ -8,10 +8,10 @@ public static class Turn
 
     public static Score Score(Shape opponent, Shape own)
     {
-        var outcomeScore = Outcome.Draw;
+        var outcomeScore = OutcomeScore.Draw;
         if (own > opponent)
         {
-            outcomeScore = Outcome.Win;
+            outcomeScore = OutcomeScore.Win;
         }
 
         var shapeScore = own switch

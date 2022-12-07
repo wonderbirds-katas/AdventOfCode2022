@@ -1,6 +1,6 @@
 namespace Day02RockPaperScissors;
 
-public enum Outcome
+public enum OutcomeScore
 {
     Draw = 3,
     Win = 6,
