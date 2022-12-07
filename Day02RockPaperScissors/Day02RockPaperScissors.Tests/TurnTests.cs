@@ -8,7 +8,7 @@ public class TurnTests
     public void OpponentVsOwnShapes(Shape opponent, Shape own, ShapeScore shapeScore, OutcomeScore outcomeScore, int sumScore)
     {
         var actual = Turn.Score(opponent, own);
-        var expected = new Score((int) shapeScore, (Day02RockPaperScissors.OutcomeScore)outcomeScore);
+        var expected = new Score((Day02RockPaperScissors.ShapeScore) shapeScore, (Day02RockPaperScissors.OutcomeScore)outcomeScore);
         Assert.Equal(expected, actual);
         Assert.Equal(sumScore, actual.Sum);
     }
