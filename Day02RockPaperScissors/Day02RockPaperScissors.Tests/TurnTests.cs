@@ -8,8 +8,8 @@ public class TurnTests
     public void OpponentVsOwnShapes(Shape opponent, Shape own, ShapeScore shapeScore, OutcomeScore outcomeScore)
     {
         var actual = Turn.Score(opponent, own);
-        var expected = (int) shapeScore + (int) outcomeScore;
-        Assert.Equal(expected, actual.Sum);
+        var expected = new Score((int) shapeScore, (int) outcomeScore);
+        Assert.Equal(expected, actual);
     }
 
     public enum ShapeScore
