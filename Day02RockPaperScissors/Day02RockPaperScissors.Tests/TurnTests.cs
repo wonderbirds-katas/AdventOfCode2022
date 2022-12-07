@@ -9,7 +9,7 @@ public class TurnTests
     {
         var actual = Turn.Score(opponent, own);
         var expected = (int) shapeScore + (int) outcomeScore;
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual.Sum);
     }
 
     public enum ShapeScore

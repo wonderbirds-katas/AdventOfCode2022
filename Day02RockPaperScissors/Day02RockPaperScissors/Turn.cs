@@ -2,7 +2,7 @@ namespace Day02RockPaperScissors;
 
 public static class Turn
 {
-    public static int Score(Shape opponent, Shape own)
+    public static Score Score(Shape opponent, Shape own)
     {
         var outcomeScore = 3;
         if (own > opponent)
@@ -17,6 +17,6 @@ public static class Turn
             _ => 0
         };
 
-        return outcomeScore + shapeScore;
+        return new Score(shapeScore, outcomeScore);
     }
 }
