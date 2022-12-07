@@ -4,7 +4,11 @@ public static class Turn
 {
     public static Score Score(ShapeScore opponent, ShapeScore own)
     {
-        var outcome = OutcomeScore.Draw;
+        var outcome = OutcomeScore.Lose;
+        if (own == opponent)
+        {
+            outcome = OutcomeScore.Draw;
+        }
         if (own > opponent)
         {
             outcome = OutcomeScore.Win;
