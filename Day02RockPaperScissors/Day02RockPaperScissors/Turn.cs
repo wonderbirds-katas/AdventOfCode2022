@@ -2,19 +2,23 @@ namespace Day02RockPaperScissors;
 
 public static class Turn
 {
+    private const int Rock = 1;
+    private const int Paper = 2;
+    private const int Invalid = -1;
+
     public static Score Score(Shape opponent, Shape own)
     {
-        var outcomeScore = 3;
+        var outcomeScore = Outcome.Draw;
         if (own > opponent)
         {
-            outcomeScore = 6;
+            outcomeScore = Outcome.Win;
         }
 
         var shapeScore = own switch
         {
-            Shape.Rock => 1,
-            Shape.Paper => 2,
-            _ => 0
+            Shape.Rock => Rock,
+            Shape.Paper => Paper,
+            _ => Invalid
         };
 
         return new Score(shapeScore, outcomeScore);

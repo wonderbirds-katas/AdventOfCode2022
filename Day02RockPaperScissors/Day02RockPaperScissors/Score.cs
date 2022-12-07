@@ -1,6 +1,6 @@
 namespace Day02RockPaperScissors;
 
-public readonly record struct Score(int Shape, int Outcome)
+public readonly record struct Score(int Shape, Outcome Outcome)
 {
-    public int Sum => Shape + Outcome;
+    public int Sum => Shape + (int)Outcome;
 }
