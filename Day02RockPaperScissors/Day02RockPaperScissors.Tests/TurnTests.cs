@@ -3,34 +3,20 @@ namespace Day02RockPaperScissors.Tests;
 public class TurnTests
 {
     [Theory]
-    [InlineData(Day02RockPaperScissors.ShapeScore.Rock, Day02RockPaperScissors.ShapeScore.Rock, ShapeScore.Rock, OutcomeScore.Draw, (int)ShapeScore.Rock + (int)OutcomeScore.Draw)]
-    [InlineData(Day02RockPaperScissors.ShapeScore.Rock, Day02RockPaperScissors.ShapeScore.Paper, ShapeScore.Paper, OutcomeScore.Win, (int)ShapeScore.Paper + (int)OutcomeScore.Win)]
-    [InlineData(Day02RockPaperScissors.ShapeScore.Rock, Day02RockPaperScissors.ShapeScore.Scissors, ShapeScore.Scissors, OutcomeScore.Win, (int)ShapeScore.Scissors + (int)OutcomeScore.Win)]
-    [InlineData(Day02RockPaperScissors.ShapeScore.Paper, Day02RockPaperScissors.ShapeScore.Rock, ShapeScore.Rock, OutcomeScore.Lose, (int)ShapeScore.Rock + (int)OutcomeScore.Lose)]
-    [InlineData(Day02RockPaperScissors.ShapeScore.Paper, Day02RockPaperScissors.ShapeScore.Paper, ShapeScore.Paper, OutcomeScore.Draw, (int)ShapeScore.Paper + (int)OutcomeScore.Draw)]
-    [InlineData(Day02RockPaperScissors.ShapeScore.Paper, Day02RockPaperScissors.ShapeScore.Scissors, ShapeScore.Scissors, OutcomeScore.Win, (int)ShapeScore.Scissors + (int)OutcomeScore.Win)]
-    [InlineData(Day02RockPaperScissors.ShapeScore.Scissors, Day02RockPaperScissors.ShapeScore.Rock, ShapeScore.Rock, OutcomeScore.Lose, (int)ShapeScore.Rock + (int)OutcomeScore.Lose)]
-    [InlineData(Day02RockPaperScissors.ShapeScore.Scissors, Day02RockPaperScissors.ShapeScore.Paper, ShapeScore.Paper, OutcomeScore.Lose, (int)ShapeScore.Paper + (int)OutcomeScore.Lose)]
-    [InlineData(Day02RockPaperScissors.ShapeScore.Scissors, Day02RockPaperScissors.ShapeScore.Scissors, ShapeScore.Scissors, OutcomeScore.Draw, (int)ShapeScore.Scissors + (int)OutcomeScore.Draw)]
-    public void OpponentVsOwnShapes(Day02RockPaperScissors.ShapeScore opponent, Day02RockPaperScissors.ShapeScore own, ShapeScore shapeScore, OutcomeScore outcomeScore, int sumScore)
+    [InlineData(ShapeScore.Rock, ShapeScore.Rock, 1, 3, 1 + 3)]
+    [InlineData(ShapeScore.Rock, ShapeScore.Paper, 2, 6, 2 + 6)]
+    [InlineData(ShapeScore.Rock, ShapeScore.Scissors, 3, 6, 3 + 6)]
+    [InlineData(ShapeScore.Paper, ShapeScore.Rock, 1, 0, 1 + 0)]
+    [InlineData(ShapeScore.Paper, ShapeScore.Paper, 2, 3, 2 + 3)]
+    [InlineData(ShapeScore.Paper, ShapeScore.Scissors, 3, 6, 3 + 6)]
+    [InlineData(ShapeScore.Scissors, ShapeScore.Rock, 1, 0, 1 + 0)]
+    [InlineData(ShapeScore.Scissors, ShapeScore.Paper, 2, 0, 2 + 0)]
+    [InlineData(ShapeScore.Scissors, ShapeScore.Scissors, 3, 3, 3 + 3)]
+    public void OpponentVsOwnShapes(ShapeScore opponent, ShapeScore own, int shapeScore, int outcomeScore, int sumScore)
     {
         var actual = Turn.Score(opponent, own);
-        var expected = new Score((Day02RockPaperScissors.ShapeScore) shapeScore, (Day02RockPaperScissors.OutcomeScore)outcomeScore);
+        var expected = new Score((ShapeScore) shapeScore, (OutcomeScore)outcomeScore);
         Assert.Equal(expected, actual);
         Assert.Equal(sumScore, actual.Sum);
-    }
-
-    public enum ShapeScore
-    {
-        Rock = 1,
-        Paper = 2,
-        Scissors = 3,
-    }
-
-    public enum OutcomeScore
-    {
-        Lose = 0,
-        Draw = 3,
-        Win = 6,
     }
 }
