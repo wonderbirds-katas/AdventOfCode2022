@@ -1,9 +1,16 @@
 ﻿namespace Day02RockPaperScissors;
 
-public static class FileContentsParser
+public class FileContentsParser
 {
-    public static IEnumerable<(ShapeScore, ShapeScore)> Parse(IEnumerable<string> fileLines)
+    private readonly ILineParser _lineParser;
+
+    public FileContentsParser(ILineParser lineParser)
     {
-        yield break;
+        _lineParser = lineParser;
+    }
+
+    public IEnumerable<(ShapeScore, ShapeScore)> Parse(IEnumerable<string> fileLines)
+    {
+        return fileLines.Select(_lineParser.ParseLine);
     }
 }
