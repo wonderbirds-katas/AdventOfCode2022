@@ -4,10 +4,12 @@ public static class Parser
 {
     public static (ShapeScore opponentShape, ShapeScore ownShape) ParseLine(string line)
     {
-        if (line[0] == 'B')
+        var opponentShape = line[0] switch
         {
-            return (ShapeScore.Paper, ShapeScore.Rock);
-        }
-        return (ShapeScore.Rock, ShapeScore.Rock);
+            'A' => ShapeScore.Rock,
+            'B' => ShapeScore.Paper
+        };
+
+        return (opponentShape, ShapeScore.Rock);
     }
 }
