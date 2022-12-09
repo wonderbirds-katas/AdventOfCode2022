@@ -7,7 +7,8 @@ public static class Parser
         var opponentShape = line[0] switch
         {
             'A' => ShapeScore.Rock,
-            'B' => ShapeScore.Paper
+            'B' => ShapeScore.Paper,
+            'C' => ShapeScore.Scissors
         };
 
         return (opponentShape, ShapeScore.Rock);

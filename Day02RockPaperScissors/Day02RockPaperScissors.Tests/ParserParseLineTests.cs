@@ -5,7 +5,8 @@ public class ParserParseLineTests
     [Theory]
     [InlineData("A X", ShapeScore.Rock, ShapeScore.Rock)]
     [InlineData("B X", ShapeScore.Paper, ShapeScore.Rock)]
-    public void Test(string line, ShapeScore expectedOpponentShape, ShapeScore expectedOwnShape)
+    [InlineData("C X", ShapeScore.Scissors, ShapeScore.Rock)]
+    public void OpponentShape(string line, ShapeScore expectedOpponentShape, ShapeScore expectedOwnShape)
     {
         (var opponentShape, var ownShape) = Parser.ParseLine(line);
 
