@@ -11,6 +11,13 @@ public static class Parser
             'C' => ShapeScore.Scissors
         };
 
-        return (opponentShape, ShapeScore.Rock);
+        var ownShape = line[2] switch
+        {
+            'X' => ShapeScore.Rock,
+            'Y' => ShapeScore.Paper,
+            'Z' => ShapeScore.Scissors
+        };
+
+        return (opponentShape, ownShape);
     }
 }
