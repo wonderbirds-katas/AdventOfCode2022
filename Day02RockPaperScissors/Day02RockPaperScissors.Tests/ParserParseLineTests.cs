@@ -2,12 +2,13 @@
 
 public class ParserParseLineTests
 {
-    [Fact]
-    public void RockVsRock()
+    [Theory]
+    [InlineData("A X", ShapeScore.Rock, ShapeScore.Rock)]
+    public void RockVsRock(string line, ShapeScore expectedOpponentShape, ShapeScore expectedOwnShape)
     {
-        (var opponentShape, var ownShape) = Parser.ParseLine("A X");
+        (var opponentShape, var ownShape) = Parser.ParseLine(line);
 
-        Assert.Equal(ShapeScore.Rock, opponentShape);
-        Assert.Equal(ShapeScore.Rock, ownShape);
+        Assert.Equal(expectedOpponentShape, opponentShape);
+        Assert.Equal(expectedOwnShape, ownShape);
     }
 }
