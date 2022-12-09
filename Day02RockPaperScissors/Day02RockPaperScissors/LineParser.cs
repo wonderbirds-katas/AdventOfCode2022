@@ -1,6 +1,6 @@
 ﻿namespace Day02RockPaperScissors;
 
-public static class Parser
+public static class LineParser
 {
     public static (ShapeScore opponentShape, ShapeScore ownShape) ParseLine(string line)
     {

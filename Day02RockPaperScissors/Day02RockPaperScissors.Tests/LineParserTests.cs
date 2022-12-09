@@ -1,6 +1,6 @@
 ﻿namespace Day02RockPaperScissors.Tests;
 
-public class ParserParseLineTests
+public class LineParserTests
 {
     [Theory]
     [InlineData("A X", ShapeScore.Rock)]
@@ -8,7 +8,7 @@ public class ParserParseLineTests
     [InlineData("C X", ShapeScore.Scissors)]
     public void OpponentShape(string line, ShapeScore expectedOpponentShape)
     {
-        (var actual, var _) = Parser.ParseLine(line);
+        (var actual, var _) = LineParser.ParseLine(line);
 
         Assert.Equal(expectedOpponentShape, actual);
     }
@@ -19,7 +19,7 @@ public class ParserParseLineTests
     [InlineData("A Z", ShapeScore.Scissors)]
     public void OwnShape(string line, ShapeScore expectedOwnShape)
     {
-        (var _, var actual) = Parser.ParseLine(line);
+        (var _, var actual) = LineParser.ParseLine(line);
 
         Assert.Equal(expectedOwnShape, actual);
     }
