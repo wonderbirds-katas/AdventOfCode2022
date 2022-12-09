@@ -1,8 +1,8 @@
 ﻿namespace Day02RockPaperScissors;
 
-public static class LineParser
+public class LineParser : ILineParser
 {
-    public static (ShapeScore opponentShape, ShapeScore ownShape) ParseLine(string line)
+    public (ShapeScore opponentShape, ShapeScore ownShape) ParseLine(string line)
     {
         var opponentShape = line[0] switch
         {
