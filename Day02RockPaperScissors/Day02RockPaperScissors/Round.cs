@@ -1,6 +1,6 @@
 namespace Day02RockPaperScissors;
 
-public static class Turn
+public static class Round
 {
     public static Score Score(ShapeScore opponent, ShapeScore own)
     {
