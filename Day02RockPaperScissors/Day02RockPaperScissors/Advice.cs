@@ -13,6 +13,10 @@ public class Advice
 
     public Round CalculateRound()
     {
+        if (_opponent == ShapeScore.Rock)
+        {
+            return new Round(_opponent, ShapeScore.Paper);
+        }
         return new Round(_opponent, ShapeScore.Rock);
     }
 }
