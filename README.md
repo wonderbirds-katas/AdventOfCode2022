@@ -1,21 +1,27 @@
-# Advent of Code '22, Day 1: Calorie Counting
+# Puzzles of Advent of Code '22
 
-git remote add origin git@github.com:wonderbirds-katas/AdventOfCode202201.git
+This repository contains C# solutions for the [Advent of Code 2022](https://adventofcode.com/2022/) puzzles.
 
 ## Thanks
 
 Many thanks to [JetBrains](https://www.jetbrains.com/?from=dotnet-starter) who provide
 an [Open Source License](https://www.jetbrains.com/community/opensource/) for this project ❤️.
 
-## Build, Test, Run
+## Build and Test all Puzzles
 
-Run the following commands from the folder containing the `.sln` file in order to build and test.
+The puzzle solutions are implemented as console programs writing the result to the standard
+output. Each puzzle has its dedicated folder.
+
+To build everything and run all tests at once, type
 
 ```sh
 dotnet build
 dotnet test
-dotnet run --project AdventOfCode202201
-
-# Re-run tests when a change is detected
-dotnet watch --project AdventOfCode202201.Tests test
 ```
+
+## Run the Application for a Single Puzzle
+
+Instructions to run each puzzle are contained in the corresponding subfolder.
+
+- [Day 1: Calorie Counting](./Day01CountCalories)
+- [Day 2: Rock Paper Scissors](./Day02RockPaperScissors)
