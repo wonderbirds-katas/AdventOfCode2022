@@ -11,23 +11,31 @@ public class Advice
         _desiredOutcome = desiredOutcome;
     }
 
-    public Round CalculateRound()
+    public Round CalculateRound() =>
+        _desiredOutcome switch
+        {
+            OutcomeScore.Lose => CalculateShapeToLose(),
+            OutcomeScore.Draw => CalculateShapeForDraw(),
+            _ => CalculateShapeToWin()
+        };
+
+    private Round CalculateShapeToLose()
     {
-        if (_desiredOutcome == OutcomeScore.Lose)
+        return _opponent switch
         {
-            return _opponent switch
-            {
-                ShapeScore.Scissors => new Round(_opponent, ShapeScore.Paper),
-                ShapeScore.Rock => new Round(_opponent, ShapeScore.Scissors),
-                _ => new Round(_opponent, ShapeScore.Rock),
-            };
-        }
-        
-        if (_desiredOutcome == OutcomeScore.Draw)
-        {
-            return new Round(_opponent, _opponent);
-        }
-        
+            ShapeScore.Scissors => new Round(_opponent, ShapeScore.Paper),
+            ShapeScore.Rock => new Round(_opponent, ShapeScore.Scissors),
+            _ => new Round(_opponent, ShapeScore.Rock),
+        };
+    }
+
+    private Round CalculateShapeForDraw()
+    {
+        return new Round(_opponent, _opponent);
+    }
+
+    private Round CalculateShapeToWin()
+    {
         return _opponent switch
         {
             ShapeScore.Paper => new Round(_opponent, ShapeScore.Scissors),
