@@ -6,7 +6,7 @@ public static class Program
     {
         var sum = File.ReadAllLines(args[0])
             .Select(line => line.ParseShapes())
-            .Select(shapes => Round.Score(shapes.Item1, shapes.Item2))
+            .Select(shapes => new Round(shapes.Item1, shapes.Item2).Score())
             .Sum(score => score.Sum);
         Console.WriteLine(sum);
     }

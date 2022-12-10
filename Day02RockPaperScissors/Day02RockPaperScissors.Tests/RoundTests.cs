@@ -14,7 +14,7 @@ public class RoundTests
     [InlineData(ShapeScore.Scissors, ShapeScore.Scissors, 3, 3, 3 + 3)]
     public void OpponentVsOwnShapes(ShapeScore opponent, ShapeScore own, int shapeScore, int outcomeScore, int sumScore)
     {
-        var actual = Round.Score(opponent, own);
+        var actual = new Round(opponent, own).Score();
         var expected = new Score((ShapeScore) shapeScore, (OutcomeScore)outcomeScore);
         Assert.Equal(expected, actual);
         Assert.Equal(sumScore, actual.Sum);
