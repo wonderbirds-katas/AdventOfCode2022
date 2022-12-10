@@ -3,16 +3,17 @@ namespace Day02RockPaperScissors;
 public class Advice
 {
     private readonly ShapeScore _opponent;
-    private readonly OutcomeScore _desiredOutcome;
+
+    public OutcomeScore DesiredOutcome { get; }
 
     public Advice(ShapeScore opponent, OutcomeScore desiredOutcome)
     {
         _opponent = opponent;
-        _desiredOutcome = desiredOutcome;
+        DesiredOutcome = desiredOutcome;
     }
 
     public Round CalculateRound() =>
-        _desiredOutcome switch
+        DesiredOutcome switch
         {
             OutcomeScore.Lose => CalculateShapeToLose(),
             OutcomeScore.Draw => CalculateShapeForDraw(),

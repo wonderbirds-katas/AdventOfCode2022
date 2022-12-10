@@ -2,6 +2,11 @@
 
 public static class LineParserExtensions
 {
+    public static Advice ParsePart2(this string line)
+    {
+        return new Advice(ShapeScore.Rock, OutcomeScore.Lose);
+    }
+    
     public static Round Parse(this string line)
     {
         var opponentShape = ParseOpponentShape(line);

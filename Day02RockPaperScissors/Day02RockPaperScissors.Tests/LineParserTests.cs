@@ -3,6 +3,14 @@
 public class LineParserTests
 {
     [Theory]
+    [InlineData("A X", OutcomeScore.Lose)]
+    public void DesiredOutcome(string line, OutcomeScore expectedOutcome)
+    {
+        var actual = line.ParsePart2();
+        Assert.Equal(expectedOutcome, actual.DesiredOutcome);
+    }
+    
+    [Theory]
     [InlineData("A X", ShapeScore.Rock)]
     [InlineData("B X", ShapeScore.Paper)]
     [InlineData("C X", ShapeScore.Scissors)]
