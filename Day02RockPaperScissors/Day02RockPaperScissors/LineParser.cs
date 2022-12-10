@@ -4,18 +4,22 @@ public static class LineParserExtensions
 {
     public static Round ParseShapes(this string line)
     {
-        var opponentShape = line[0] switch
+        var opponentShapeLiteral = line[0];
+        var opponentShape = opponentShapeLiteral switch
         {
             'A' => ShapeScore.Rock,
             'B' => ShapeScore.Paper,
-            'C' => ShapeScore.Scissors
+            'C' => ShapeScore.Scissors,
+            _ => throw new InvalidShapeLiteralException(opponentShapeLiteral)
         };
 
-        var ownShape = line[2] switch
+        var ownShapeLiteral = line[2];
+        var ownShape = ownShapeLiteral switch
         {
             'X' => ShapeScore.Rock,
             'Y' => ShapeScore.Paper,
-            'Z' => ShapeScore.Scissors
+            'Z' => ShapeScore.Scissors,
+            _ => throw new InvalidShapeLiteralException(ownShapeLiteral)
         };
 
         return new Round(opponentShape, ownShape);

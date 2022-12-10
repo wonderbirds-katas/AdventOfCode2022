@@ -23,4 +23,25 @@ public class LineParserTests
 
         Assert.Equal(expectedOwnShape, actual.Own);
     }
+
+    [Fact]
+    public void InvalidOpponentShapeLiteral()
+    {
+        const char invalidShapeLiteral = 'I';
+        var invalidLine = $"{invalidShapeLiteral} X";
+        
+        var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.ParseShapes());
+        Assert.EndsWith($"'{invalidShapeLiteral}'", exception.Message);
+    }
+
+    [Fact]
+    public void InvalidOwnShapeLiteral()
+    {
+        const char invalidShapeLiteral = 'I';
+        var invalidLine = $"A {invalidShapeLiteral}";
+        
+        var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.ParseShapes());
+        Assert.EndsWith($"'{invalidShapeLiteral}'", exception.Message);
+    }
+
 }
