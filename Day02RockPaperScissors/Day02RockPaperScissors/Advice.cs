@@ -13,6 +13,11 @@ public class Advice
 
     public Round CalculateRound()
     {
+        if (_desiredOutcome == OutcomeScore.Draw)
+        {
+            return new Round(_opponent, _opponent);
+        }
+        
         return _opponent switch
         {
             ShapeScore.Paper => new Round(_opponent, ShapeScore.Scissors),
