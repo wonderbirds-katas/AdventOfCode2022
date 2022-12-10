@@ -11,6 +11,16 @@ public static class Turn
 
     private static OutcomeScore CalculateOutcome(ShapeScore opponent, ShapeScore own)
     {
+        if (opponent == ShapeScore.Rock && own == ShapeScore.Scissors)
+        {
+            return OutcomeScore.Lose;
+        }
+
+        if (opponent == ShapeScore.Scissors && own == ShapeScore.Rock)
+        {
+            return OutcomeScore.Win;
+        }
+        
         if (own == opponent)
         {
             return OutcomeScore.Draw;
