@@ -11,26 +11,15 @@ public static class Turn
 
     private static OutcomeScore CalculateOutcome(ShapeScore opponent, ShapeScore own)
     {
-        if (opponent == ShapeScore.Rock && own == ShapeScore.Scissors)
+        var greaterThan = new Dictionary<ShapeScore, ShapeScore>
         {
-            return OutcomeScore.Lose;
-        }
+            [ShapeScore.Rock] = ShapeScore.Paper,
+            [ShapeScore.Paper] = ShapeScore.Scissors,
+            [ShapeScore.Scissors] = ShapeScore.Rock
+        };
 
-        if (opponent == ShapeScore.Scissors && own == ShapeScore.Rock)
-        {
-            return OutcomeScore.Win;
-        }
-        
-        if (own == opponent)
-        {
-            return OutcomeScore.Draw;
-        }
-
-        if (own > opponent)
-        {
-            return OutcomeScore.Win;
-        }
-
+        if (own == greaterThan[opponent]) return OutcomeScore.Win;
+        if (own == opponent) return OutcomeScore.Draw;
         return OutcomeScore.Lose;
     }
 }
