@@ -2,7 +2,7 @@
 
 public static class LineParserExtensions
 {
-    public static Advice ParsePart2(this string line)
+    public static Advice Parse(this string line)
     {
         var desiredOutcome = ParseDesiredOutcome(line);
         var opponentShape = ParseOpponentShape(line);

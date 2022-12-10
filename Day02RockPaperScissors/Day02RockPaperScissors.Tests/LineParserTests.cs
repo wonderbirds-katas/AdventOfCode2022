@@ -8,7 +8,7 @@ public class LineParserTests
     [InlineData("A Z", OutcomeScore.Win)]
     public void DesiredOutcome(string line, OutcomeScore expectedOutcome)
     {
-        var actual = line.ParsePart2();
+        var actual = line.Parse();
         Assert.Equal(expectedOutcome, actual.DesiredOutcome);
     }
     
@@ -18,7 +18,7 @@ public class LineParserTests
     [InlineData("C X", ShapeScore.Scissors)]
     public void OpponentShape2(string line, ShapeScore expectedOpponentShape)
     {
-        var actual = line.ParsePart2();
+        var actual = line.Parse();
 
         Assert.Equal(expectedOpponentShape, actual.Opponent);
     }
@@ -29,7 +29,7 @@ public class LineParserTests
         const char invalidShapeLiteral = 'I';
         var invalidLine = $"{invalidShapeLiteral} X";
         
-        var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.ParsePart2());
+        var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.Parse());
         Assert.EndsWith($"'{invalidShapeLiteral}'", exception.Message);
     }
 
@@ -39,7 +39,7 @@ public class LineParserTests
         const char invalidShapeLiteral = 'I';
         var invalidLine = $"A {invalidShapeLiteral}";
         
-        var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.ParsePart2());
+        var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.Parse());
         Assert.EndsWith($"'{invalidShapeLiteral}'", exception.Message);
     }
 
