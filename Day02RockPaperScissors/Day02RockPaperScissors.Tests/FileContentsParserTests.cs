@@ -5,12 +5,10 @@ namespace Day02RockPaperScissors.Tests;
 public class FileContentsParserTests
 {
     private readonly Mock<ILineParser> _lineParserMock;
-    private readonly FileContentsParser _fileContentsParser;
 
     public FileContentsParserTests()
     {
         _lineParserMock = new Mock<ILineParser>();
-        _fileContentsParser = new FileContentsParser(_lineParserMock.Object);
     }
 
     [Fact]
