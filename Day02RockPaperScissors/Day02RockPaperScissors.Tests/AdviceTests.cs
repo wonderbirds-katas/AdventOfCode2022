@@ -2,10 +2,11 @@ namespace Day02RockPaperScissors.Tests;
 
 public class AdviceTests
 {
-    [Fact]
-    public void CalculateRoundToWinAgainstScissors()
+    [Theory]
+    [InlineData(ShapeScore.Scissors, OutcomeScore.Win, ShapeScore.Rock)]
+    public void CalculateRound(ShapeScore opponent, OutcomeScore desiredOutcome, ShapeScore expected)
     {
-        var actual = new Advice(ShapeScore.Scissors, OutcomeScore.Win).CalculateRound();
-        Assert.Equal(ShapeScore.Rock, actual.Own);
+        var actual = new Advice(opponent, desiredOutcome).CalculateRound();
+        Assert.Equal(expected, actual.Own);
     }
 }
