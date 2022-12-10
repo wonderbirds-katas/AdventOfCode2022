@@ -8,9 +8,9 @@ public class LineParserTests
     [InlineData("C X", ShapeScore.Scissors)]
     public void OpponentShape(string line, ShapeScore expectedOpponentShape)
     {
-        var (actual, _) = line.ParseShapes();
+        var actual = line.ParseShapes();
 
-        Assert.Equal(expectedOpponentShape, actual);
+        Assert.Equal(expectedOpponentShape, actual.Opponent);
     }
 
     [Theory]
@@ -19,8 +19,8 @@ public class LineParserTests
     [InlineData("A Z", ShapeScore.Scissors)]
     public void OwnShape(string line, ShapeScore expectedOwnShape)
     {
-        var (_, actual) = line.ParseShapes();
+        var actual = line.ParseShapes();
 
-        Assert.Equal(expectedOwnShape, actual);
+        Assert.Equal(expectedOwnShape, actual.Own);
     }
 }

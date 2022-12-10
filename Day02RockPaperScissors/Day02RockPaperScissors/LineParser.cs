@@ -2,7 +2,7 @@
 
 public static class LineParserExtensions
 {
-    public static (ShapeScore opponent, ShapeScore own) ParseShapes(this string line)
+    public static Round ParseShapes(this string line)
     {
         var opponentShape = line[0] switch
         {
@@ -18,6 +18,6 @@ public static class LineParserExtensions
             'Z' => ShapeScore.Scissors
         };
 
-        return (opponentShape, ownShape);
+        return new Round(opponentShape, ownShape);
     }
 }

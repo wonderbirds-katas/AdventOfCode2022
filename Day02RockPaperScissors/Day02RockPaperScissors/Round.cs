@@ -2,26 +2,27 @@ namespace Day02RockPaperScissors;
 
 public class Round
 {
-    private readonly ShapeScore _opponent;
-    private readonly ShapeScore _own;
-    
+    public ShapeScore Opponent { get; }
+
+    public ShapeScore Own { get; }
+
     public Round(ShapeScore opponent, ShapeScore own)
     {
-        _opponent = opponent;
-        _own = own;
+        Opponent = opponent;
+        Own = own;
     }
-    
+
     public Score Score()
     {
         var outcome = CalculateOutcome();
 
-        return new Score(_own, outcome);
+        return new Score(Own, outcome);
     }
 
     private OutcomeScore CalculateOutcome()
     {
-        if (_own.IsGreaterThan(_opponent)) return OutcomeScore.Win;
-        if (_own == _opponent) return OutcomeScore.Draw;
+        if (Own.IsGreaterThan(Opponent)) return OutcomeScore.Win;
+        if (Own == Opponent) return OutcomeScore.Draw;
         return OutcomeScore.Lose;
     }
 }
