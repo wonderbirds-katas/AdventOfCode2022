@@ -4,6 +4,14 @@ public static class LineParserExtensions
 {
     public static Advice ParsePart2(this string line)
     {
+        var desiredOutcome = ParseDesiredOutcome(line);
+        var opponentShape = ParseOpponentShape(line);
+        
+        return new Advice(opponentShape, desiredOutcome);
+    }
+
+    private static OutcomeScore ParseDesiredOutcome(string line)
+    {
         var desiredOutcomeLiteral = line[2];
         var desiredOutcome = desiredOutcomeLiteral switch
         {
@@ -12,11 +20,9 @@ public static class LineParserExtensions
             'Z' => OutcomeScore.Win,
             _ => throw new InvalidShapeLiteralException(desiredOutcomeLiteral)
         };
-        var opponentShape = ParseOpponentShape(line);
-        
-        return new Advice(opponentShape, desiredOutcome);
+        return desiredOutcome;
     }
-    
+
     public static Round Parse(this string line)
     {
         var opponentShape = ParseOpponentShape(line);
