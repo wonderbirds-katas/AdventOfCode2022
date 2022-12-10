@@ -2,7 +2,7 @@
 
 public static class LineParserExtensions
 {
-    public static Round ParseShapes(this string line)
+    public static Round Parse(this string line)
     {
         var opponentShape = ParseOpponentShape(line);
         var ownShape = ParseOwnShape(line);
