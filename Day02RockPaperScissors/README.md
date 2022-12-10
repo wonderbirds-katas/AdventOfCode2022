@@ -1,6 +1,6 @@
 # Day 2: Rock Paper Scissors
 
-→ [Puzzle Instructions](https://adventofcode.com/2022/day/1)
+→ [Puzzle Instructions](https://adventofcode.com/2022/day/2)
 
 ## Build and Test
 
