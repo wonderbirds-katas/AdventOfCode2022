@@ -5,9 +5,9 @@ public static class Program
     public static void Main(string[] args)
     {
         var sum = File.ReadAllLines(args[0])
-            .Parse(new LineParser())
-            .Select(x => Turn.Score(x.Item1, x.Item2))
-            .Sum(x => x.Sum);
+            .Select(line => line.ParseShapes())
+            .Select(shapes => Turn.Score(shapes.Item1, shapes.Item2))
+            .Sum(score => score.Sum);
         Console.WriteLine(sum);
     }
 }
