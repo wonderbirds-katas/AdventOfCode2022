@@ -18,9 +18,8 @@ public class FileContentsParser
 public static class FileContentsParserExtensions
 {
     public static IEnumerable<(ShapeScore, ShapeScore)> Parse(this IEnumerable<string> fileLines,
-        ILineParser? lineParser = null)
+        ILineParser lineParser)
     {
-        lineParser ??= new LineParser();
         return new FileContentsParser(lineParser).Parse(fileLines);
     }
 }

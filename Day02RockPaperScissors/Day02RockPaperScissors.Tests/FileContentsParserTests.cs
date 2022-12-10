@@ -16,14 +16,19 @@ public class FileContentsParserTests
     [Fact]
     public void EmptyFileContents()
     {
-        var actual = _fileContentsParser.Parse(new string[] { });
+        var fileLines = new string[] { };
+        
+        var actual = fileLines.Parse(_lineParserMock.Object);
+        
         Assert.Empty(actual);
     }
 
     [Fact]
     public void SingleLineInFile()
     {
-        var result = _fileContentsParser.Parse(new[] { "A X" });
+        var fileLines = new[] { "A X" };
+        
+        var result = fileLines.Parse(_lineParserMock.Object);
 
         Assert.Collection(
             result,
@@ -34,7 +39,9 @@ public class FileContentsParserTests
     [Fact]
     public void MultipleLinesInFile()
     {
-        var result = _fileContentsParser.Parse(new[] { "A X", "B Y", "C Z" });
+        var fileLines = new[] { "A X", "B Y", "C Z" };
+        
+        var result = fileLines.Parse(_lineParserMock.Object);
 
         Assert.Collection(
             result,
