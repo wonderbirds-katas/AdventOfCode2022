@@ -14,3 +14,13 @@ public class FileContentsParser
         return fileLines.Select(_lineParser.ParseLine);
     }
 }
+
+public static class FileContentsParserExtensions
+{
+    public static IEnumerable<(ShapeScore, ShapeScore)> Parse(this IEnumerable<string> fileLines,
+        ILineParser? lineParser = null)
+    {
+        lineParser ??= new LineParser();
+        return new FileContentsParser(lineParser).Parse(fileLines);
+    }
+}
