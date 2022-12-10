@@ -10,6 +10,10 @@ public class AdviceTests
     [InlineData(ShapeScore.Scissors, OutcomeScore.Draw, ShapeScore.Scissors)]
     [InlineData(ShapeScore.Rock, OutcomeScore.Draw, ShapeScore.Rock)]
     [InlineData(ShapeScore.Paper, OutcomeScore.Draw, ShapeScore.Paper)]
+
+    [InlineData(ShapeScore.Scissors, OutcomeScore.Lose, ShapeScore.Paper)]
+    [InlineData(ShapeScore.Rock, OutcomeScore.Lose, ShapeScore.Scissors)]
+    [InlineData(ShapeScore.Paper, OutcomeScore.Lose, ShapeScore.Rock)]
     public void CalculateRound(ShapeScore opponent, OutcomeScore desiredOutcome, ShapeScore expected)
     {
         var actual = new Advice(opponent, desiredOutcome).CalculateRound();
