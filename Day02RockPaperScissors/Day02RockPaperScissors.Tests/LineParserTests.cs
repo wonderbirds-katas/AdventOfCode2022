@@ -4,6 +4,8 @@ public class LineParserTests
 {
     [Theory]
     [InlineData("A X", OutcomeScore.Lose)]
+    [InlineData("A Y", OutcomeScore.Draw)]
+    [InlineData("A Z", OutcomeScore.Win)]
     public void DesiredOutcome(string line, OutcomeScore expectedOutcome)
     {
         var actual = line.ParsePart2();

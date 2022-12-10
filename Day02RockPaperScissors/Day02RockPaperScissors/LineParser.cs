@@ -4,7 +4,14 @@ public static class LineParserExtensions
 {
     public static Advice ParsePart2(this string line)
     {
-        return new Advice(ShapeScore.Rock, OutcomeScore.Lose);
+        var desiredOutcomeLiteral = line[2];
+        var desiredOutcome = desiredOutcomeLiteral switch
+        {
+            'X' => OutcomeScore.Lose,
+            'Y' => OutcomeScore.Draw,
+            'Z' => OutcomeScore.Win,
+        };
+        return new Advice(ShapeScore.Rock, desiredOutcome);
     }
     
     public static Round Parse(this string line)
