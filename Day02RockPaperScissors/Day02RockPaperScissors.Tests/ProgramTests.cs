@@ -2,14 +2,15 @@ namespace Day02RockPaperScissors.Tests;
 
 public class ProgramTests
 {
-    [Fact]
-    public void NextTestWithoutMeaningfulName()
+    [Theory]
+    [InlineData("ProgramTestInput.txt", 45)]
+    public void ProcessInputFile(string testFileName, int expectedSum)
     {
         var stringWriter = new StringWriter();
         Console.SetOut(stringWriter);
         
-        Program.Main(new[] {"ProgramTestInput.txt"});
+        Program.Main(new[] {testFileName});
         
-        Assert.Equal("45\n", stringWriter.ToString());
+        Assert.Equal($"{expectedSum}\n", stringWriter.ToString());
     }
 }
