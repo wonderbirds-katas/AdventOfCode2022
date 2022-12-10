@@ -2,13 +2,13 @@ namespace Day02RockPaperScissors;
 
 public class Advice
 {
-    private readonly ShapeScore _opponent;
-
+    public ShapeScore Opponent { get; }
+    
     public OutcomeScore DesiredOutcome { get; }
 
     public Advice(ShapeScore opponent, OutcomeScore desiredOutcome)
     {
-        _opponent = opponent;
+        Opponent = opponent;
         DesiredOutcome = desiredOutcome;
     }
 
@@ -22,26 +22,26 @@ public class Advice
 
     private Round CalculateShapeToLose()
     {
-        return _opponent switch
+        return Opponent switch
         {
-            ShapeScore.Scissors => new Round(_opponent, ShapeScore.Paper),
-            ShapeScore.Rock => new Round(_opponent, ShapeScore.Scissors),
-            _ => new Round(_opponent, ShapeScore.Rock),
+            ShapeScore.Scissors => new Round(Opponent, ShapeScore.Paper),
+            ShapeScore.Rock => new Round(Opponent, ShapeScore.Scissors),
+            _ => new Round(Opponent, ShapeScore.Rock),
         };
     }
 
     private Round CalculateShapeForDraw()
     {
-        return new Round(_opponent, _opponent);
+        return new Round(Opponent, Opponent);
     }
 
     private Round CalculateShapeToWin()
     {
-        return _opponent switch
+        return Opponent switch
         {
-            ShapeScore.Paper => new Round(_opponent, ShapeScore.Scissors),
-            ShapeScore.Rock => new Round(_opponent, ShapeScore.Paper),
-            _ => new Round(_opponent, ShapeScore.Rock)
+            ShapeScore.Paper => new Round(Opponent, ShapeScore.Scissors),
+            ShapeScore.Rock => new Round(Opponent, ShapeScore.Paper),
+            _ => new Round(Opponent, ShapeScore.Rock)
         };
     }
 }

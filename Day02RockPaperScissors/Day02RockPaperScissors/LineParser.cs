@@ -11,7 +11,9 @@ public static class LineParserExtensions
             'Y' => OutcomeScore.Draw,
             'Z' => OutcomeScore.Win,
         };
-        return new Advice(ShapeScore.Rock, desiredOutcome);
+        var opponentShape = ParseOpponentShape(line);
+        
+        return new Advice(opponentShape, desiredOutcome);
     }
     
     public static Round Parse(this string line)

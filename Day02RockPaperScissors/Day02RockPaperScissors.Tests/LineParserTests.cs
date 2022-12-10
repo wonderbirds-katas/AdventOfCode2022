@@ -16,6 +16,17 @@ public class LineParserTests
     [InlineData("A X", ShapeScore.Rock)]
     [InlineData("B X", ShapeScore.Paper)]
     [InlineData("C X", ShapeScore.Scissors)]
+    public void OpponentShape2(string line, ShapeScore expectedOpponentShape)
+    {
+        var actual = line.ParsePart2();
+
+        Assert.Equal(expectedOpponentShape, actual.Opponent);
+    }
+
+    [Theory]
+    [InlineData("A X", ShapeScore.Rock)]
+    [InlineData("B X", ShapeScore.Paper)]
+    [InlineData("C X", ShapeScore.Scissors)]
     public void OpponentShape(string line, ShapeScore expectedOpponentShape)
     {
         var actual = line.Parse();
