@@ -10,6 +10,7 @@ public static class LineParserExtensions
             'X' => OutcomeScore.Lose,
             'Y' => OutcomeScore.Draw,
             'Z' => OutcomeScore.Win,
+            _ => throw new InvalidShapeLiteralException(desiredOutcomeLiteral)
         };
         var opponentShape = ParseOpponentShape(line);
         

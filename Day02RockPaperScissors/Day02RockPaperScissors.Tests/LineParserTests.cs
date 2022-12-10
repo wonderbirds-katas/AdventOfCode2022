@@ -51,17 +51,17 @@ public class LineParserTests
         const char invalidShapeLiteral = 'I';
         var invalidLine = $"{invalidShapeLiteral} X";
         
-        var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.Parse());
+        var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.ParsePart2());
         Assert.EndsWith($"'{invalidShapeLiteral}'", exception.Message);
     }
 
     [Fact]
-    public void InvalidOwnShapeLiteral()
+    public void InvalidDesiredOutcomeLiteral()
     {
         const char invalidShapeLiteral = 'I';
         var invalidLine = $"A {invalidShapeLiteral}";
         
-        var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.Parse());
+        var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.ParsePart2());
         Assert.EndsWith($"'{invalidShapeLiteral}'", exception.Message);
     }
 
