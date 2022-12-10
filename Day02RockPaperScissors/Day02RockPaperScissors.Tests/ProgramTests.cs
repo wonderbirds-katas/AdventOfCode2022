@@ -10,6 +10,6 @@ public class ProgramTests
         
         Program.Main(new[] {"ProgramTestInput.txt"});
         
-        Assert.Equal("0\n", stringWriter.ToString());
+        Assert.Equal("45\n", stringWriter.ToString());
     }
 }
