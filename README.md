@@ -31,7 +31,7 @@ Instructions to run each puzzle are contained in the corresponding subfolder.
 
 ## Implement the Next Puzzle
 
-1. Copy an existing folder like `cp -av Day02RockPaperScissors Day03RucksackReorganization`
+1. Copy the [TemplateProjects](./TemplateProjects) folder like `cp -av TemplateProjects Day03RucksackReorganization`
 2. Copy the name of the new folder to the clipboard - you'll need it several times
 3. In the section above create a link for the new folder
 4. Rename the subfolders and the `.csproj` files so that they match the new project name
