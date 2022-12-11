@@ -12,17 +12,6 @@ public class Advice
         DesiredOutcome = desiredOutcome;
     }
 
-    public Round CalculateRound()
-    {
-        var own = DesiredOutcome switch
-        {
-            OutcomeScore.Lose => CalculateShapeToLose(),
-            OutcomeScore.Draw => CalculateShapeForDraw(),
-            _ => CalculateShapeToWin()
-        };
-        return new Round(Opponent, own);
-    }
-
     public Score CalculateScore()
     {
         var own = DesiredOutcome switch
