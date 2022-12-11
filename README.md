@@ -1,5 +1,7 @@
 # Puzzles of Advent of Code '22
 
+[![Build Status Badge](https://github.com/wonderbirds-katas/AdventOfCode2022/workflows/.NET/badge.svg)](https://github.com/wonderbirds-katas/AdventOfCode2022/actions?query=workflow%3A%22.NET%22)
+
 This repository contains C# solutions for the [Advent of Code 2022](https://adventofcode.com/2022/) puzzles.
 
 ## Thanks
