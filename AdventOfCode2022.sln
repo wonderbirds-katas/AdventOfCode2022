@@ -25,12 +25,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHubConfigs", "GitHubConf
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Day03RucksackReorganization", "Day03RucksackReorganization", "{2492C5DB-B660-4980-B6BC-602F21046D1B}"
+	ProjectSection(SolutionItems) = preProject
+		Day03RucksackReorganization\README.md = Day03RucksackReorganization\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day03RucksackReorganization", "Day03RucksackReorganization\Day03RucksackReorganization\Day03RucksackReorganization.csproj", "{6B8395F2-D68F-4B59-B87F-F24F10E9EFC5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day03RucksackReorganization.Tests", "Day03RucksackReorganization\Day03RucksackReorganization.Tests\Day03RucksackReorganization.Tests.csproj", "{8240F0E7-1E30-4EF2-A21E-1D0E816ABAE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TemplateProjects", "TemplateProjects", "{F20EDB62-BB62-42CE-B135-C4956B84838D}"
+	ProjectSection(SolutionItems) = preProject
+		TemplateProjects\README.md = TemplateProjects\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateProjects", "TemplateProjects\TemplateProjects\TemplateProjects.csproj", "{C042B169-AF54-49E9-8EC9-BB8C5CBFEA38}"
 EndProject

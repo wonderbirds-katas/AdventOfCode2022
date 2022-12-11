@@ -36,7 +36,8 @@ Instructions to run each puzzle are contained in the corresponding subfolder.
 3. In the section above create a link for the new folder
 4. Rename the subfolders and the `.csproj` files so that they match the new project name
 5. Add a solution folder with the same name as the new folder
-6. Add the existing projects to the solution folder
+6. Add the existing projects and the README.md to the solution folder
 7. Fix the namespace names in the `.cs` files of the projects
 8. Edit the `.csproj` of the test project and fix the dependency to the console application project
 9. Run the tests
+10. Update README.md for the new project

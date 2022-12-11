@@ -8,7 +8,7 @@ See [Instructions in the parent folder](../README.md).
 
 ## Run the Application
 
-From this folder, run the following command to calculate the sum of points in a strategy file:
+From this folder, run the following command:
 
 ```shell
 dotnet run --project Day03RucksackReorganization -- Day03RucksackReorganization/input.txt
