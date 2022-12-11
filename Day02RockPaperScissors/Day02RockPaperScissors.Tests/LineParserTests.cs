@@ -3,16 +3,6 @@
 public class LineParserTests
 {
     [Theory]
-    [InlineData("A X", OutcomeScore.Lose)]
-    [InlineData("A Y", OutcomeScore.Draw)]
-    [InlineData("A Z", OutcomeScore.Win)]
-    public void DesiredOutcome(string line, OutcomeScore expectedOutcome)
-    {
-        var actual = line.Parse();
-        Assert.Equal(expectedOutcome, actual.DesiredOutcome);
-    }
-    
-    [Theory]
     [InlineData("A X", ShapeScore.Rock)]
     [InlineData("B X", ShapeScore.Paper)]
     [InlineData("C X", ShapeScore.Scissors)]
@@ -21,6 +11,17 @@ public class LineParserTests
         var actual = line.Parse();
 
         Assert.Equal(expectedOpponentShape, actual.Opponent);
+    }
+
+    [Theory]
+    [InlineData("A X", OutcomeScore.Lose)]
+    [InlineData("A Y", OutcomeScore.Draw)]
+    [InlineData("A Z", OutcomeScore.Win)]
+    public void DesiredOutcome(string line, OutcomeScore expectedOutcome)
+    {
+        var actual = line.Parse();
+
+        Assert.Equal(expectedOutcome, actual.DesiredOutcome);
     }
 
     [Fact]
