@@ -23,6 +23,17 @@ public class Advice
         return new Round(Opponent, own);
     }
 
+    public Score CalculateScore()
+    {
+        var own = DesiredOutcome switch
+        {
+            OutcomeScore.Lose => CalculateShapeToLose(),
+            OutcomeScore.Draw => CalculateShapeForDraw(),
+            _ => CalculateShapeToWin()
+        };
+        return new Score(own, DesiredOutcome);
+    }
+
     private ShapeScore CalculateShapeToLose() =>
         Opponent switch
         {
