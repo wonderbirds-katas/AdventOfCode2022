@@ -3,26 +3,41 @@ namespace Day02RockPaperScissors;
 public class Round
 {
     public ShapeScore Opponent { get; }
+    
+    public OutcomeScore DesiredOutcome { get; }
 
-    public ShapeScore Own { get; }
-
-    public Round(ShapeScore opponent, ShapeScore own)
+    public Round(ShapeScore opponent, OutcomeScore desiredOutcome)
     {
         Opponent = opponent;
-        Own = own;
+        DesiredOutcome = desiredOutcome;
     }
 
     public Score Score()
     {
-        var outcome = CalculateOutcome();
-
-        return new Score(Own, outcome);
+        var own = DesiredOutcome switch
+        {
+            OutcomeScore.Lose => CalculateShapeToLose(),
+            OutcomeScore.Draw => CalculateShapeForDraw(),
+            _ => CalculateShapeToWin()
+        };
+        return new Score(own, DesiredOutcome);
     }
 
-    private OutcomeScore CalculateOutcome()
-    {
-        if (Own.IsGreaterThan(Opponent)) return OutcomeScore.Win;
-        if (Own == Opponent) return OutcomeScore.Draw;
-        return OutcomeScore.Lose;
-    }
+    private ShapeScore CalculateShapeToLose() =>
+        Opponent switch
+        {
+            ShapeScore.Scissors => ShapeScore.Paper,
+            ShapeScore.Rock => ShapeScore.Scissors,
+            _ => ShapeScore.Rock,
+        };
+
+    private ShapeScore CalculateShapeForDraw() => Opponent;
+
+    private ShapeScore CalculateShapeToWin() =>
+        Opponent switch
+        {
+            ShapeScore.Paper => ShapeScore.Scissors,
+            ShapeScore.Rock => ShapeScore.Paper,
+            _ => ShapeScore.Rock,
+        };
 }

@@ -3,19 +3,21 @@ namespace Day02RockPaperScissors.Tests;
 public class RoundTests
 {
     [Theory]
-    [InlineData(ShapeScore.Rock, ShapeScore.Rock, 1, 3, 1 + 3)]
-    [InlineData(ShapeScore.Rock, ShapeScore.Paper, 2, 6, 2 + 6)]
-    [InlineData(ShapeScore.Rock, ShapeScore.Scissors, 3, 0, 3 + 0)]
-    [InlineData(ShapeScore.Paper, ShapeScore.Rock, 1, 0, 1 + 0)]
-    [InlineData(ShapeScore.Paper, ShapeScore.Paper, 2, 3, 2 + 3)]
-    [InlineData(ShapeScore.Paper, ShapeScore.Scissors, 3, 6, 3 + 6)]
-    [InlineData(ShapeScore.Scissors, ShapeScore.Rock, 1, 6, 1 + 6)]
-    [InlineData(ShapeScore.Scissors, ShapeScore.Paper, 2, 0, 2 + 0)]
-    [InlineData(ShapeScore.Scissors, ShapeScore.Scissors, 3, 3, 3 + 3)]
-    public void OpponentVsOwnShapes(ShapeScore opponent, ShapeScore own, int shapeScore, int outcomeScore, int sumScore)
+    [InlineData(ShapeScore.Scissors, OutcomeScore.Win, ShapeScore.Rock, 1 + 6)]
+    [InlineData(ShapeScore.Rock, OutcomeScore.Win, ShapeScore.Paper, 2 + 6)]
+    [InlineData(ShapeScore.Paper, OutcomeScore.Win, ShapeScore.Scissors, 3 + 6)]
+    
+    [InlineData(ShapeScore.Scissors, OutcomeScore.Draw, ShapeScore.Scissors, 3 + 3)]
+    [InlineData(ShapeScore.Rock, OutcomeScore.Draw, ShapeScore.Rock, 1 + 3)]
+    [InlineData(ShapeScore.Paper, OutcomeScore.Draw, ShapeScore.Paper, 2 + 3)]
+    
+    [InlineData(ShapeScore.Scissors, OutcomeScore.Lose, ShapeScore.Paper, 2 + 0)]
+    [InlineData(ShapeScore.Rock, OutcomeScore.Lose, ShapeScore.Scissors, 3 + 0)]
+    [InlineData(ShapeScore.Paper, OutcomeScore.Lose, ShapeScore.Rock, 1 + 0)]
+    public void Score(ShapeScore opponent, OutcomeScore desiredOutcome, ShapeScore expectedOwn, int sumScore)
     {
-        var actual = new Round(opponent, own).Score();
-        var expected = new Score((ShapeScore) shapeScore, (OutcomeScore)outcomeScore);
+        var actual = new Round(opponent, desiredOutcome).Score();
+        var expected = new Score(expectedOwn, desiredOutcome);
         Assert.Equal(expected, actual);
         Assert.Equal(sumScore, actual.Sum);
     }

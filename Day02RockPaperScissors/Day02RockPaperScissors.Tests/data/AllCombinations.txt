@@ -1,9 +1,9 @@
-A X // Rock vs. Rock:         1 + 3 = 4
-A Y // Rock vs. Paper:        2 + 6 = 8
-A Z // Rock vs. Scissors:     3 + 0 = 3
-B X // Paper vs. Rock:        1 + 0 = 1
-B Y // Paper vs. Paper:       2 + 3 = 5
-B Z // Paper vs. Scissors:    3 + 6 = 9
-C X // Scissors vs. Rock:     1 + 6 = 7
-C Y // Scissors vs. Paper:    2 + 0 = 2
-C Z // Scissors vs. Scissors: 3 + 3 = 6; Sum: 4 + 8 + 3 + 1 + 5 + 9 + 7 + 2 + 6 = 45
+A X // Lose vs. Rock     = Scissors: 3 + 0 = 3
+A Y // Draw vs. Rock     = Rock:     1 + 3 = 4
+A Z // Win  vs. Rock     = Paper:    2 + 6 = 8
+B X // Lose vs. Paper    = Rock:     1 + 0 = 1
+B Y // Draw vs. Paper    = Paper:    2 + 3 = 5
+B Z // Win  vs. Paper    = Scissors: 3 + 6 = 9
+C X // Lose vs. Scissors = Paper:    2 + 0 = 2
+C Y // Draw vs. Scissors = Scissors: 3 + 3 = 6
+C Z // Win  vs. Scissors = Rock:     1 + 6 = 7; Sum: 3 + 4 + 8 + 1 + 5 + 9 + 2 + 6 + 7 = 45

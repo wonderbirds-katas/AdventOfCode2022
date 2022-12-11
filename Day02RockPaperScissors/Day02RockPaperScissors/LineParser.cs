@@ -5,9 +5,9 @@ public static class LineParserExtensions
     public static Round Parse(this string line)
     {
         var opponentShape = ParseOpponentShape(line);
-        var ownShape = ParseOwnShape(line);
+        var desiredOutcome = ParseDesiredOutcome(line);
 
-        return new Round(opponentShape, ownShape);
+        return new Round(opponentShape, desiredOutcome);
     }
 
     private static ShapeScore ParseOpponentShape(string line)
@@ -22,15 +22,16 @@ public static class LineParserExtensions
         };
     }
 
-    private static ShapeScore ParseOwnShape(string line)
+    private static OutcomeScore ParseDesiredOutcome(string line)
     {
-        var ownShapeLiteral = line[2];
-        return ownShapeLiteral switch
+        var desiredOutcomeLiteral = line[2];
+        var desiredOutcome = desiredOutcomeLiteral switch
         {
-            'X' => ShapeScore.Rock,
-            'Y' => ShapeScore.Paper,
-            'Z' => ShapeScore.Scissors,
-            _ => throw new InvalidShapeLiteralException(ownShapeLiteral)
+            'X' => OutcomeScore.Lose,
+            'Y' => OutcomeScore.Draw,
+            'Z' => OutcomeScore.Win,
+            _ => throw new InvalidShapeLiteralException(desiredOutcomeLiteral)
         };
+        return desiredOutcome;
     }
 }

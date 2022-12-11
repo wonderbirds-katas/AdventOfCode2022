@@ -6,7 +6,7 @@ public class LineParserTests
     [InlineData("A X", ShapeScore.Rock)]
     [InlineData("B X", ShapeScore.Paper)]
     [InlineData("C X", ShapeScore.Scissors)]
-    public void OpponentShape(string line, ShapeScore expectedOpponentShape)
+    public void OpponentShape2(string line, ShapeScore expectedOpponentShape)
     {
         var actual = line.Parse();
 
@@ -14,14 +14,14 @@ public class LineParserTests
     }
 
     [Theory]
-    [InlineData("A X", ShapeScore.Rock)]
-    [InlineData("A Y", ShapeScore.Paper)]
-    [InlineData("A Z", ShapeScore.Scissors)]
-    public void OwnShape(string line, ShapeScore expectedOwnShape)
+    [InlineData("A X", OutcomeScore.Lose)]
+    [InlineData("A Y", OutcomeScore.Draw)]
+    [InlineData("A Z", OutcomeScore.Win)]
+    public void DesiredOutcome(string line, OutcomeScore expectedOutcome)
     {
         var actual = line.Parse();
 
-        Assert.Equal(expectedOwnShape, actual.Own);
+        Assert.Equal(expectedOutcome, actual.DesiredOutcome);
     }
 
     [Fact]
@@ -35,7 +35,7 @@ public class LineParserTests
     }
 
     [Fact]
-    public void InvalidOwnShapeLiteral()
+    public void InvalidDesiredOutcomeLiteral()
     {
         const char invalidShapeLiteral = 'I';
         var invalidLine = $"A {invalidShapeLiteral}";
