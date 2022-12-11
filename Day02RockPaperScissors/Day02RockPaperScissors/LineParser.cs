@@ -2,12 +2,12 @@
 
 public static class LineParserExtensions
 {
-    public static Advice Parse(this string line)
+    public static Round Parse(this string line)
     {
         var desiredOutcome = ParseDesiredOutcome(line);
         var opponentShape = ParseOpponentShape(line);
         
-        return new Advice(opponentShape, desiredOutcome);
+        return new Round(opponentShape, desiredOutcome);
     }
 
     private static OutcomeScore ParseDesiredOutcome(string line)

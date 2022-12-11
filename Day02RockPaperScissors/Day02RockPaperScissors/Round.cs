@@ -1,18 +1,18 @@
 namespace Day02RockPaperScissors;
 
-public class Advice
+public class Round
 {
     public ShapeScore Opponent { get; }
     
     public OutcomeScore DesiredOutcome { get; }
 
-    public Advice(ShapeScore opponent, OutcomeScore desiredOutcome)
+    public Round(ShapeScore opponent, OutcomeScore desiredOutcome)
     {
         Opponent = opponent;
         DesiredOutcome = desiredOutcome;
     }
 
-    public Score CalculateScore()
+    public Score Score()
     {
         var own = DesiredOutcome switch
         {

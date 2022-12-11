@@ -1,6 +1,6 @@
 namespace Day02RockPaperScissors.Tests;
 
-public class AdviceTests
+public class RoundTests
 {
     [Theory]
     [InlineData(ShapeScore.Scissors, OutcomeScore.Win, ShapeScore.Rock)]
@@ -14,9 +14,9 @@ public class AdviceTests
     [InlineData(ShapeScore.Scissors, OutcomeScore.Lose, ShapeScore.Paper)]
     [InlineData(ShapeScore.Rock, OutcomeScore.Lose, ShapeScore.Scissors)]
     [InlineData(ShapeScore.Paper, OutcomeScore.Lose, ShapeScore.Rock)]
-    public void CalculateScore(ShapeScore opponent, OutcomeScore desiredOutcome, ShapeScore expectedOwn)
+    public void Score(ShapeScore opponent, OutcomeScore desiredOutcome, ShapeScore expectedOwn)
     {
-        var actual = new Advice(opponent, desiredOutcome).CalculateScore();
+        var actual = new Round(opponent, desiredOutcome).Score();
         Assert.Equal(expectedOwn, actual.Shape);
         Assert.Equal(desiredOutcome, actual.Outcome);
     }
