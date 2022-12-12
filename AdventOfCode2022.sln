@@ -27,6 +27,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Day03RucksackReorganization", "Day03RucksackReorganization", "{2492C5DB-B660-4980-B6BC-602F21046D1B}"
 	ProjectSection(SolutionItems) = preProject
 		Day03RucksackReorganization\README.md = Day03RucksackReorganization\README.md
+		Day03RucksackReorganization\design.drawio.png = Day03RucksackReorganization\design.drawio.png
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day03RucksackReorganization", "Day03RucksackReorganization\Day03RucksackReorganization\Day03RucksackReorganization.csproj", "{6B8395F2-D68F-4B59-B87F-F24F10E9EFC5}"
