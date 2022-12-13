@@ -30,6 +30,9 @@
       <None Update="data\single_rucksack_with_duplicate_a.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="data\two_rucksacks_with_duplicates_a_a.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
