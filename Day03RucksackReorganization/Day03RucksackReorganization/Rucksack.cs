@@ -1,5 +1,3 @@
 namespace Day03RucksackReorganization;
 
-internal class Rucksack
-{
-}
+public record struct Rucksack(Compartment FirstCompartment, Compartment SecondCompartment);
