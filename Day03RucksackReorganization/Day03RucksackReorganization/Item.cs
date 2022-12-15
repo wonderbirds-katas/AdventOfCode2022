@@ -1,6 +1,6 @@
 namespace Day03RucksackReorganization;
 
-internal class Item
+public record struct Item(char Type)
 {
     public int Priority => 1;
 }

@@ -12,4 +12,19 @@ public class RucksackParserTests
         
         Assert.Equal(expected, actual);
     }
+    
+    // TODO: Create RucksackParserTests for edge case of odd number of Items
+    
+    [Fact]
+    public void LineWithTwoItems()
+    {
+        var expected = new Rucksack();
+        expected.FirstCompartment.Add(new Item('a'));
+        expected.SecondCompartment.Add(new Item('b'));
+
+        const string lineWithTwoItems = "aa";
+        var actual = lineWithTwoItems.Parse();
+        
+        Assert.Equal(expected, actual);
+    }
 }
