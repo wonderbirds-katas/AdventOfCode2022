@@ -5,12 +5,11 @@ public class RucksackParserTests
     [Fact]
     public void EmptyLine()
     {
-        var expected = new Rucksack();
-        
         const string emptyLine = "";
         var actual = emptyLine.Parse();
         
-        Assert.Equal(expected, actual);
+        Assert.Empty(actual.FirstCompartment.Items);
+        Assert.Empty(actual.SecondCompartment.Items);
     }
     
     // TODO: Create RucksackParserTests for edge case of odd number of Items
@@ -25,6 +24,6 @@ public class RucksackParserTests
         const string lineWithTwoItems = "aa";
         var actual = lineWithTwoItems.Parse();
         
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected.FirstCompartment.Items, actual.SecondCompartment.Items);
     }
 }
