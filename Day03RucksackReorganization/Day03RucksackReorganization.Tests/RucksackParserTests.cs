@@ -5,7 +5,7 @@ public class RucksackParserTests
     [Fact]
     public void EmptyLine()
     {
-        var expected = new Rucksack(new Compartment(), new Compartment());
+        var expected = new Rucksack();
         
         const string emptyLine = "";
         var actual = emptyLine.Parse();

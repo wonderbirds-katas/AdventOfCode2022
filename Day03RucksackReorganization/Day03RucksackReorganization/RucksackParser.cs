@@ -4,6 +4,6 @@ public static class RucksackParser
 {
     public static Rucksack Parse(this string line)
     {
-        return new Rucksack(new Compartment(), new Compartment());
+        return new Rucksack();
     }
 }
