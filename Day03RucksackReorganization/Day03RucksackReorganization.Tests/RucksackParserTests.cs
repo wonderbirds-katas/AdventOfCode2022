@@ -17,20 +17,23 @@ public class RucksackParserTests
     [Fact]
     public void LineWithTwoItems()
     {
+        var firstItem = new Item('a');
+        var secondItem = new Item('b');
+        var lineWithTwoItems = $"{firstItem.Type}{secondItem.Type}";
+        
         var expectedRucksack = new Rucksack();
-        
-        var expectedFirstItem = new Item('a');
-        expectedRucksack.FirstCompartment.Add(expectedFirstItem);
-        Assert.Single(expectedRucksack.FirstCompartment.Items, item => expectedFirstItem == item);
-        
-        var expectedSecondItem = new Item('b');
-        expectedRucksack.SecondCompartment.Add(expectedSecondItem);
-        Assert.Single(expectedRucksack.SecondCompartment.Items, item => expectedSecondItem == item);
+        AddItemToCompartment(firstItem, expectedRucksack.FirstCompartment);
+        AddItemToCompartment(secondItem, expectedRucksack.SecondCompartment);
 
-        const string lineWithTwoItems = "ab";
         var actual = lineWithTwoItems.Parse();
         
         Assert.Equal(expectedRucksack.FirstCompartment.Items, actual.FirstCompartment.Items);
         Assert.Equal(expectedRucksack.SecondCompartment.Items, actual.SecondCompartment.Items);
+    }
+
+    private static void AddItemToCompartment(Item item, Compartment compartment)
+    {
+        compartment.Add(item);
+        Assert.Single(compartment.Items, added => added == item);
     }
 }
