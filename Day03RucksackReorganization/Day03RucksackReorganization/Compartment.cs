@@ -11,5 +11,6 @@ public class Compartment
 
     public void Add(Item item)
     {
+        Items.Add(item);
     }
 }

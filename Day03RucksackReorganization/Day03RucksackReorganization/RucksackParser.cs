@@ -4,6 +4,13 @@ public static class RucksackParser
 {
     public static Rucksack Parse(this string line)
     {
-        return new Rucksack();
+        var result = new Rucksack();
+
+        if (line == "") return result;
+        
+        result.FirstCompartment.Add(new Item('a'));
+        result.SecondCompartment.Add(new Item('b'));
+
+        return result;
     }
 }

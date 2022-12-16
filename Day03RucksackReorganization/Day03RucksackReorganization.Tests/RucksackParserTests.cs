@@ -17,13 +17,20 @@ public class RucksackParserTests
     [Fact]
     public void LineWithTwoItems()
     {
-        var expected = new Rucksack();
-        expected.FirstCompartment.Add(new Item('a'));
-        expected.SecondCompartment.Add(new Item('b'));
+        var expectedRucksack = new Rucksack();
+        
+        var expectedFirstItem = new Item('a');
+        expectedRucksack.FirstCompartment.Add(expectedFirstItem);
+        Assert.Single(expectedRucksack.FirstCompartment.Items, item => expectedFirstItem == item);
+        
+        var expectedSecondItem = new Item('b');
+        expectedRucksack.SecondCompartment.Add(expectedSecondItem);
+        Assert.Single(expectedRucksack.SecondCompartment.Items, item => expectedSecondItem == item);
 
-        const string lineWithTwoItems = "aa";
+        const string lineWithTwoItems = "ab";
         var actual = lineWithTwoItems.Parse();
         
-        Assert.Equal(expected.FirstCompartment.Items, actual.SecondCompartment.Items);
+        Assert.Equal(expectedRucksack.FirstCompartment.Items, actual.FirstCompartment.Items);
+        Assert.Equal(expectedRucksack.SecondCompartment.Items, actual.SecondCompartment.Items);
     }
 }
