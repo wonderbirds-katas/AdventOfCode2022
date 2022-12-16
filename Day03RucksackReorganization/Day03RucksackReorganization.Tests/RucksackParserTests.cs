@@ -1,4 +1,5 @@
 namespace Day03RucksackReorganization.Tests;
+using FluentAssertions;
 
 public class RucksackParserTests
 {
@@ -7,9 +8,9 @@ public class RucksackParserTests
     {
         const string emptyLine = "";
         var actual = emptyLine.Parse();
-        
-        Assert.Empty(actual.FirstCompartment.Items);
-        Assert.Empty(actual.SecondCompartment.Items);
+
+        actual.FirstCompartment.Items.Should().BeEmpty();
+        actual.SecondCompartment.Items.Should().BeEmpty();
     }
     
     // TODO: Create RucksackParserTests for edge case of odd number of Items
@@ -33,6 +34,7 @@ public class RucksackParserTests
     private static void AddItemToCompartment(Item item, Compartment compartment)
     {
         compartment.Add(item);
-        Assert.Single(compartment.Items, added => added == item);
+        compartment.Items.Should().ContainSingle()
+            .Which.Should().BeEquivalentTo(item);
     }
 }
