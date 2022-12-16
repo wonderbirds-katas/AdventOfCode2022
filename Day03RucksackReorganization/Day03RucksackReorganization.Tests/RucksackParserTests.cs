@@ -21,14 +21,13 @@ public class RucksackParserTests
         var secondItem = new Item('b');
         var lineWithTwoItems = $"{firstItem.Type}{secondItem.Type}";
         
-        var expectedRucksack = new Rucksack();
-        AddItemToCompartment(firstItem, expectedRucksack.FirstCompartment);
-        AddItemToCompartment(secondItem, expectedRucksack.SecondCompartment);
+        var expected = new Rucksack();
+        AddItemToCompartment(firstItem, expected.FirstCompartment);
+        AddItemToCompartment(secondItem, expected.SecondCompartment);
 
         var actual = lineWithTwoItems.Parse();
         
-        Assert.Equal(expectedRucksack.FirstCompartment.Items, actual.FirstCompartment.Items);
-        Assert.Equal(expectedRucksack.SecondCompartment.Items, actual.SecondCompartment.Items);
+        RucksackAsserts.Equal(expected, actual);
     }
 
     private static void AddItemToCompartment(Item item, Compartment compartment)
