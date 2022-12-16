@@ -1,6 +1,6 @@
 namespace Day03RucksackReorganization.Tests;
 
-public static class RucksackAsserts
+public static class RucksackAssertions
 {
     public static void Equal(Rucksack expected, Rucksack actual)
     {
