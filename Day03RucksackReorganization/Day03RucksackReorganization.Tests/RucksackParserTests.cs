@@ -35,6 +35,6 @@ public class RucksackParserTests
     {
         compartment.Add(item);
         compartment.Items.Should().ContainSingle()
-            .Which.Should().BeEquivalentTo(item);
+            .Which.Should().Be(item);
     }
 }
