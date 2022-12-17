@@ -1,8 +1,7 @@
 namespace Day03RucksackReorganization;
 
-public record struct Rucksack(Compartment FirstCompartment, Compartment SecondCompartment)
+public class Rucksack
 {
-    public Rucksack() : this(new Compartment(), new Compartment())
-    {
-    }
+    public Compartment FirstCompartment { get; } = new();
+    public Compartment SecondCompartment { get; } = new();
 }
