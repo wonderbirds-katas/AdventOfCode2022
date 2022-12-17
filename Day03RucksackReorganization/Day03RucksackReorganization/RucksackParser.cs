@@ -8,11 +8,15 @@ public static class RucksackParser
 
         if (line == "") return result;
 
-        var firstItemType = line[0];
-        result.FirstCompartment.Add(new Item(firstItemType));
+        var halfLineLength = line.Length / 2;
+        for (var index = 0; index < halfLineLength; index++)
+        {
+            var firstItemType = line[index];
+            result.FirstCompartment.Add(new Item(firstItemType));
 
-        var secondItemType = line[1];
-        result.SecondCompartment.Add(new Item(secondItemType));
+            var secondItemType = line[halfLineLength + index];
+            result.SecondCompartment.Add(new Item(secondItemType));
+        }
 
         return result;
     }
