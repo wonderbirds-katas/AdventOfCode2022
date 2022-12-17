@@ -15,11 +15,13 @@ public class RucksackParserTests
     
     // TODO: Create RucksackParserTests for edge case of odd number of Items
     
-    [Fact]
-    public void LineWithTwoItems()
+    [Theory]
+    [InlineData('a', 'b')]
+    [InlineData('c', 'd')]
+    public void LineWithTwoItems(char firstItemType, char secondItemType)
     {
-        var firstItem = new Item('a');
-        var secondItem = new Item('b');
+        var firstItem = new Item(firstItemType);
+        var secondItem = new Item(secondItemType);
         var lineWithTwoItems = $"{firstItem.Type}{secondItem.Type}";
         
         var expected = new Rucksack();

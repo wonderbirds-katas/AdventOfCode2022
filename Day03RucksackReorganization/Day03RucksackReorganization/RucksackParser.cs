@@ -7,9 +7,12 @@ public static class RucksackParser
         var result = new Rucksack();
 
         if (line == "") return result;
-        
-        result.FirstCompartment.Add(new Item('a'));
-        result.SecondCompartment.Add(new Item('b'));
+
+        var firstItemType = line[0];
+        result.FirstCompartment.Add(new Item(firstItemType));
+
+        var secondItemType = line[1];
+        result.SecondCompartment.Add(new Item(secondItemType));
 
         return result;
     }
