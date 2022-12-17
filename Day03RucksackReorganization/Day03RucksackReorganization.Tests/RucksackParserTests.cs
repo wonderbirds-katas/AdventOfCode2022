@@ -28,7 +28,7 @@ public class RucksackParserTests
 
         var actual = lineWithTwoItems.Parse();
 
-        actual.Should().BeEqual(expected);
+        actual.Should().BePackedLike(expected);
     }
 
     private static void AddItemToCompartment(Item item, Compartment compartment)
