@@ -18,25 +18,18 @@ public class RucksackParserTests
     [Theory]
     [InlineData('a', 'b')]
     [InlineData('c', 'd')]
-    public void LineWithTwoItems(char firstItemType, char secondItemType)
-    {
-        var firstItem = new Item(firstItemType);
-        var secondItem = new Item(secondItemType);
-        var lineWithTwoItems = $"{firstItem.Type}{secondItem.Type}";
-        
-        var expected = new Rucksack();
-        AddItemToCompartment(firstItem, expected.FirstCompartment);
-        AddItemToCompartment(secondItem, expected.SecondCompartment);
-
-        var actual = lineWithTwoItems.Parse();
-
-        actual.Should().BePackedLike(expected);
-    }
+    public void LineWithTwoItems(char itemInFirstCompartment, char itemInSecondCompartment) => RunTestFor(new []{ itemInFirstCompartment }, new []{ itemInSecondCompartment });
 
     [Theory]
     [InlineData(new [] {'a', 'b'}, new []{'c', 'd'})]
     [InlineData(new [] {'Z', 'z'}, new []{'X', 'X'})]
-    public void LineWithFourItems(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment)
+    public void LineWithFourItems(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment) => RunTestFor(itemsInFirstCompartment, itemsInSecondCompartment);
+
+    [Theory]
+    [InlineData(new [] {'a', 'b', 'c', 'd', 'e'}, new []{'A', 'B', 'C', 'D', 'E'})]
+    public void LineWithTenItems(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment) => RunTestFor(itemsInFirstCompartment, itemsInSecondCompartment);
+
+    private static void RunTestFor(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment)
     {
         var line = ItemsToString(itemsInFirstCompartment, itemsInSecondCompartment);
 
