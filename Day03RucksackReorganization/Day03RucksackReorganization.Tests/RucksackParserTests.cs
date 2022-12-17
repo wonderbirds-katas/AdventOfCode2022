@@ -35,10 +35,26 @@ public class RucksackParserTests
 
     [Theory]
     [InlineData(new [] {'a', 'b'}, new []{'c', 'd'})]
+    [InlineData(new [] {'Z', 'z'}, new []{'X', 'X'})]
     public void LineWithFourItems(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment)
     {
+        var line = ItemsToString(itemsInFirstCompartment, itemsInSecondCompartment);
+
+        var actual = line.Parse();
+
+        var expected = PackRucksackWith(itemsInFirstCompartment, itemsInSecondCompartment);
+        actual.Should().BePackedLike(expected);
+    }
+
+    private static string ItemsToString(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment)
+    {
+        return new string(itemsInFirstCompartment) + new string(itemsInSecondCompartment);
+    }
+
+    private static Rucksack PackRucksackWith(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment)
+    {
         var expected = new Rucksack();
-        
+
         foreach (var itemType in itemsInFirstCompartment)
         {
             AddItemToCompartment(new Item(itemType), expected.FirstCompartment);
@@ -49,10 +65,7 @@ public class RucksackParserTests
             AddItemToCompartment(new Item(itemType), expected.SecondCompartment);
         }
 
-        var line = new string(itemsInFirstCompartment) + new string(itemsInSecondCompartment);
-        var actual = line.Parse();
-
-        actual.Should().BePackedLike(expected);
+        return expected;
     }
 
     private static void AddItemToCompartment(Item item, Compartment compartment)
