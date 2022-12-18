@@ -39,12 +39,12 @@ public class RucksackParserTests
 
     private static Rucksack PackRucksackWith(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment)
     {
-        var expected = new Rucksack();
+        var result = new Rucksack();
 
-        AddItemsToCompartment(itemsInFirstCompartment, expected.FirstCompartment);
-        AddItemsToCompartment(itemsInSecondCompartment, expected.SecondCompartment);
+        AddItemsToCompartment(itemsInFirstCompartment, result.FirstCompartment);
+        AddItemsToCompartment(itemsInSecondCompartment, result.SecondCompartment);
 
-        return expected;
+        return result;
     }
 
     private static void AddItemsToCompartment(char[] itemsInFirstCompartment, Compartment compartment)
