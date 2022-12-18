@@ -6,7 +6,8 @@ public readonly record struct Item(char Type)
     {
         get
         {
-            if (Type < 'a') return Type - 'A' + 27;
+            if (Type < 'a')
+                return Type - 'A' + 27;
             return Type - 'a' + 1;
         }
     }

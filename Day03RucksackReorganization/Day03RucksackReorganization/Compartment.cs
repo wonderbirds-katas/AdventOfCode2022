@@ -16,5 +16,6 @@ public class Compartment
         Items.Add(item);
     }
 
-    public override string ToString() => $"{{{string.Join(", ", Items.Select(item => item.Type))}}}";
+    public override string ToString() =>
+        $"{{{string.Join(", ", Items.Select(item => item.Type))}}}";
 }

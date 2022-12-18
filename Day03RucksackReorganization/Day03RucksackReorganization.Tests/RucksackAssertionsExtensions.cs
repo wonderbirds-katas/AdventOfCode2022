@@ -33,28 +33,48 @@ public static class RucksackAssertionsExtensions
     /// Zero or more objects to format using the placeholders in <paramref name="because" />.
     /// </param>
     /// <returns></returns>
-    public static AndConstraint<ObjectAssertions> BePackedLike(this ObjectAssertions actual,
-        Rucksack expected, string because = "", params object[] becauseArgs)
+    public static AndConstraint<ObjectAssertions> BePackedLike(
+        this ObjectAssertions actual,
+        Rucksack expected,
+        string because = "",
+        params object[] becauseArgs
+    )
     {
-        var subject = (Rucksack) actual.Subject;
-        
-        AssertCompartmentItemsMatch(subject.FirstCompartment.Items, expected.FirstCompartment.Items, "first", because, becauseArgs);
-        AssertCompartmentItemsMatch(subject.SecondCompartment.Items, expected.SecondCompartment.Items, "second", because, becauseArgs);
-        
+        var subject = (Rucksack)actual.Subject;
+
+        AssertCompartmentItemsMatch(
+            subject.FirstCompartment.Items,
+            expected.FirstCompartment.Items,
+            "first",
+            because,
+            becauseArgs
+        );
+        AssertCompartmentItemsMatch(
+            subject.SecondCompartment.Items,
+            expected.SecondCompartment.Items,
+            "second",
+            because,
+            becauseArgs
+        );
+
         return new AndConstraint<ObjectAssertions>(actual);
     }
 
-    private static void AssertCompartmentItemsMatch(List<Item> actual, List<Item> expected,
+    private static void AssertCompartmentItemsMatch(
+        List<Item> actual,
+        List<Item> expected,
         string ordinalNumberOfCompartment,
-        string because, object[] becauseArgs)
+        string because,
+        object[] becauseArgs
+    )
     {
-        var messageFormat = $"Expected {ordinalNumberOfCompartment} compartment of {{context:rucksack}} to contain {{0}}{{reason}}, but found {{1}}.";
-        
+        var messageFormat =
+            $"Expected {ordinalNumberOfCompartment} compartment of {{context:rucksack}} to contain {{0}}{{reason}}, but found {{1}}.";
+
         Execute.Assertion
             .BecauseOf(because, becauseArgs)
             .Given(() => actual)
             .ForCondition(items => items.SequenceEqual(expected))
-            .FailWith(messageFormat,
-                _ => expected, items => items);
+            .FailWith(messageFormat, _ => expected, items => items);
     }
 }

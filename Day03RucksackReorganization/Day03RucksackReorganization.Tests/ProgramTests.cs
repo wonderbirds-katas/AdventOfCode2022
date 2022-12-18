@@ -12,9 +12,9 @@ public class ProgramTests
     {
         var stringWriter = new StringWriter();
         Console.SetOut(stringWriter);
-        
-        Program.Main(new[] {testFileName});
-        
+
+        Program.Main(new[] { testFileName });
+
         Assert.Equal($"{expected}\n", stringWriter.ToString());
     }
 }
