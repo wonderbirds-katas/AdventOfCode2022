@@ -27,33 +27,12 @@ public class RucksackParserTests
 
         var actual = line.Parse();
 
-        var expected = PackRucksackWith(itemsInFirstCompartment, itemsInSecondCompartment);
+        var expected = RucksackBuilder.PackRucksackWith(itemsInFirstCompartment, itemsInSecondCompartment);
         actual.Should().BePackedLike(expected);
     }
 
     private static string ItemsToString(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment)
     {
         return new string(itemsInFirstCompartment) + new string(itemsInSecondCompartment);
-    }
-
-    private static Rucksack PackRucksackWith(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment)
-    {
-        var result = new Rucksack();
-
-        AddItemsToCompartment(itemsInFirstCompartment, result.FirstCompartment);
-        AddItemsToCompartment(itemsInSecondCompartment, result.SecondCompartment);
-
-        return result;
-    }
-
-    private static void AddItemsToCompartment(char[] itemsInFirstCompartment, Compartment compartment)
-    {
-        if (itemsInFirstCompartment.Length == 0) return;
-        
-        Array.ForEach(itemsInFirstCompartment,
-            itemType => compartment.Add(new Item(itemType)));
-
-        var expected = itemsInFirstCompartment.Select(itemType => new Item(itemType));
-        compartment.Items.Should().Contain(expected);
     }
 }
