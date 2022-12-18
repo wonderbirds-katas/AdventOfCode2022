@@ -4,15 +4,8 @@ using FluentAssertions;
 public class RucksackParserTests
 {
     [Fact]
-    public void EmptyLine()
-    {
-        const string emptyLine = "";
-        var actual = emptyLine.Parse();
+    public void EmptyLine() => RunTestFor(Array.Empty<char>(), Array.Empty<char>());
 
-        actual.FirstCompartment.Items.Should().BeEmpty();
-        actual.SecondCompartment.Items.Should().BeEmpty();
-    }
-    
     // TODO: Create RucksackParserTests for edge case of odd number of Items
     
     [Theory]
