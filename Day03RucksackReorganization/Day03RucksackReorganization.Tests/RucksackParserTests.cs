@@ -41,22 +41,20 @@ public class RucksackParserTests
     {
         var expected = new Rucksack();
 
-        foreach (var itemType in itemsInFirstCompartment)
-        {
-            AddItemToCompartment(new Item(itemType), expected.FirstCompartment);
-        }
-
-        foreach (var itemType in itemsInSecondCompartment)
-        {
-            AddItemToCompartment(new Item(itemType), expected.SecondCompartment);
-        }
+        AddItemsToCompartment(itemsInFirstCompartment, expected.FirstCompartment);
+        AddItemsToCompartment(itemsInSecondCompartment, expected.SecondCompartment);
 
         return expected;
     }
 
-    private static void AddItemToCompartment(Item item, Compartment compartment)
+    private static void AddItemsToCompartment(char[] itemsInFirstCompartment, Compartment compartment)
     {
-        compartment.Add(item);
-        compartment.Items.Should().Contain(x => x == item);
+        if (itemsInFirstCompartment.Length == 0) return;
+        
+        Array.ForEach(itemsInFirstCompartment,
+            itemType => compartment.Add(new Item(itemType)));
+
+        var expected = itemsInFirstCompartment.Select(itemType => new Item(itemType));
+        compartment.Items.Should().Contain(expected);
     }
 }
