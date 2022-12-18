@@ -1,5 +1,4 @@
 namespace Day03RucksackReorganization.Tests;
-using FluentAssertions;
 
 public class RucksackParserTests
 {
