@@ -14,7 +14,12 @@ public class DuplicateDetectorTests
     [InlineData(new []{'a', 'b'}, new [] { 'a', 'c'}, 'a')]
     [InlineData(new []{'A', 'b'}, new [] { 'A', 'c'}, 'A')]
     [InlineData(new []{'n', 'b', 'z'}, new [] { 'n', 'c', 'Y'}, 'n')]
-    public void MultipleItemsSingleDuplicate(char [] itemsInFirstCompartment, char [] itemsInSecondCompartment, char expected) => RunTestFor(itemsInFirstCompartment, itemsInSecondCompartment, expected);
+    public void MultipleItemsFirstIsDuplicate(char [] itemsInFirstCompartment, char [] itemsInSecondCompartment, char expected) => RunTestFor(itemsInFirstCompartment, itemsInSecondCompartment, expected);
+
+    [Theory]
+    [InlineData(new []{'a', 'b'}, new [] { 'D', 'b'}, 'b')]
+    [InlineData(new []{'a', 'b', 'Q', 'b'}, new [] { 'D', 'Q', 'E', 'D'}, 'Q')]
+    public void MultipleItemsAnyIsDuplicate(char [] itemsInFirstCompartment, char [] itemsInSecondCompartment, char expected) => RunTestFor(itemsInFirstCompartment, itemsInSecondCompartment, expected);
 
     private static void RunTestFor(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment, char expected)
     {
