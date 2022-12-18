@@ -4,20 +4,17 @@ public static class RucksackParser
 {
     public static Rucksack Parse(this string line)
     {
+        var half = line.Length / 2;
+        
         var result = new Rucksack();
-
-        if (line == "") return result;
-
-        var halfLineLength = line.Length / 2;
-        for (var index = 0; index < halfLineLength; index++)
-        {
-            var firstItemType = line[index];
-            result.FirstCompartment.Add(new Item(firstItemType));
-
-            var secondItemType = line[halfLineLength + index];
-            result.SecondCompartment.Add(new Item(secondItemType));
-        }
+        line.Take(half).AddTo(result.FirstCompartment);
+        line.Skip(half).AddTo(result.SecondCompartment);
 
         return result;
+    }
+
+    private static void AddTo(this IEnumerable<char> itemTypes, Compartment compartment)
+    {
+        itemTypes.ToList().ForEach(itemType => compartment.Add(new Item(itemType)));
     }
 }
