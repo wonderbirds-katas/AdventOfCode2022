@@ -6,9 +6,19 @@ public class DuplicateDetectorTests
     [InlineData('a')]
     [InlineData('b')]
     [InlineData('Z')]
-    public void SingleDuplicateItem(char type)
+    public void SingleDuplicateItem(char type) => RunTestFor(new []{ type }, new []{ type }, type);
+
+    // TODO: What should happen, if there are more than one duplicate item?
+
+    [Theory]
+    [InlineData(new []{'a', 'b'}, new [] { 'a', 'c'}, 'a')]
+    [InlineData(new []{'A', 'b'}, new [] { 'A', 'c'}, 'A')]
+    [InlineData(new []{'n', 'b', 'z'}, new [] { 'n', 'c', 'Y'}, 'n')]
+    public void MultipleItemsSingleDuplicate(char [] itemsInFirstCompartment, char [] itemsInSecondCompartment, char expected) => RunTestFor(itemsInFirstCompartment, itemsInSecondCompartment, expected);
+
+    private static void RunTestFor(char[] itemsInFirstCompartment, char[] itemsInSecondCompartment, char expected)
     {
-        var rucksack = RucksackBuilder.PackRucksackWith(new []{ type }, new []{ type });
-        rucksack.Analyze().Type.Should().Be(type);
+        var rucksack = RucksackBuilder.PackRucksackWith(itemsInFirstCompartment, itemsInSecondCompartment);
+        rucksack.Analyze().Type.Should().Be(expected);
     }
 }
