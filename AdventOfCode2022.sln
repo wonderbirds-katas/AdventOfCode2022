@@ -24,6 +24,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHubConfigs", "GitHubConf
 		.github\dependabot.yml = .github\dependabot.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Day03RucksackReorganization", "Day03RucksackReorganization", "{2492C5DB-B660-4980-B6BC-602F21046D1B}"
+	ProjectSection(SolutionItems) = preProject
+		Day03RucksackReorganization\README.md = Day03RucksackReorganization\README.md
+		Day03RucksackReorganization\design.drawio.png = Day03RucksackReorganization\design.drawio.png
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day03RucksackReorganization", "Day03RucksackReorganization\Day03RucksackReorganization\Day03RucksackReorganization.csproj", "{6B8395F2-D68F-4B59-B87F-F24F10E9EFC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day03RucksackReorganization.Tests", "Day03RucksackReorganization\Day03RucksackReorganization.Tests\Day03RucksackReorganization.Tests.csproj", "{8240F0E7-1E30-4EF2-A21E-1D0E816ABAE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TemplateProjects", "TemplateProjects", "{F20EDB62-BB62-42CE-B135-C4956B84838D}"
+	ProjectSection(SolutionItems) = preProject
+		TemplateProjects\README.md = TemplateProjects\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateProjects", "TemplateProjects\TemplateProjects\TemplateProjects.csproj", "{C042B169-AF54-49E9-8EC9-BB8C5CBFEA38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateProjects.Tests", "TemplateProjects\TemplateProjects.Tests\TemplateProjects.Tests.csproj", "{5FA12F6D-414A-40F7-ABEC-914832216844}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,11 +65,31 @@ Global
 		{2A597095-E2F9-4D06-B84F-22CFCCF6EB7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A597095-E2F9-4D06-B84F-22CFCCF6EB7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A597095-E2F9-4D06-B84F-22CFCCF6EB7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B8395F2-D68F-4B59-B87F-F24F10E9EFC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B8395F2-D68F-4B59-B87F-F24F10E9EFC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B8395F2-D68F-4B59-B87F-F24F10E9EFC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B8395F2-D68F-4B59-B87F-F24F10E9EFC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8240F0E7-1E30-4EF2-A21E-1D0E816ABAE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8240F0E7-1E30-4EF2-A21E-1D0E816ABAE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8240F0E7-1E30-4EF2-A21E-1D0E816ABAE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8240F0E7-1E30-4EF2-A21E-1D0E816ABAE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C042B169-AF54-49E9-8EC9-BB8C5CBFEA38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C042B169-AF54-49E9-8EC9-BB8C5CBFEA38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C042B169-AF54-49E9-8EC9-BB8C5CBFEA38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C042B169-AF54-49E9-8EC9-BB8C5CBFEA38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FA12F6D-414A-40F7-ABEC-914832216844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FA12F6D-414A-40F7-ABEC-914832216844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FA12F6D-414A-40F7-ABEC-914832216844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FA12F6D-414A-40F7-ABEC-914832216844}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{253EBE5F-72B1-4D76-BF08-EBDE8E820A1B} = {4F3D80ED-64A2-4266-B956-8087FA6B7F91}
 		{6C5F4CCF-E3C3-4B14-8D54-F8403E89520D} = {4F3D80ED-64A2-4266-B956-8087FA6B7F91}
 		{E8E71F1E-1B68-4B2B-8C89-A0DE08D2D95E} = {CCF9DDA6-49C7-4356-B765-B88A125557D5}
 		{2A597095-E2F9-4D06-B84F-22CFCCF6EB7C} = {CCF9DDA6-49C7-4356-B765-B88A125557D5}
+		{6B8395F2-D68F-4B59-B87F-F24F10E9EFC5} = {2492C5DB-B660-4980-B6BC-602F21046D1B}
+		{8240F0E7-1E30-4EF2-A21E-1D0E816ABAE7} = {2492C5DB-B660-4980-B6BC-602F21046D1B}
+		{C042B169-AF54-49E9-8EC9-BB8C5CBFEA38} = {F20EDB62-BB62-42CE-B135-C4956B84838D}
+		{5FA12F6D-414A-40F7-ABEC-914832216844} = {F20EDB62-BB62-42CE-B135-C4956B84838D}
 	EndGlobalSection
 EndGlobal
