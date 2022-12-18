@@ -3,7 +3,7 @@ namespace Day02RockPaperScissors;
 public class Round
 {
     public ShapeScore Opponent { get; }
-    
+
     public OutcomeScore DesiredOutcome { get; }
 
     public Round(ShapeScore opponent, OutcomeScore desiredOutcome)

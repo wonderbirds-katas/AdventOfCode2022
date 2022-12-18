@@ -6,7 +6,7 @@ public static class Parser
     {
         var calorieSumsAscending = new SortedSet<int>();
         var sum = 0;
-        
+
         foreach (var caloriesString in input)
         {
             if (caloriesString == "")
@@ -21,7 +21,7 @@ public static class Parser
         }
 
         calorieSumsAscending.Add(sum);
-        
+
         return calorieSumsAscending.Reverse();
     }
 }

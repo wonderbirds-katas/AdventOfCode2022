@@ -7,9 +7,9 @@ public class ProcessorSingleElfTests
     {
         const int expected = 1000;
         string[] input = { expected.ToString() };
-        
+
         var actual = Processor.Process(1, input);
-        
+
         Assert.Equal(expected, actual);
     }
 
@@ -20,9 +20,9 @@ public class ProcessorSingleElfTests
         const int secondItem = 400;
         const int expected = firstItem + secondItem;
         string[] input = { firstItem.ToString(), secondItem.ToString() };
-        
+
         var actual = Processor.Process(1, input);
-        
+
         Assert.Equal(expected, actual);
     }
 }

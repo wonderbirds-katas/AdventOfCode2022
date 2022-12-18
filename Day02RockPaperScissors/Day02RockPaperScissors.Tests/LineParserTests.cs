@@ -29,7 +29,7 @@ public class LineParserTests
     {
         const char invalidShapeLiteral = 'I';
         var invalidLine = $"{invalidShapeLiteral} X";
-        
+
         var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.Parse());
         Assert.EndsWith($"'{invalidShapeLiteral}'", exception.Message);
     }
@@ -39,9 +39,8 @@ public class LineParserTests
     {
         const char invalidShapeLiteral = 'I';
         var invalidLine = $"A {invalidShapeLiteral}";
-        
+
         var exception = Assert.Throws<InvalidShapeLiteralException>(() => invalidLine.Parse());
         Assert.EndsWith($"'{invalidShapeLiteral}'", exception.Message);
     }
-
 }
