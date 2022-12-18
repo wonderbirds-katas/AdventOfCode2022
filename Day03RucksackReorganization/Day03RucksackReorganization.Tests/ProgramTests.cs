@@ -7,6 +7,7 @@ public class ProgramTests
     [InlineData("./data/two_rucksacks_with_duplicates_a_a.txt", 2)]
     [InlineData("./data/two_rucksacks_with_duplicates_b_b.txt", 4)]
     [InlineData("./data/advent_of_code_example.txt", 157)]
+    [InlineData("./data/advent_of_code_stefans_personal_data.txt", 8243)]
     public void ProcessInputFile(string testFileName, int expected)
     {
         var stringWriter = new StringWriter();
