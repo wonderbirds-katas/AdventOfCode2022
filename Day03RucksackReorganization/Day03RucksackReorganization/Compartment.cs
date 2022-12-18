@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Day03RucksackReorganization;
 
 public class Compartment
@@ -13,4 +15,6 @@ public class Compartment
     {
         Items.Add(item);
     }
+
+    public override string ToString() => $"{{{string.Join(", ", Items.Select(item => item.Type))}}}";
 }
