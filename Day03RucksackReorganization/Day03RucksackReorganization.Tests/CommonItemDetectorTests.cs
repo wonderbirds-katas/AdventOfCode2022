@@ -8,7 +8,7 @@ public class CommonItemDetectorTests
         var rucksacks = new Rucksack[]{ new (), new(), new() };
         var groups = new List<Group> { new(rucksacks) };
 
-        var actual = CommonItemDetector.Analyze(groups);
+        var actual = groups.Analyze();
 
         actual.Should().ContainSingle()
             .Which.Priority.Should().Be(1);
