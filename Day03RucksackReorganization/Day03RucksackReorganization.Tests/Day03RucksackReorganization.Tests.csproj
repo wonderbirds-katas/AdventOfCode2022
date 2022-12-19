@@ -28,13 +28,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="data\single_rucksack_with_duplicate_a.txt">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Update="data\two_rucksacks_with_duplicates_a_a.txt">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Update="data\two_rucksacks_with_duplicates_b_b.txt">
+      <None Update="data\single_group_with_shared_a.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
       <None Update="data\advent_of_code_example.txt">
