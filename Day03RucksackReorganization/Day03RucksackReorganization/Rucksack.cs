@@ -2,8 +2,8 @@ namespace Day03RucksackReorganization;
 
 public class Rucksack
 {
-    public Compartment FirstCompartment { get; } = new();
-    public Compartment SecondCompartment { get; } = new();
+    public IEnumerable<Item> Items { get; } = new List<Item>();
 
-    public override string ToString() => $"{{{FirstCompartment}, {SecondCompartment}}}";
+    public override string ToString() =>
+        $"{{{string.Join(", ", Items.Select(item => item.Type))}}}";
 }
