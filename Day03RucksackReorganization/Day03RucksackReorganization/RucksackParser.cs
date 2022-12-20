@@ -11,6 +11,8 @@ public static class RucksackParser
     {
         var result = new Rucksack();
 
+        line.ToList().ForEach(itemType => result.Add(new Item(itemType)));
+
         return result;
     }
 }

@@ -2,14 +2,14 @@ namespace Day03RucksackReorganization.Tests;
 
 public class RucksackParserTests
 {
-    // TODO: Implement test cases here
-    [Theory(Skip = "TODO: Implement test cases here")]
+    [Theory]
     [InlineData("aa", new []{ 'a', 'a'})]
-    public void NextTestWithoutMeaningfulName(string input, IEnumerable<char> expected)
+    [InlineData("abcdefGHIJK", new []{ 'a', 'b', 'c', 'd', 'e', 'f', 'G', 'H', 'I', 'J', 'K'})]
+    public void AddItems(string inputLine, IEnumerable<char> expectedItemTypes)
     {
-        var actual = input.Parse();
+        var actual = inputLine.Parse();
 
-        var expectedItems = expected.Select(type => new Item(type));
+        var expectedItems = expectedItemTypes.Select(type => new Item(type));
         
         actual.Items.Should().BeEquivalentTo(expectedItems);
     }
