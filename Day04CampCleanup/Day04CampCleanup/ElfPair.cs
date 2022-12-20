@@ -2,21 +2,21 @@ namespace Day04CampCleanup;
 
 public class ElfPair
 {
-    private readonly int[] _firstElfSections;
-    private readonly int[] _secondElfSections;
+    public int[] FirstElfSections { get; }
+    public int[] SecondElfSections { get; }
 
     public ElfPair(int[] firstElfSections, int[] secondElfSections)
     {
-        _firstElfSections = firstElfSections;
-        _secondElfSections = secondElfSections;
+        FirstElfSections = firstElfSections;
+        SecondElfSections = secondElfSections;
     }
 
     public bool IsOneSectionFullyContained()
     {
         // TODO: Algorithm is easy to understand, but performance could be better!
-        var intersection = _firstElfSections.Intersect(_secondElfSections).ToList();
+        var intersection = FirstElfSections.Intersect(SecondElfSections).ToList();
         
-        return intersection.SequenceEqual(_firstElfSections) ||
-               intersection.SequenceEqual(_secondElfSections);
+        return intersection.SequenceEqual(FirstElfSections) ||
+               intersection.SequenceEqual(SecondElfSections);
     }
 }
