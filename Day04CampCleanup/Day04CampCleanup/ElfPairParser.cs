@@ -9,6 +9,11 @@ public static class ElfPairParser
 
     public static ElfPair Parse(this string line)
     {
-        return new ElfPair(new []{ 1 }, new []{ 2 });
+        var ranges = line.Split(',');
+
+        var first = int.Parse(ranges[0].Split('-')[0]);
+        var second = int.Parse(ranges[1].Split('-')[0]);
+        
+        return new ElfPair(new []{ first }, new []{ second });
     }
 }
