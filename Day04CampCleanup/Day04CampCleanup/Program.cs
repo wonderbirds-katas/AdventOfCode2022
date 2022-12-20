@@ -1,16 +1,13 @@
-using System.Collections;
-
 namespace Day04CampCleanup;
 
 public static class Program
 {
     public static void Main(string[] args)
     {
-        // TODO: Implement this pipeline
-        // var lines = File.ReadAllLines(args[0]);
-        // IEnumerable<ElfPair> elfPairs = lines.Parse();
-        // elfPairs.Where(IsOneSectionFullyContained).Count();
+        var count = File.ReadAllLines(args[0])
+            .Parse()
+            .Count(elfPair => elfPair.IsOneSectionFullyContained());
 
-        Console.WriteLine($"Input file is '{args[0]}'");
+        Console.WriteLine($"{count}");
     }
 }
