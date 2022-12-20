@@ -8,11 +8,8 @@ public class CommonItemDetectorTests
     public void AnalyzeListOfGroups(char typeOfCommonItem)
     {
         var common = new Item(typeOfCommonItem);
-        var rucksacks = new Rucksack[]{ new (), new(), new() };
-        rucksacks[0].Add(common);
-        rucksacks[1].Add(common);
-        rucksacks[2].Add(common);
-        
+        var items = new[] {common};
+        var rucksacks = new Rucksack[]{ new (items), new(items), new(items) };
         var groups = new List<Group> { new(rucksacks) };
 
         var actual = groups.Analyze();
