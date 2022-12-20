@@ -28,6 +28,7 @@ Instructions to run each puzzle are contained in the corresponding subfolder.
 - [Day 1: Calorie Counting](./Day01CountCalories)
 - [Day 2: Rock Paper Scissors](./Day02RockPaperScissors)
 - [Day 3: Rucksack Reorganization](./Day03RucksackReorganization)
+- [Day 4: Camp Cleanup](./Day04CampCleanup)
 
 ## Implement the Next Puzzle
 
@@ -40,4 +41,4 @@ Instructions to run each puzzle are contained in the corresponding subfolder.
 7. Fix the namespace names in the `.cs` files of the projects
 8. Edit the `.csproj` of the test project and fix the dependency to the console application project
 9. Run the tests
-10. Update README.md for the new project
+10. Update README.md for the new project (adopt the README.md from an existing puzzle solution)
