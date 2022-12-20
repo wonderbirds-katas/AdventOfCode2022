@@ -9,10 +9,8 @@ public static class RucksackParser
     
     public static Rucksack Parse(this string line)
     {
-        var result = new Rucksack();
+        var items = line.ToList().Select(itemType => new Item(itemType));
 
-        line.ToList().ForEach(itemType => result.Add(new Item(itemType)));
-
-        return result;
+        return new Rucksack(items);
     }
 }

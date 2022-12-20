@@ -14,13 +14,7 @@ public class Rucksack
     {
         Items.AddRange(items);
     }
-
-    // TODO: Can we remove Add, because the c'tor can be used?
-    public void Add(Item item)
-    {
-        Items.Add(item);
-    }
-
+    
     public override string ToString() =>
         $"{{{string.Join(", ", Items.Select(item => item.Type))}}}";
 }
