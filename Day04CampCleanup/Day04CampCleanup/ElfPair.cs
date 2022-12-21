@@ -11,9 +11,11 @@ public class ElfPair
         SecondElfSections = secondElfSections;
     }
 
+    // Note:
+    // The Algorithm is easy to understand, but its performance could be better.
+    // However, I will not optimize prematurely and sacrifice readability.
     public bool IsOneSectionFullyContained()
     {
-        // TODO: Algorithm is easy to understand, but performance could be better!
         var intersection = FirstElfSections.Intersect(SecondElfSections).ToList();
         
         return intersection.SequenceEqual(FirstElfSections) ||
