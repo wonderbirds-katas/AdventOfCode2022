@@ -22,4 +22,13 @@ public class ElfPairTests
             .IsOneSectionFullyContained()
             .Should().Be(true);
     }
+    
+    [Theory]
+    [InlineData(new[] { 1, 2 }, new[] { 2, 3 })]
+    public void PartiallyIntersectingSectionAssignments(int[] firstElfSections, int[] secondElfSections)
+    {
+        new ElfPair(firstElfSections, secondElfSections)
+            .IsOneSectionFullyContained()
+            .Should().Be(true);
+    }
 }
