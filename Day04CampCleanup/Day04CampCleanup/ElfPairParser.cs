@@ -11,9 +11,18 @@ public static class ElfPairParser
     {
         var ranges = line.Split(',');
 
-        var first = int.Parse(ranges[0].Split('-')[0]);
-        var second = int.Parse(ranges[1].Split('-')[0]);
+        var firstRange = StringToRange(ranges[0]).ToArray();
+        var secondRange = StringToRange(ranges[1]).ToArray();
+
+        return new ElfPair(firstRange, secondRange);
+    }
+
+    private static IEnumerable<int> StringToRange(string range)
+    {
+        var intervalBoundaries = range.Split('-').Select(int.Parse).ToArray();
+        var start = intervalBoundaries[0];
+        var count = intervalBoundaries[1] - start + 1;
         
-        return new ElfPair(new []{ first }, new []{ second });
+        return Enumerable.Range(start, count);
     }
 }
