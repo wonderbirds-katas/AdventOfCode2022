@@ -29,6 +29,7 @@ Instructions to run each puzzle are contained in the corresponding subfolder.
 - [Day 2: Rock Paper Scissors](./Day02RockPaperScissors)
 - [Day 3: Rucksack Reorganization](./Day03RucksackReorganization)
 - [Day 4: Camp Cleanup](./Day04CampCleanup)
+- [Day 5: Supply Stacks](./Day05SupplyStacks)
 
 ## Implement the Next Puzzle
 
