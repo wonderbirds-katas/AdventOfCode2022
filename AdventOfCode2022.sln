@@ -55,6 +55,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Day05SupplyStacks", "Day05SupplyStacks", "{3B05BC05-DC14-4F2D-8247-F5F6CB164696}"
 	ProjectSection(SolutionItems) = preProject
 		Day05SupplyStacks\README.md = Day05SupplyStacks\README.md
+		Day05SupplyStacks\design.drawio.png = Day05SupplyStacks\design.drawio.png
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day05SupplyStacks", "Day05SupplyStacks\Day05SupplyStacks\Day05SupplyStacks.csproj", "{174E4032-3B51-4DE8-8F18-08E47581D9AE}"
