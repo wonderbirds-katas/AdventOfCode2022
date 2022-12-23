@@ -25,4 +25,25 @@ public class CrateStackEqualityTests
         
         (left == right).Should().Be(expected);
     }
+    
+    [Theory]
+    [InlineData(new[] { 'A', 'B' }, new[] { 'B', 'A' }, false)]
+    [InlineData(new[] { 'A', 'B' }, new[] { 'A', 'C' }, false)]
+    [InlineData(new[] { 'A', 'B' }, new[] { 'B', 'B' }, false)]
+    public void MultipleCrates(char[] leftCrates, char[] rightCrates, bool expected)
+    {
+        var left = new CrateStack();
+        foreach (var crate in leftCrates)
+        {
+            left.AddOnTop(crate);
+        }
+
+        var right = new CrateStack();
+        foreach (var crate in rightCrates)
+        {
+            right.AddOnTop(crate);
+        }
+        
+        (left == right).Should().Be(expected);
+    }
 }

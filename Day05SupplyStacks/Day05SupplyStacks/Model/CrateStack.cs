@@ -2,17 +2,14 @@ namespace Day05SupplyStacks.Model;
 
 public class CrateStack
 {
-    public char Top { get; internal set; }
+    private readonly Stack<char> _crates = new();
 
     public void AddOnTop(char crate)
     {
-        Top = crate;
+        _crates.Push(crate);
     }
 
-    protected bool Equals(CrateStack other)
-    {
-        return Top == other.Top;
-    }
+    protected bool Equals(CrateStack other) => _crates.SequenceEqual(other._crates);
 
     public override bool Equals(object? obj)
     {
