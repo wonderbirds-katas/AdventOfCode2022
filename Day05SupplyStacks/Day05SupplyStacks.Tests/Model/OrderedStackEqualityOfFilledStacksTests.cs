@@ -32,4 +32,40 @@ public class OrderedStackEqualityOfFilledStacksTests
 
         left.Should().NotBe(right);
     }
+
+    [Fact]
+    public void MultipleStacksWithEqualCrates()
+    {
+        var left = OrderedStockBuilder.WithNumberOfStacks(3)
+            .AddCratesToStack(new []{'A', 'B'}, 0)
+            .AddCratesToStack(new []{'C', 'D', 'E'}, 1)
+            .AddCratesToStack(new []{'F', 'G', 'H', 'I'}, 2)
+            .Build();
+
+        var right = OrderedStockBuilder.WithNumberOfStacks(3)
+            .AddCratesToStack(new []{'A', 'B'}, 0)
+            .AddCratesToStack(new []{'C', 'D', 'E'}, 1)
+            .AddCratesToStack(new []{'F', 'G', 'H', 'I'}, 2)
+            .Build();
+        
+        left.Should().Be(right);
+    }
+
+    [Fact]
+    public void MultipleStacksWithDifferentCrates()
+    {
+        var left = OrderedStockBuilder.WithNumberOfStacks(3)
+            .AddCratesToStack(new []{'A', 'B'}, 0)
+            .AddCratesToStack(new []{'C', 'D', 'E'}, 1)
+            .AddCratesToStack(new []{'F', 'G', 'H', 'I'}, 2)
+            .Build();
+
+        var right = OrderedStockBuilder.WithNumberOfStacks(3)
+            .AddCratesToStack(new []{'A', 'B'}, 0)
+            .AddCratesToStack(new []{'C', 'D', 'Z'}, 1)
+            .AddCratesToStack(new []{'F', 'G', 'H', 'I'}, 2)
+            .Build();
+        
+        left.Should().NotBe(right);
+    }
 }
