@@ -19,10 +19,7 @@ public class CrateStack
         return Equals((CrateStack) obj);
     }
 
-    public override int GetHashCode()
-    {
-        throw new NotSupportedException("The current implementation of CrateStack does not allow hashing, because the CreateStack contains mutable state.");
-    }
+    public override int GetHashCode() => throw new NoHashCodeAvailableException(typeof(CrateStack));
 
     public static bool operator ==(CrateStack? left, CrateStack? right)
     {
