@@ -54,6 +54,8 @@ public class OrderedStackEqualityOfFilledStacksTests
     [Fact]
     public void MultipleStacksWithDifferentCrates()
     {
+        const char Difference = 'Z';
+        
         var left = OrderedStockBuilder.WithNumberOfStacks(3)
             .AddCratesToStack(new []{'A', 'B'}, 0)
             .AddCratesToStack(new []{'C', 'D', 'E'}, 1)
@@ -62,7 +64,7 @@ public class OrderedStackEqualityOfFilledStacksTests
 
         var right = OrderedStockBuilder.WithNumberOfStacks(3)
             .AddCratesToStack(new []{'A', 'B'}, 0)
-            .AddCratesToStack(new []{'C', 'D', 'Z'}, 1)
+            .AddCratesToStack(new []{'C', 'D', Difference}, 1)
             .AddCratesToStack(new []{'F', 'G', 'H', 'I'}, 2)
             .Build();
         
