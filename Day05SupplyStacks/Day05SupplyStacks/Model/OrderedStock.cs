@@ -1,15 +1,15 @@
 namespace Day05SupplyStacks.Model;
 
-public class OrderedStack
+public class OrderedStock
 {
     private readonly List<CrateStack> _crateStacks;
 
-    public OrderedStack(List<CrateStack> crateStacks)
+    public OrderedStock(List<CrateStack> crateStacks)
     {
         _crateStacks = crateStacks;
     }
 
-    protected bool Equals(OrderedStack other)
+    protected bool Equals(OrderedStock other)
     {
         return true;
     }
@@ -19,17 +19,17 @@ public class OrderedStack
         if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;
         if (obj.GetType() != this.GetType()) return false;
-        return Equals((OrderedStack) obj);
+        return Equals((OrderedStock) obj);
     }
 
-    public override int GetHashCode() => throw new NoHashCodeAvailableException(typeof(OrderedStack));
+    public override int GetHashCode() => throw new NoHashCodeAvailableException(typeof(OrderedStock));
 
-    public static bool operator ==(OrderedStack? left, OrderedStack? right)
+    public static bool operator ==(OrderedStock? left, OrderedStock? right)
     {
         return Equals(left, right);
     }
 
-    public static bool operator !=(OrderedStack? left, OrderedStack? right)
+    public static bool operator !=(OrderedStock? left, OrderedStock? right)
     {
         return !Equals(left, right);
     }

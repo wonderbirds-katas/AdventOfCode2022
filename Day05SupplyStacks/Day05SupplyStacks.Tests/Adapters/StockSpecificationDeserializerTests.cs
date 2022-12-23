@@ -9,9 +9,9 @@ public class StockSpecificationDeserializerTests
 
     [Theory]
     [ClassData(typeof(StockSpecificationDeserializerTestData))]
-    public void NextTestWithoutMeaningfulName(string[] input, OrderedStack expected)
+    public void NextTestWithoutMeaningfulName(string[] input, OrderedStock expected)
     {
-        var actual = new OrderedStack(new List<CrateStack> { new() });
+        var actual = new OrderedStock(new List<CrateStack> { new() });
         actual.Should().BeEquivalentTo(expected);
     }
 
@@ -19,7 +19,7 @@ public class StockSpecificationDeserializerTests
     {
         public IEnumerator<object[]> GetEnumerator()
         {
-            yield return new object[] {SingleEmptyStackSerialized, new OrderedStack(new List<CrateStack> { new() })};
+            yield return new object[] {SingleEmptyStackSerialized, new OrderedStock(new List<CrateStack> { new() })};
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
