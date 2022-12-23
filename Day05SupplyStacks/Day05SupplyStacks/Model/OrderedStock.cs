@@ -11,7 +11,7 @@ public class OrderedStock
 
     protected bool Equals(OrderedStock other)
     {
-        return true;
+        return _crateStacks.SequenceEqual(other._crateStacks);
     }
 
     public override bool Equals(object? obj)
