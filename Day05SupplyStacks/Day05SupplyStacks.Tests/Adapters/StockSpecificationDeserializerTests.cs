@@ -34,6 +34,19 @@ public class StockSpecificationDeserializerTests
                     .AddCratesToStack(new []{ 'A' }, 0)
                     .Build()
             };
+
+            yield return new object[]
+            {
+                new[] {
+                    "[C]",
+                    "[B]",
+                    "[A]",
+                    " 1 "
+                },
+                OrderedStockBuilder.WithNumberOfStacks(1)
+                    .AddCratesToStack(new []{ 'A', 'B', 'C' }, 0)
+                    .Build()
+            };
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

@@ -8,12 +8,15 @@ public static class StockSpecificationDeserializer
     {
         var builder = OrderedStockBuilder.WithNumberOfStacks(1);
         
-        if (input[0][0] == '[')
+        for (var row = input.Length - 1; row >= 0; row--)
         {
-            var crate = input[0][1];
-            builder.AddCratesToStack(new[] {crate}, 0);
+            if (input[row][0] == '[')
+            {
+                var crate = input[row][1];
+                builder.AddCratesToStack(new[] {crate}, 0);
+            }    
         }
-
+        
         return builder.Build();
     }
 }
