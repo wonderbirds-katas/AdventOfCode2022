@@ -16,13 +16,17 @@ public class OrderedStock
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((OrderedStock) obj);
+        if (ReferenceEquals(null, obj))
+            return false;
+        if (ReferenceEquals(this, obj))
+            return true;
+        if (obj.GetType() != this.GetType())
+            return false;
+        return Equals((OrderedStock)obj);
     }
 
-    public override int GetHashCode() => throw new NoHashCodeAvailableException(typeof(OrderedStock));
+    public override int GetHashCode() =>
+        throw new NoHashCodeAvailableException(typeof(OrderedStock));
 
     public static bool operator ==(OrderedStock? left, OrderedStock? right)
     {

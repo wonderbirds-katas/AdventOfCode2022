@@ -8,9 +8,7 @@ public class OrderedStockBuilder
 
     private OrderedStockBuilder(int numberOfStacks)
     {
-        _stacks = Enumerable.Range(0, numberOfStacks)
-            .Select(_ => new CrateStack())
-            .ToList();
+        _stacks = Enumerable.Range(0, numberOfStacks).Select(_ => new CrateStack()).ToList();
     }
 
     public OrderedStock Build() => new(_stacks);

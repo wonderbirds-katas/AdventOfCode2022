@@ -13,10 +13,13 @@ public class CrateStack
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((CrateStack) obj);
+        if (ReferenceEquals(null, obj))
+            return false;
+        if (ReferenceEquals(this, obj))
+            return true;
+        if (obj.GetType() != this.GetType())
+            return false;
+        return Equals((CrateStack)obj);
     }
 
     public override int GetHashCode() => throw new NoHashCodeAvailableException(typeof(CrateStack));

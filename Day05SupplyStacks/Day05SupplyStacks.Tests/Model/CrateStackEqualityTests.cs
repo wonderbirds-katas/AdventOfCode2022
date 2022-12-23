@@ -15,14 +15,16 @@ public class CrateStackEqualityTests
     [Theory]
     [InlineData('A', 'B', false)]
     [InlineData('C', 'C', true)]
-    public void SingleCrate(char leftCrate, char rightCrate, bool expected) => RunTest(expected, new[] {leftCrate}, new[] {rightCrate});
+    public void SingleCrate(char leftCrate, char rightCrate, bool expected) =>
+        RunTest(expected, new[] { leftCrate }, new[] { rightCrate });
 
     [Theory]
     [InlineData(new[] { 'A', 'B' }, new[] { 'B', 'A' }, false)]
     [InlineData(new[] { 'A', 'B' }, new[] { 'A', 'C' }, false)]
     [InlineData(new[] { 'A', 'B' }, new[] { 'B', 'B' }, false)]
     [InlineData(new[] { 'C', 'X', 'Z' }, new[] { 'C', 'X', 'Z' }, true)]
-    public void MultipleCrates(char[] leftCrates, char[] rightCrates, bool expected) => RunTest(expected, leftCrates, rightCrates);
+    public void MultipleCrates(char[] leftCrates, char[] rightCrates, bool expected) =>
+        RunTest(expected, leftCrates, rightCrates);
 
     private static void RunTest(bool expected, char[] leftCrates, char[] rightCrates)
     {

@@ -15,11 +15,15 @@ public class StockSpecificationDeserializerTests
         actual.Should().BeEquivalentTo(expected);
     }
 
-    private class StockSpecificationDeserializerTestData : IEnumerable<object []>
+    private class StockSpecificationDeserializerTestData : IEnumerable<object[]>
     {
         public IEnumerator<object[]> GetEnumerator()
         {
-            yield return new object[] {SingleEmptyStackSerialized, new OrderedStock(new List<CrateStack> { new() })};
+            yield return new object[]
+            {
+                SingleEmptyStackSerialized,
+                new OrderedStock(new List<CrateStack> { new() })
+            };
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
