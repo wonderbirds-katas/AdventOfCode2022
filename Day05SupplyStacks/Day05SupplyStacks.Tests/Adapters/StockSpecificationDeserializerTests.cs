@@ -1,17 +1,16 @@
 using System.Collections;
+using Day05SupplyStacks.Adapters;
 using Day05SupplyStacks.Model;
 
 namespace Day05SupplyStacks.Tests.Adapters;
 
 public class StockSpecificationDeserializerTests
 {
-    private static readonly string[] SingleEmptyStackSerialized = { "1" };
-
     [Theory]
     [ClassData(typeof(StockSpecificationDeserializerTestData))]
-    public void NextTestWithoutMeaningfulName(string[] input, OrderedStock expected)
+    public void Deserialize(string[] input, OrderedStock expected)
     {
-        var actual = new OrderedStock(new List<CrateStack> { new() });
+        var actual = StockSpecificationDeserializer.Deserialize(input);
         actual.Should().BeEquivalentTo(expected);
     }
 
@@ -21,8 +20,19 @@ public class StockSpecificationDeserializerTests
         {
             yield return new object[]
             {
-                SingleEmptyStackSerialized,
-                new OrderedStock(new List<CrateStack> { new() })
+                new[] { "1" },
+                OrderedStockBuilder.WithNumberOfStacks(1).Build()
+            };
+
+            yield return new object[]
+            {
+                new[] {
+                    "[A]",
+                    " 1 "
+                },
+                OrderedStockBuilder.WithNumberOfStacks(1)
+                    .AddCratesToStack(new []{ 'A' }, 0)
+                    .Build()
             };
         }
 

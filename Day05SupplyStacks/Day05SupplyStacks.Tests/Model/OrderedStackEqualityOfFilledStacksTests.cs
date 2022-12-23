@@ -1,3 +1,5 @@
+using Day05SupplyStacks.Model;
+
 namespace Day05SupplyStacks.Tests.Model;
 
 public class OrderedStackEqualityOfFilledStacksTests

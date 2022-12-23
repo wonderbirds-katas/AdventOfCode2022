@@ -1,6 +1,4 @@
-using Day05SupplyStacks.Model;
-
-namespace Day05SupplyStacks.Tests.Model;
+namespace Day05SupplyStacks.Model;
 
 public class OrderedStockBuilder
 {
