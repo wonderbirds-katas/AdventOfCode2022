@@ -10,6 +10,15 @@ public class OrderedStockBuilder
     {
         _stacks = Enumerable.Range(0, numberOfStacks).Select(_ => new CrateStack()).ToList();
     }
+    
+    public OrderedStockBuilder AddCratesToStack(IEnumerable<char> crates, int stackIndex)
+    {
+        var target = _stacks[stackIndex];
+        
+        crates.ToList().ForEach(crate => target.AddOnTop(crate));
+        
+        return this;
+    }
 
     public OrderedStock Build() => new(_stacks);
 
