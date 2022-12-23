@@ -15,35 +15,31 @@ public class CrateStackEqualityTests
     [Theory]
     [InlineData('A', 'B', false)]
     [InlineData('C', 'C', true)]
-    public void SingleCrate(char leftCrate, char rightCrate, bool expected)
-    {
-        var left = new CrateStack();
-        left.AddOnTop(leftCrate);
+    public void SingleCrate(char leftCrate, char rightCrate, bool expected) => RunTest(expected, new[] {leftCrate}, new[] {rightCrate});
 
-        var right = new CrateStack();
-        right.AddOnTop(rightCrate);
-        
-        (left == right).Should().Be(expected);
-    }
-    
     [Theory]
     [InlineData(new[] { 'A', 'B' }, new[] { 'B', 'A' }, false)]
     [InlineData(new[] { 'A', 'B' }, new[] { 'A', 'C' }, false)]
     [InlineData(new[] { 'A', 'B' }, new[] { 'B', 'B' }, false)]
-    public void MultipleCrates(char[] leftCrates, char[] rightCrates, bool expected)
+    [InlineData(new[] { 'C', 'X', 'Z' }, new[] { 'C', 'X', 'Z' }, true)]
+    public void MultipleCrates(char[] leftCrates, char[] rightCrates, bool expected) => RunTest(expected, leftCrates, rightCrates);
+
+    private static void RunTest(bool expected, char[] leftCrates, char[] rightCrates)
     {
-        var left = new CrateStack();
-        foreach (var crate in leftCrates)
+        var left = CreateStackWithCrates(leftCrates);
+        var right = CreateStackWithCrates(rightCrates);
+
+        (left == right).Should().Be(expected);
+    }
+
+    private static CrateStack CreateStackWithCrates(char[] crates)
+    {
+        var result = new CrateStack();
+        foreach (var crate in crates)
         {
-            left.AddOnTop(crate);
+            result.AddOnTop(crate);
         }
 
-        var right = new CrateStack();
-        foreach (var crate in rightCrates)
-        {
-            right.AddOnTop(crate);
-        }
-        
-        (left == right).Should().Be(expected);
+        return result;
     }
 }
