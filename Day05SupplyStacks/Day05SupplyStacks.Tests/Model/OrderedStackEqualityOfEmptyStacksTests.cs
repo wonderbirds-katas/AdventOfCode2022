@@ -2,7 +2,7 @@ using Day05SupplyStacks.Model;
 
 namespace Day05SupplyStacks.Tests.Model;
 
-public class OrderedStackEqualityTests
+public class OrderedStackEqualityOfEmptyStacksTests
 {
     [Fact]
     public void Empty() => RunTest(true, 0, 0);
@@ -21,14 +21,11 @@ public class OrderedStackEqualityTests
 
     private static void RunTest(bool expected, int leftStockNumberOfStacks, int rightStockNumberOfStacks)
     {
-        var left = CreateOrderedStockWithNumberOfEmptyStacks(leftStockNumberOfStacks);
-        var right = CreateOrderedStockWithNumberOfEmptyStacks(rightStockNumberOfStacks);
+        var left = OrderedStockBuilder.WithNumberOfStacks(leftStockNumberOfStacks)
+            .Build();
+        var right = OrderedStockBuilder.WithNumberOfStacks(rightStockNumberOfStacks)
+            .Build();
 
         (left == right).Should().Be(expected);
     }
-
-    private static OrderedStock CreateOrderedStockWithNumberOfEmptyStacks(int numberOfStacks) =>
-        new(Enumerable.Range(0, numberOfStacks)
-            .Select(_ => new CrateStack())
-            .ToList());
 }
