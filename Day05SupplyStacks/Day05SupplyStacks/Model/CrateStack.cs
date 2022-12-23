@@ -22,6 +22,8 @@ public class CrateStack
         return Equals((CrateStack)obj);
     }
 
+    public override string ToString() => $"[Top: {string.Join(", ", _crates)}]";
+
     public override int GetHashCode() => throw new NoHashCodeAvailableException(typeof(CrateStack));
 
     public static bool operator ==(CrateStack? left, CrateStack? right)
