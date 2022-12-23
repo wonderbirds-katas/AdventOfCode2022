@@ -2,9 +2,16 @@ namespace Day05SupplyStacks.Model;
 
 public class CrateStack
 {
+    public char Top { get; internal set; }
+
+    public void AddOnTop(char crate)
+    {
+        Top = crate;
+    }
+
     protected bool Equals(CrateStack other)
     {
-        return true;
+        return Top == other.Top;
     }
 
     public override bool Equals(object? obj)
@@ -17,7 +24,7 @@ public class CrateStack
 
     public override int GetHashCode()
     {
-        return 0;
+        throw new NotSupportedException("The current implementation of CrateStack does not allow hashing, because the CreateStack contains mutable state.");
     }
 
     public static bool operator ==(CrateStack? left, CrateStack? right)
