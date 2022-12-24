@@ -35,6 +35,16 @@ public class StockSpecificationDeserializerTests
                     .AddCratesToStack(new[] { 'A', 'B', 'C' }, 0)
                     .Build()
             ),
+            new(
+                "2 stacks, 0 crates",
+                new[] { " 1   2 " },
+                OrderedStockBuilder.WithNumberOfStacks(2).Build()
+            ),
+            new(
+                "9 stacks, 0 crates",
+                new[] { " 1   2   3   4   5   6   7   8   9 " },
+                OrderedStockBuilder.WithNumberOfStacks(9).Build()
+            ),
         };
 
         public static IEnumerable<object[]> TestCaseData =>

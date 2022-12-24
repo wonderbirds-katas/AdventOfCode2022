@@ -6,7 +6,10 @@ public static class StockSpecificationDeserializer
 {
     public static OrderedStock Deserialize(string[] input)
     {
-        var builder = OrderedStockBuilder.WithNumberOfStacks(1);
+        var stackCountLine = input.Last().TrimEnd();
+        var numberOfStacks = int.Parse(stackCountLine.Last().ToString());
+
+        var builder = OrderedStockBuilder.WithNumberOfStacks(numberOfStacks);
         var reversedStacksInput = input.Reverse().Skip(1).ToList();
 
         reversedStacksInput.ForEach(line => builder.AddCratesToStack(new[] { line[1] }, 0));
