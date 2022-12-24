@@ -12,7 +12,18 @@ public static class StockSpecificationDeserializer
         var builder = OrderedStockBuilder.WithNumberOfStacks(numberOfStacks);
         var reversedStacksInput = input.Reverse().Skip(1).ToList();
 
-        reversedStacksInput.ForEach(line => builder.AddCratesToStack(new[] { line[1] }, 0));
+        int[] cratePositionInLine = { 1, 5, 9, 13, 17, 21, 25, 29, 33 };
+        foreach (var line in reversedStacksInput)
+        {
+            for (var stackIndex = 0; stackIndex < numberOfStacks; stackIndex++)
+            {
+                var crateOrEmpty = line[cratePositionInLine[stackIndex]];
+                if (crateOrEmpty != ' ')
+                {
+                    builder.AddCratesToStack(new[] { crateOrEmpty }, stackIndex);
+                }
+            }
+        }
 
         return builder.Build();
     }

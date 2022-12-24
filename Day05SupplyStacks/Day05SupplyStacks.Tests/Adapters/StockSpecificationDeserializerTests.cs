@@ -41,9 +41,41 @@ public class StockSpecificationDeserializerTests
                 OrderedStockBuilder.WithNumberOfStacks(2).Build()
             ),
             new(
+                "2 stacks, 1 crate on each",
+                new[] { "[A] [B]", " 1   2 " },
+                OrderedStockBuilder
+                    .WithNumberOfStacks(2)
+                    .AddCratesToStack(new[] { 'A' }, 0)
+                    .AddCratesToStack(new[] { 'B' }, 1)
+                    .Build()
+            ),
+            new(
                 "9 stacks, 0 crates",
                 new[] { " 1   2   3   4   5   6   7   8   9 " },
                 OrderedStockBuilder.WithNumberOfStacks(9).Build()
+            ),
+            new(
+                "9 stacks, some crates on each",
+                new[]
+                {
+                    "                        [G]        ",
+                    "    [B]         [E]     [G]        ",
+                    "    [B] [C]     [E] [F] [G]        ",
+                    "[A] [B] [C] [D] [E] [F] [G] [H] [I]",
+                    " 1   2   3   4   5   6   7   8   9 "
+                },
+                OrderedStockBuilder
+                    .WithNumberOfStacks(9)
+                    .AddCratesToStack(new[] { 'A' }, 0)
+                    .AddCratesToStack(new[] { 'B', 'B', 'B' }, 1)
+                    .AddCratesToStack(new[] { 'C', 'C' }, 2)
+                    .AddCratesToStack(new[] { 'D' }, 3)
+                    .AddCratesToStack(new[] { 'E', 'E', 'E' }, 4)
+                    .AddCratesToStack(new[] { 'F', 'F' }, 5)
+                    .AddCratesToStack(new[] { 'G', 'G', 'G', 'G' }, 6)
+                    .AddCratesToStack(new[] { 'H' }, 7)
+                    .AddCratesToStack(new[] { 'I' }, 8)
+                    .Build()
             ),
         };
 
