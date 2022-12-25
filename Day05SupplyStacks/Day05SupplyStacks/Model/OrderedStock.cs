@@ -2,21 +2,21 @@ namespace Day05SupplyStacks.Model;
 
 public class OrderedStock
 {
-    private readonly List<CrateStack> _crateStacks;
+    private readonly List<CrateStack> _stacks;
 
-    public OrderedStock(List<CrateStack> crateStacks)
-    {
-        _crateStacks = crateStacks;
-    }
+    public string TopCrates => new(_stacks.Select(x => x.Top).ToArray());
 
-    public string Top => new(_crateStacks.Select(x => x.Top).ToArray());
+    public OrderedStock(List<CrateStack> stacks) => _stacks = stacks;
 
-    public override string ToString() => $"[{string.Join(", ", _crateStacks)}]";
+    public void Move(int numberOfCrates, int fromStackIndex, int toStackIndex) =>
+        _stacks[fromStackIndex]
+            .TakeFromTop(numberOfCrates)
+            .ToList()
+            .ForEach(crate => _stacks[toStackIndex].AddOnTop(crate));
 
-    protected bool Equals(OrderedStock other)
-    {
-        return _crateStacks.SequenceEqual(other._crateStacks);
-    }
+    public override string ToString() => $"[{string.Join(", ", _stacks)}]";
+
+    protected bool Equals(OrderedStock other) => _stacks.SequenceEqual(other._stacks);
 
     public override bool Equals(object? obj)
     {
@@ -32,19 +32,7 @@ public class OrderedStock
     public override int GetHashCode() =>
         throw new NoHashCodeAvailableException(typeof(OrderedStock));
 
-    public static bool operator ==(OrderedStock? left, OrderedStock? right)
-    {
-        return Equals(left, right);
-    }
+    public static bool operator ==(OrderedStock? left, OrderedStock? right) => Equals(left, right);
 
-    public static bool operator !=(OrderedStock? left, OrderedStock? right)
-    {
-        return !Equals(left, right);
-    }
-
-    public void Move(int numberOfCrates, int fromStackIndex, int toStackIndex) =>
-        _crateStacks[fromStackIndex]
-            .TakeFromTop(numberOfCrates)
-            .ToList()
-            .ForEach(crate => _crateStacks[toStackIndex].AddOnTop(crate));
+    public static bool operator !=(OrderedStock? left, OrderedStock? right) => !Equals(left, right);
 }

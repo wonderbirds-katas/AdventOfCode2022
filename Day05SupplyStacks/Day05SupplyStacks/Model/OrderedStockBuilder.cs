@@ -4,10 +4,7 @@ public class OrderedStockBuilder
 {
     private readonly List<CrateStack> _stacks;
 
-    private OrderedStockBuilder(int numberOfStacks)
-    {
-        _stacks = Enumerable.Range(0, numberOfStacks).Select(_ => new CrateStack()).ToList();
-    }
+    public static OrderedStockBuilder WithNumberOfStacks(int numberOfStacks) => new(numberOfStacks);
 
     public OrderedStockBuilder AddCrateToStack(char crate, int stackIndex)
     {
@@ -24,5 +21,6 @@ public class OrderedStockBuilder
 
     public OrderedStock Build() => new(_stacks);
 
-    public static OrderedStockBuilder WithNumberOfStacks(int numberOfStacks) => new(numberOfStacks);
+    private OrderedStockBuilder(int numberOfStacks) =>
+        _stacks = Enumerable.Range(0, numberOfStacks).Select(_ => new CrateStack()).ToList();
 }

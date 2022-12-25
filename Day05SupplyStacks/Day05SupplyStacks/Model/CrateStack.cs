@@ -3,13 +3,16 @@ namespace Day05SupplyStacks.Model;
 public class CrateStack
 {
     private readonly Stack<char> _crates = new();
-    
+
     public char Top => _crates.Peek();
-    
+
     public void AddOnTop(char crate)
     {
         _crates.Push(crate);
     }
+
+    public IEnumerable<char> TakeFromTop(int numberOfCrates) =>
+        Enumerable.Range(0, numberOfCrates).Select(_ => _crates.Pop());
 
     protected bool Equals(CrateStack other) => _crates.SequenceEqual(other._crates);
 
@@ -37,7 +40,4 @@ public class CrateStack
     {
         return !Equals(left, right);
     }
-
-    public IEnumerable<char> TakeFromTop(int numberOfCrates) =>
-        Enumerable.Range(0, numberOfCrates).Select(_ => _crates.Pop());
 }

@@ -13,11 +13,13 @@ public static class Program
         var procedure = DeserializeRearrangementProcedure(linesInFile);
 
         CargoCraneOperator.Execute(procedure, stock);
-        
-        Console.WriteLine(stock.Top);
+
+        Console.WriteLine(stock.TopCrates);
     }
 
-    private static RearrangementProcedure DeserializeRearrangementProcedure(IEnumerable<string> linesInFile)
+    private static RearrangementProcedure DeserializeRearrangementProcedure(
+        IEnumerable<string> linesInFile
+    )
     {
         var procedureSpecification = linesInFile.SkipWhile(line => line != "").Skip(1);
         return RearrangementProcedureDeserializer.Deserialize(procedureSpecification);
