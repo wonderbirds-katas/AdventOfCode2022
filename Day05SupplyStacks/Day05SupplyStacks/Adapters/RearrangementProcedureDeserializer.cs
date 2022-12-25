@@ -7,12 +7,12 @@ public static class RearrangementProcedureDeserializer
 {
     public static RearrangementProcedure Deserialize(string[] input)
     {
-        var line = input[0];
-        
-        var step = Parse(line);
-
         var result = new RearrangementProcedure();
-        result.Add(step);
+        
+        input.Select(Parse)
+            .ToList()
+            .ForEach(step => result.Add(step));
+
         return result;
     }
 
