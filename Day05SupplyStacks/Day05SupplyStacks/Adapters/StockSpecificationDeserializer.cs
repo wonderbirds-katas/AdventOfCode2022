@@ -12,19 +12,26 @@ public static class StockSpecificationDeserializer
         var builder = OrderedStockBuilder.WithNumberOfStacks(numberOfStacks);
         var reversedStacksInput = input.Reverse().Skip(1).ToList();
 
-        int[] cratePositionInLine = { 1, 5, 9, 13, 17, 21, 25, 29, 33 };
         foreach (var line in reversedStacksInput)
         {
             for (var stackIndex = 0; stackIndex < numberOfStacks; stackIndex++)
             {
-                var crateOrEmpty = line[cratePositionInLine[stackIndex]];
-                if (crateOrEmpty != ' ')
+                var crate = line.CrateForStack(stackIndex);
+                if (crate.HasValue)
                 {
-                    builder.AddCratesToStack(new[] { crateOrEmpty }, stackIndex);
+                    builder.AddCratesToStack(new[] { crate.Value }, stackIndex);
                 }
             }
         }
 
         return builder.Build();
+    }
+
+    private static char? CrateForStack(this string line, int stackIndex)
+    {
+        int[] cratePositionInLine = { 1, 5, 9, 13, 17, 21, 25, 29, 33 };
+        var crateOrEmpty = line[cratePositionInLine[stackIndex]];
+        char? crate = crateOrEmpty != ' ' ? crateOrEmpty : null;
+        return crate;
     }
 }
