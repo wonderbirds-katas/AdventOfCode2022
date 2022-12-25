@@ -4,7 +4,7 @@ namespace Day05SupplyStacks.Adapters;
 
 public static class StockSpecificationDeserializer
 {
-    public static OrderedStock Deserialize(string[] input)
+    public static OrderedStock Deserialize(IEnumerable<string> input)
     {
         var stackCountLine = input.Last().TrimEnd();
         var numberOfStacks = int.Parse(stackCountLine.Last().ToString());

@@ -3,7 +3,9 @@ namespace Day05SupplyStacks.Model;
 public class CrateStack
 {
     private readonly Stack<char> _crates = new();
-
+    
+    public char Top => _crates.Peek();
+    
     public void AddOnTop(char crate)
     {
         _crates.Push(crate);

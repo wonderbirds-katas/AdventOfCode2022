@@ -28,9 +28,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="data\single_stack_one_crate_no_movement.txt">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
       <None Update="data\advent_of_code_stefans_personal_data.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>

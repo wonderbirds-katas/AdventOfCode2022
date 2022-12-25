@@ -3,14 +3,14 @@ namespace Day05SupplyStacks.Tests;
 public class ProgramTests
 {
     [Theory]
-    [InlineData("./data/SampleData.txt")]
-    public void ProcessInputFile(string testFileName)
+    [InlineData("./data/advent_of_code_example.txt", "CMZ\n")]
+    public void ProcessInputFile(string testFileName, string expected)
     {
         var stringWriter = new StringWriter();
         Console.SetOut(stringWriter);
 
         Program.Main(new[] { testFileName });
 
-        Assert.Equal($"Input file is '{testFileName}'\n", stringWriter.ToString());
+        Assert.Equal(expected, stringWriter.ToString());
     }
 }

@@ -9,6 +9,8 @@ public class OrderedStock
         _crateStacks = crateStacks;
     }
 
+    public string Top => new(_crateStacks.Select(x => x.Top).ToArray());
+
     public override string ToString() => $"[{string.Join(", ", _crateStacks)}]";
 
     protected bool Equals(OrderedStock other)
