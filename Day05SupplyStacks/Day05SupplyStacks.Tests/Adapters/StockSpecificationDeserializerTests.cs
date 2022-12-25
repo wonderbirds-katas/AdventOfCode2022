@@ -7,7 +7,7 @@ public class StockSpecificationDeserializerTests
 {
     [Theory]
     [MemberData(nameof(TestCase.TestCaseData), MemberType = typeof(TestCase))]
-    public void Deserialize2(TestCase testCase)
+    public void Deserialize(TestCase testCase)
     {
         var actual = StockSpecificationDeserializer.Deserialize(testCase.Input);
         actual.Should().BeEquivalentTo(testCase.Expected);
