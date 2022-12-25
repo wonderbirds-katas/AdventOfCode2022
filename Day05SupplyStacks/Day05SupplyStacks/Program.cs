@@ -17,17 +17,17 @@ public static class Program
         Console.WriteLine(stock.TopCrates);
     }
 
+    private static OrderedStock DeserializeStock(IEnumerable<string> linesInFile)
+    {
+        var stockSpecification = linesInFile.TakeWhile(line => line != "");
+        return StockSpecificationDeserializer.Deserialize(stockSpecification);
+    }
+
     private static RearrangementProcedure DeserializeRearrangementProcedure(
         IEnumerable<string> linesInFile
     )
     {
         var procedureSpecification = linesInFile.SkipWhile(line => line != "").Skip(1);
         return RearrangementProcedureDeserializer.Deserialize(procedureSpecification);
-    }
-
-    private static OrderedStock DeserializeStock(IEnumerable<string> linesInFile)
-    {
-        var stockSpecification = linesInFile.TakeWhile(line => line != "").ToList();
-        return StockSpecificationDeserializer.Deserialize(stockSpecification);
     }
 }
