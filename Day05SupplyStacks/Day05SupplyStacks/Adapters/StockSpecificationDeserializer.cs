@@ -16,7 +16,7 @@ public static class StockSpecificationDeserializer
         {
             Enumerable
                 .Range(0, numberOfStacks)
-                .Select(i => new { Symbol = line.Symbol(i), StackIndex = i })
+                .Select(i => new { Symbol = Symbol(line, i), StackIndex = i })
                 .Where(p => p.Symbol != ' ')
                 .ToList()
                 .ForEach(p => builder.AddCrateToStack(p.Symbol, p.StackIndex));
@@ -25,7 +25,7 @@ public static class StockSpecificationDeserializer
         return builder.Build();
     }
 
-    private static char Symbol(this string line, int stackIndex) =>
+    private static char Symbol(string line, int stackIndex) =>
         line[PositionOfSymbol(stackIndex)];
 
     private static int PositionOfSymbol(int stackIndex) => 1 + stackIndex * 4;
