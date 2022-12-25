@@ -25,8 +25,7 @@ public static class StockSpecificationDeserializer
         return builder.Build();
     }
 
-    private static char Symbol(string line, int stackIndex) =>
-        line[PositionOfSymbol(stackIndex)];
+    private static char Symbol(string line, int stackIndex) => line[PositionOfSymbol(stackIndex)];
 
     private static int PositionOfSymbol(int stackIndex) => 1 + stackIndex * 4;
 }

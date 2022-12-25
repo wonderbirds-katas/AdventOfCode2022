@@ -8,7 +8,7 @@ public class OrderedStockBuilder
     {
         _stacks = Enumerable.Range(0, numberOfStacks).Select(_ => new CrateStack()).ToList();
     }
-    
+
     public OrderedStockBuilder AddCrateToStack(char crate, int stackIndex)
     {
         _stacks[stackIndex].AddOnTop(crate);

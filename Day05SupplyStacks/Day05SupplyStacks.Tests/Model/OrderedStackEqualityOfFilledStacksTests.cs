@@ -7,15 +7,9 @@ public class OrderedStackEqualityOfFilledStacksTests
     [Fact]
     public void SameStacks()
     {
-        var left = OrderedStockBuilder
-            .WithNumberOfStacks(1)
-            .AddCrateToStack('A', 0)
-            .Build();
+        var left = OrderedStockBuilder.WithNumberOfStacks(1).AddCrateToStack('A', 0).Build();
 
-        var right = OrderedStockBuilder
-            .WithNumberOfStacks(1)
-            .AddCrateToStack('A', 0)
-            .Build();
+        var right = OrderedStockBuilder.WithNumberOfStacks(1).AddCrateToStack('A', 0).Build();
 
         left.Equals(right).Should().Be(true);
     }
