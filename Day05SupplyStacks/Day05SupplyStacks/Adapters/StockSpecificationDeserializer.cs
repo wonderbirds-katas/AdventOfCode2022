@@ -14,29 +14,19 @@ public static class StockSpecificationDeserializer
 
         foreach (var line in reversedStacksInput)
         {
-            for (var stackIndex = 0; stackIndex < numberOfStacks; stackIndex++)
-            {
-                var crate = line.CrateForStack(stackIndex);
-                AddCrateIfDefined(crate, builder, stackIndex);
-            }
+            Enumerable.Range(0, numberOfStacks)
+                .Select(stackIndex => new { Symbol = line.SymbolForStack(stackIndex), StackIndex = stackIndex })
+                .Where(p => p.Symbol != ' ')
+                .ToList()
+                .ForEach(pair => builder.AddCratesToStack(new []{pair.Symbol}, pair.StackIndex));
         }
 
         return builder.Build();
     }
 
-    private static void AddCrateIfDefined(char? crate, OrderedStockBuilder builder, int stackIndex)
-    {
-        if (crate.HasValue)
-        {
-            builder.AddCratesToStack(new[] {crate.Value}, stackIndex);
-        }
-    }
-
-    private static char? CrateForStack(this string line, int stackIndex)
+    private static char SymbolForStack(this string line, int stackIndex)
     {
         int[] cratePositionInLine = { 1, 5, 9, 13, 17, 21, 25, 29, 33 };
-        var crateOrEmpty = line[cratePositionInLine[stackIndex]];
-        char? crate = crateOrEmpty != ' ' ? crateOrEmpty : null;
-        return crate;
+        return line[cratePositionInLine[stackIndex]];
     }
 }
