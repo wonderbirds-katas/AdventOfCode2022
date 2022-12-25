@@ -32,5 +32,5 @@ public class RearrangementProcedure
         return !Equals(left, right);
     }
 
-    public override string ToString() => string.Join(", ", _steps);
+    public override string ToString() => $"[{string.Join(", ", _steps)}]";
 }
