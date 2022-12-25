@@ -15,18 +15,16 @@ public static class StockSpecificationDeserializer
         foreach (var line in reversedStacksInput)
         {
             Enumerable.Range(0, numberOfStacks)
-                .Select(stackIndex => new { Symbol = line.SymbolForStack(stackIndex), StackIndex = stackIndex })
+                .Select(i => new { Symbol = line.Symbol(i), StackIndex = i })
                 .Where(p => p.Symbol != ' ')
                 .ToList()
-                .ForEach(pair => builder.AddCratesToStack(new []{pair.Symbol}, pair.StackIndex));
+                .ForEach(p => builder.AddCratesToStack(new []{p.Symbol}, p.StackIndex));
         }
 
         return builder.Build();
     }
 
-    private static char SymbolForStack(this string line, int stackIndex)
-    {
-        int[] cratePositionInLine = { 1, 5, 9, 13, 17, 21, 25, 29, 33 };
-        return line[cratePositionInLine[stackIndex]];
-    }
+    private static char Symbol(this string line, int stackIndex) => line[PositionOfSymbol(stackIndex)];
+
+    private static int PositionOfSymbol(int stackIndex) => 1 + stackIndex * 4;
 }
