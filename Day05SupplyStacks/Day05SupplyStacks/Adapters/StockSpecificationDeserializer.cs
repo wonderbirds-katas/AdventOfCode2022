@@ -19,7 +19,7 @@ public static class StockSpecificationDeserializer
                 .Select(i => new { Symbol = line.Symbol(i), StackIndex = i })
                 .Where(p => p.Symbol != ' ')
                 .ToList()
-                .ForEach(p => builder.AddCratesToStack(new[] { p.Symbol }, p.StackIndex));
+                .ForEach(p => builder.AddCrateToStack(p.Symbol, p.StackIndex));
         }
 
         return builder.Build();

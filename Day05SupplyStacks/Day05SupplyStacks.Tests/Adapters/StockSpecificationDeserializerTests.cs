@@ -25,7 +25,7 @@ public class StockSpecificationDeserializerTests
             new(
                 "1 stack, 1 crate",
                 new[] { "[A]", " 1 " },
-                OrderedStockBuilder.WithNumberOfStacks(1).AddCratesToStack(new[] { 'A' }, 0).Build()
+                OrderedStockBuilder.WithNumberOfStacks(1).AddCrateToStack('A', 0).Build()
             ),
             new(
                 "1 stack, 3 crates",
@@ -45,8 +45,8 @@ public class StockSpecificationDeserializerTests
                 new[] { "[A] [B]", " 1   2 " },
                 OrderedStockBuilder
                     .WithNumberOfStacks(2)
-                    .AddCratesToStack(new[] { 'A' }, 0)
-                    .AddCratesToStack(new[] { 'B' }, 1)
+                    .AddCrateToStack('A', 0)
+                    .AddCrateToStack('B', 1)
                     .Build()
             ),
             new(
