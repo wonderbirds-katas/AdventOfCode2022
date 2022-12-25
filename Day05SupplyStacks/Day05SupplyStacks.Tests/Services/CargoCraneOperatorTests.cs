@@ -49,9 +49,9 @@ public class CargoCraneOperatorTests
 
         var expected = OrderedStockBuilder
             .WithNumberOfStacks(3)
-            .AddCratesToStack(new[] { 'A', 'C' }, 0)
-            .AddCratesToStack(new[] { 'L', 'D' }, 1)
-            .AddCratesToStack(new[] { 'X', 'Y', 'Z', 'B' }, 2)
+            .AddCratesToStack(new[] { 'A', 'D' }, 0)
+            .AddCratesToStack(new[] { 'L', 'B' }, 1)
+            .AddCratesToStack(new[] { 'X', 'Y', 'Z', 'C' }, 2)
             .Build();
 
         stock.Should().Be(expected);
