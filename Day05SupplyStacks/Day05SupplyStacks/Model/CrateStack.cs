@@ -12,7 +12,7 @@ public class CrateStack
     }
 
     public IEnumerable<char> TakeFromTop(int numberOfCrates) =>
-        Enumerable.Range(0, numberOfCrates).Select(_ => _crates.Pop());
+        Enumerable.Range(0, numberOfCrates).Select(_ => _crates.Pop()).Reverse();
 
     protected bool Equals(CrateStack other) => _crates.SequenceEqual(other._crates);
 
