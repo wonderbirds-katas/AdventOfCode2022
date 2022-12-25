@@ -17,14 +17,19 @@ public static class StockSpecificationDeserializer
             for (var stackIndex = 0; stackIndex < numberOfStacks; stackIndex++)
             {
                 var crate = line.CrateForStack(stackIndex);
-                if (crate.HasValue)
-                {
-                    builder.AddCratesToStack(new[] { crate.Value }, stackIndex);
-                }
+                AddCrateIfDefined(crate, builder, stackIndex);
             }
         }
 
         return builder.Build();
+    }
+
+    private static void AddCrateIfDefined(char? crate, OrderedStockBuilder builder, int stackIndex)
+    {
+        if (crate.HasValue)
+        {
+            builder.AddCratesToStack(new[] {crate.Value}, stackIndex);
+        }
     }
 
     private static char? CrateForStack(this string line, int stackIndex)
