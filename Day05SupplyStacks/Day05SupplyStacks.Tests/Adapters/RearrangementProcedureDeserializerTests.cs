@@ -5,13 +5,30 @@ namespace Day05SupplyStacks.Tests.Adapters;
 
 public class RearrangementProcedureDeserializerTests
 {
-    [Fact]
-    public void Deserialize()
+    [Theory]
+    [MemberData(nameof(TestCase.TestCaseData), MemberType = typeof(TestCase))]
+    public void Deserialize(TestCase testCase)
     {
-        var actual = RearrangementProcedureDeserializer.Deserialize(new[] { "move 1 from 1 to 1" });
+        RearrangementProcedureDeserializer
+            .Deserialize(testCase.Input)
+            .Should()
+            .Be(testCase.Expected);
+    }
 
-        var expected = new RearrangementProcedure();
-        expected.Add(new RearrangementStep(1, 0, 0));
-        actual.Should().Be(expected);
+    public record TestCase(string Description, string[] Input, RearrangementProcedure Expected)
+    {
+        private static readonly TestCase[] TestCases =
+        {
+            new(
+                "move 1 from 1 to 1",
+                new[] { "move 1 from 1 to 1" },
+                new RearrangementProcedureBuilder().AddMoveStep(1, 1, 1).Build()
+            )
+        };
+
+        public static IEnumerable<object[]> TestCaseData =>
+            TestCases.Select(testCase => new object[] { testCase });
+
+        public override string ToString() => Description;
     }
 }
