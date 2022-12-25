@@ -35,4 +35,7 @@ public class CrateStack
     {
         return !Equals(left, right);
     }
+
+    public IEnumerable<char> TakeFromTop(int numberOfCrates) =>
+        Enumerable.Range(0, numberOfCrates).Select(_ => _crates.Pop());
 }

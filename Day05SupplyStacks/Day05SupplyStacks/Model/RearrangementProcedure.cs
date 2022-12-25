@@ -4,6 +4,8 @@ public class RearrangementProcedure
 {
     private readonly List<RearrangementStep> _steps = new();
 
+    public IEnumerable<RearrangementStep> Steps => _steps;
+
     public void Add(RearrangementStep step) => _steps.Add(step);
 
     protected bool Equals(RearrangementProcedure other) => _steps.SequenceEqual(other._steps);
@@ -32,5 +34,5 @@ public class RearrangementProcedure
         return !Equals(left, right);
     }
 
-    public override string ToString() => $"[{string.Join(", ", _steps)}]";
+    public override string ToString() => $"[{string.Join(", ", Steps)}]";
 }

@@ -39,4 +39,10 @@ public class OrderedStock
     {
         return !Equals(left, right);
     }
+
+    public void Move(int numberOfCrates, int fromStackIndex, int toStackIndex) =>
+        _crateStacks[fromStackIndex]
+            .TakeFromTop(numberOfCrates)
+            .ToList()
+            .ForEach(crate => _crateStacks[toStackIndex].AddOnTop(crate));
 }
