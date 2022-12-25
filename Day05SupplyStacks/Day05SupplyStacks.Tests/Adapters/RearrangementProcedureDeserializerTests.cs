@@ -23,7 +23,12 @@ public class RearrangementProcedureDeserializerTests
                 "move 1 from 1 to 1",
                 new[] { "move 1 from 1 to 1" },
                 new RearrangementProcedureBuilder().AddMoveStep(1, 1, 1).Build()
-            )
+            ),
+            new(
+                "move 999 from 100 to 50",
+                new[] { "move 999 from 100 to 50" },
+                new RearrangementProcedureBuilder().AddMoveStep(999, 100, 50).Build()
+            ),
         };
 
         public static IEnumerable<object[]> TestCaseData =>
