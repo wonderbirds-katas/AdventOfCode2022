@@ -1,4 +1,3 @@
-using Day05SupplyStacks.Model;
 using Day05SupplyStacks.Services;
 
 namespace Day05SupplyStacks.Tests.Services;

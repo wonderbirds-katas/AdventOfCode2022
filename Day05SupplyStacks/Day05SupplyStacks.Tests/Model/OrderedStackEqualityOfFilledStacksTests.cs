@@ -1,4 +1,4 @@
-using Day05SupplyStacks.Model;
+using Day05SupplyStacks.Services;
 
 namespace Day05SupplyStacks.Tests.Model;
 
@@ -56,7 +56,7 @@ public class OrderedStackEqualityOfFilledStacksTests
     [Fact]
     public void MultipleStacksWithDifferentCrates()
     {
-        const char Difference = 'Z';
+        const char difference = 'Z';
 
         var left = OrderedStockBuilder
             .WithNumberOfStacks(3)
@@ -68,7 +68,7 @@ public class OrderedStackEqualityOfFilledStacksTests
         var right = OrderedStockBuilder
             .WithNumberOfStacks(3)
             .AddCratesToStack(new[] { 'A', 'B' }, 0)
-            .AddCratesToStack(new[] { 'C', 'D', Difference }, 1)
+            .AddCratesToStack(new[] { 'C', 'D', difference }, 1)
             .AddCratesToStack(new[] { 'F', 'G', 'H', 'I' }, 2)
             .Build();
 

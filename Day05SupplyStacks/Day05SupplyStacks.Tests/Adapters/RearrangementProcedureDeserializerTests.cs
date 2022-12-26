@@ -1,5 +1,6 @@
 using Day05SupplyStacks.Adapters;
 using Day05SupplyStacks.Model;
+using Day05SupplyStacks.Services;
 
 namespace Day05SupplyStacks.Tests.Adapters;
 
@@ -36,7 +37,7 @@ public class RearrangementProcedureDeserializerTests
                     .AddMoveStep(3, 1, 5)
                     .AddMoveStep(2, 5, 3)
                     .Build()
-            ),
+            )
         };
 
         public static IEnumerable<object[]> TestCaseData =>

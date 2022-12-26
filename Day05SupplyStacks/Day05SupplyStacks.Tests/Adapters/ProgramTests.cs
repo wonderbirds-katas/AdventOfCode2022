@@ -1,4 +1,6 @@
-namespace Day05SupplyStacks.Tests;
+using Day05SupplyStacks.Adapters;
+
+namespace Day05SupplyStacks.Tests.Adapters;
 
 public class ProgramTests
 {

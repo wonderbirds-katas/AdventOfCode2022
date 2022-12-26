@@ -1,4 +1,6 @@
-namespace Day05SupplyStacks.Model;
+using Day05SupplyStacks.Model;
+
+namespace Day05SupplyStacks.Services;
 
 public class RearrangementProcedureBuilder
 {

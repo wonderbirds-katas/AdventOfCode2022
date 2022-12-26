@@ -1,5 +1,6 @@
 using Day05SupplyStacks.Adapters;
 using Day05SupplyStacks.Model;
+using Day05SupplyStacks.Services;
 
 namespace Day05SupplyStacks.Tests.Adapters;
 
@@ -76,7 +77,7 @@ public class StockSpecificationDeserializerTests
                     .AddCratesToStack(new[] { 'H' }, 7)
                     .AddCratesToStack(new[] { 'I' }, 8)
                     .Build()
-            ),
+            )
         };
 
         public static IEnumerable<object[]> TestCaseData =>

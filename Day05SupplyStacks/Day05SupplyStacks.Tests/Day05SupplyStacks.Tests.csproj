@@ -9,10 +9,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentAssertions" Version="6.8.0" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
-        <PackageReference Include="Moq" Version="4.18.3" />
-        <PackageReference Include="xunit" Version="2.4.1" />
+        <PackageReference Include="FluentAssertions" Version="6.8.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1"/>
+        <PackageReference Include="Moq" Version="4.18.3"/>
+        <PackageReference Include="xunit" Version="2.4.1"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
@@ -24,16 +24,16 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Day05SupplyStacks\Day05SupplyStacks.csproj" />
+        <ProjectReference Include="..\Day05SupplyStacks\Day05SupplyStacks.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="data\advent_of_code_stefans_personal_data.txt">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Update="data\advent_of_code_example.txt">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+        <None Update="data\advent_of_code_stefans_personal_data.txt">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="data\advent_of_code_example.txt">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>
