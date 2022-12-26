@@ -11,6 +11,6 @@ public class ProgramTests
 
         Program.Main(new[] { testFileName });
 
-        Assert.Equal($"Input file is '{testFileName}'\n", stringWriter.ToString());
+        stringWriter.ToString().Should().Be($"Input file is '{testFileName}'\n");
     }
 }
