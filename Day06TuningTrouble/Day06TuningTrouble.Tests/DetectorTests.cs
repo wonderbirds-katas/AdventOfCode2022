@@ -13,15 +13,21 @@ public static class Detector
 {
     public static int CountCharactersBeforeStartOfPacketMarker(string input)
     {
-        var offset = -1;
-        bool detected;
+        const int startOfPacketMarkerLength = 4;
+        
+        var result = startOfPacketMarkerLength - 1;
 
         do
         {
-            ++offset;
-            detected = input.Substring(offset, 4).ToHashSet().Count == 4;
-        } while (!detected);
+            ++result;
+        } while (!IsStartOfPacketMarker(input, result, startOfPacketMarkerLength));
 
-        return 4 + offset;
+        return result;
     }
+
+    private static bool IsStartOfPacketMarker(string input, int startIndex, int startOfPacketMarkerLength) =>
+        input
+            .Substring(startIndex - startOfPacketMarkerLength, startOfPacketMarkerLength)
+            .ToHashSet()
+            .Count == startOfPacketMarkerLength;
 }
