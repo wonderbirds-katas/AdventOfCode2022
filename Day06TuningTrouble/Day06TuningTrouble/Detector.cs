@@ -1,24 +1,16 @@
 namespace Day06TuningTrouble;
+using MoreLinq;
 
 public static class Detector
 {
-    public static int CountCharactersBeforeStartOfPacketMarker(string input)
-    {
-        const int startOfPacketMarkerLength = 4;
-        
-        var result = startOfPacketMarkerLength - 1;
+    private const int StartOfPacketMarkerLength = 4;
 
-        do
-        {
-            ++result;
-        } while (!IsStartOfPacketMarker(input, result, startOfPacketMarkerLength));
-
-        return result;
-    }
-
-    private static bool IsStartOfPacketMarker(string input, int startIndex, int startOfPacketMarkerLength) =>
+    public static int CountCharactersBeforeStartOfPacketMarker(string input) =>
         input
-            .Substring(startIndex - startOfPacketMarkerLength, startOfPacketMarkerLength)
-            .ToHashSet()
-            .Count == startOfPacketMarkerLength;
+            .AsEnumerable()
+            .Window(StartOfPacketMarkerLength)
+            .TakeWhile(SomeAreSame)
+            .Count() + StartOfPacketMarkerLength;
+
+    private static bool SomeAreSame(IList<char> characters) => characters.ToHashSet().Count < StartOfPacketMarkerLength;
 }
