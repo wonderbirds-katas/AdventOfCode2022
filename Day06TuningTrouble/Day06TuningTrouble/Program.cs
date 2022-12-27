@@ -4,8 +4,9 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        var input = File.ReadAllText(args[0]);
-        var result = Detector.CountCharactersBeforeStartOfPacketMarker(input);
+        var length = int.Parse(args[0]);
+        var input = File.ReadAllText(args[1]);
+        var result = Detector.CountCharactersBeforeStartOfPacketMarker(length, input);
         Console.WriteLine($"{result}");
     }
 }

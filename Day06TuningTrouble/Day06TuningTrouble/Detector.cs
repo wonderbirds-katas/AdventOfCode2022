@@ -5,7 +5,7 @@ public static class Detector
 {
     private const int StartOfPacketMarkerLength = 4;
 
-    public static int CountCharactersBeforeStartOfPacketMarker(string input) =>
+    public static int CountCharactersBeforeStartOfPacketMarker(int length, string input) =>
         input
             .AsEnumerable()
             .Window(StartOfPacketMarkerLength)
