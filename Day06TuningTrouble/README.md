@@ -1,6 +1,6 @@
 # Day 6: Tuning Trouble
 
-→ [Puzzle Instructions](https://adventofcode.com/2022/day/6)
+→ [Puzzle Instructions](./PUZZLE.md)
 
 ## Build and Test
 
