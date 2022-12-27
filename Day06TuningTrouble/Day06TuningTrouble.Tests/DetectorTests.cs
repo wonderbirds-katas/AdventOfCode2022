@@ -2,17 +2,10 @@ namespace Day06TuningTrouble.Tests;
 
 public class DetectorTests
 {
-    [Fact]
-    public void NoOtherCharactersBeforeStartOfPacketMarker()
-    {
-        Detector.CountCharactersBeforeStartOfPacketMarker("abcd").Should().Be(4);
-    }
-
-    [Fact]
-    public void OneCharacterBeforeStartOfPacketMarker()
-    {
-        Detector.CountCharactersBeforeStartOfPacketMarker("aabcd").Should().Be(5);
-    }
+    [Theory]
+    [InlineData("abcd", 4)]
+    [InlineData("aabcd", 5)]
+    public void RunTest(string input, int expected) => Detector.CountCharactersBeforeStartOfPacketMarker(input).Should().Be(expected);
 }
 
 public static class Detector
