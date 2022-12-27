@@ -3,14 +3,12 @@ using MoreLinq;
 
 public static class Detector
 {
-    private const int StartOfPacketMarkerLength = 4;
-
     public static int CountCharactersBeforeStartOfPacketMarker(int length, string input) =>
         input
             .AsEnumerable()
-            .Window(StartOfPacketMarkerLength)
+            .Window(length)
             .TakeWhile(SomeAreSame)
-            .Count() + StartOfPacketMarkerLength;
+            .Count() + length;
 
-    private static bool SomeAreSame(IList<char> characters) => characters.ToHashSet().Count < StartOfPacketMarkerLength;
+    private static bool SomeAreSame(IList<char> characters) => characters.ToHashSet().Count < characters.Count;
 }
