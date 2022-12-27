@@ -6,7 +6,7 @@ public static class Program
     {
         var length = int.Parse(args[0]);
         var input = File.ReadAllText(args[1]);
-        var result = Detector.CountCharactersBeforeStartOfPacketMarker(length, input);
+        var result = Detector.CountCharactersBeforeMarkerWithLength(length, input);
         Console.WriteLine($"{result}");
     }
 }

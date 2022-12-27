@@ -3,7 +3,7 @@ using MoreLinq;
 
 public static class Detector
 {
-    public static int CountCharactersBeforeStartOfPacketMarker(int length, string input) =>
+    public static int CountCharactersBeforeMarkerWithLength(int length, string input) =>
         input
             .AsEnumerable()
             .Window(length)
