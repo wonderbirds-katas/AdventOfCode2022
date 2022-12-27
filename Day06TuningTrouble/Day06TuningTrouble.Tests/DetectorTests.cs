@@ -3,8 +3,10 @@ namespace Day06TuningTrouble.Tests;
 public class DetectorTests
 {
     [Theory]
-    [InlineData("abcd", 4)]
-    [InlineData("aabcd", 5)]
-    [InlineData("aaabcd", 6)]
-    public void RunTest(string input, int expected) => Detector.CountCharactersBeforeStartOfPacketMarker(input).Should().Be(expected);
+    [InlineData(4, "abcd", 4)]
+    [InlineData(4, "aabcd", 5)]
+    [InlineData(4, "aaabcd", 6)]
+    [InlineData(5, "aaabcde", 7)]
+    public void RunTest(int length, string input, int expected) =>
+        Detector.CountCharactersBeforeMarkerWithLength(length, input).Should().Be(expected);
 }
