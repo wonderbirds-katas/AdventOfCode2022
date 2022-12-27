@@ -65,6 +65,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Day06TuningTrouble", "Day06TuningTrouble", "{3E38578B-CCB7-4D99-B82F-923086B48D43}"
 	ProjectSection(SolutionItems) = preProject
 		Day06TuningTrouble\README.md = Day06TuningTrouble\README.md
+		Day06TuningTrouble\PUZZLE.md = Day06TuningTrouble\PUZZLE.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day06TuningTrouble", "Day06TuningTrouble\Day06TuningTrouble\Day06TuningTrouble.csproj", "{DB22E271-9025-4D95-B144-1227A9541915}"
