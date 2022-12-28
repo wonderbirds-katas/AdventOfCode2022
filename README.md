@@ -3,7 +3,7 @@
 [![.NET Build Status Badge](https://github.com/wonderbirds-katas/AdventOfCode2022/workflows/.NET/badge.svg)](https://github.com/wonderbirds-katas/AdventOfCode2022/actions?query=workflow%3A%22.NET%22)
 [![Lua Tests Status Badge](https://github.com/wonderbirds-katas/AdventOfCode2022/workflows/Lua/badge.svg)](https://github.com/wonderbirds-katas/AdventOfCode2022/actions?query=workflow%3A%22Lua%22)
 
-This repository contains C# solutions for the [Advent of Code 2022](https://adventofcode.com/2022/) puzzles.
+This repository contains C# and Lua solutions for the [Advent of Code 2022](https://adventofcode.com/2022/) puzzles.
 
 ## Thanks
 
