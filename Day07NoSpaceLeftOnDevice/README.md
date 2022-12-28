@@ -9,7 +9,7 @@
 To build this project, please install [Roblox Studio](https://www.roblox.com/create) and the associated development
 toolchain [Rojo](https://rojo.space/docs/v7/getting-started/installation/).
 
-In Roblox Studio install the Rojo Plugin:
+In a terminal window install the Rojo Plugin for Roblox Studio:
 
 ```shell
 rojo plugin install
