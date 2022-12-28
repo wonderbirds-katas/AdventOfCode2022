@@ -2,23 +2,23 @@
 
 → [Puzzle Instructions](./PUZZLE.md)
 
-## Build and Run
+## Run with Lua
+
+```shell
+cat input.txt | LUA_PATH="$PWD/src/shared/?.lua" lua Run.lua
+```
+
+## Run with Roblox Studio
 
 ### Prerequisites
 
-To build this project, please install [Roblox Studio](https://www.roblox.com/create) and the associated development
+This project can be run with [Roblox Studio](https://www.roblox.com/create). Please install the associated development
 toolchain [Rojo](https://rojo.space/docs/v7/getting-started/installation/).
 
-In a terminal window install the Rojo Plugin for Roblox Studio:
+Then install the Rojo Plugin for Roblox Studio by entering the following into a terminal window:
 
 ```shell
 rojo plugin install
-```
-
-### Build
-
-```shell
-rojo build --output Day07NoSpaceLeftOnDevice.rbxl
 ```
 
 ### Run
