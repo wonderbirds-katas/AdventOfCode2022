@@ -33,9 +33,27 @@ In Roblox Studio open the file `Day07NoSpaceLeftOnDevice.rbxl` and run it.
 
 The program result is displayed in the Output pane. To see it, select **View → Output** in Roblox Studio.
 
+## Run the Tests
+
+The tests depend on the [LuaUnit](https://github.com/bluebird75/luaunit) framework, which is a submodule in this
+directory. When you first clone the repository, you need to fetch the submodule:
+
+```shell
+git submodule init
+...
+git submodule update
+```
+
+To run all tests, issue the command
+
+```shell
+LUA_PATH="$PWD/src/shared/?.lua;$PWD/luaunit/?.lua" lua ./test/HelloTests.lua
+```
+
 ## Links
 
 - [Roblox Studio](https://www.roblox.com/create)
 - [Rojo](https://github.com/rojo-rbx/rojo) - Documentation for Rojo.
 - [Rojo - Roblox Studio Sync](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo) - Visual Studio Code Plugin for developing with Rojo.
 - [Aftman](https://github.com/LPGhatguy/aftman) - Toolchain manager to handle different Rojo versions.
+- [LuaUnit](https://luaunit.readthedocs.io/en/latest/) - Lua unit testing framework.
