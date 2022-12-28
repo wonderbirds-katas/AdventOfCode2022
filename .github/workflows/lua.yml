@@ -21,6 +21,11 @@ jobs:
       with:
         luaVersion: "5.4.4"
 
+    - name: Setup git submodules
+      run: |
+        git submodule init
+        git submodule update
+
     - name: Test
       run: |
         LUA_PATH="$PWD/Day07NoSpaceLeftOnDevice/src/shared/?.lua;$PWD/Day07NoSpaceLeftOnDevice/luaunit/?.lua" lua ./Day07NoSpaceLeftOnDevice/test/FilterAndSumDirectorySizesTests.lua -v
