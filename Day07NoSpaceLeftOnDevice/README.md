@@ -47,8 +47,16 @@ git submodule update
 To run all tests, issue the command
 
 ```shell
-LUA_PATH="$PWD/src/shared/?.lua;$PWD/luaunit/?.lua" lua ./test/HelloTests.lua
+LUA_PATH="$PWD/src/shared/?.lua;$PWD/luaunit/?.lua" lua ./test/FilterAndSumDirectorySizesTests.lua
 ```
+
+To run the tests every time a `.lua` file changes, enter
+
+```shell
+find . -iname "*.lua" | LUA_PATH="$PWD/src/shared/?.lua;$PWD/luaunit/?.lua" entr -r lua ./test/FilterAndSumDirectorySizesTests.lua
+```
+
+This requires the [entr](https://github.com/eradman/entr) utility on your system.
 
 ## Links
 
