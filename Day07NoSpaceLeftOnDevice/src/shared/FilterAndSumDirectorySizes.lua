@@ -12,6 +12,10 @@ function M.FilterAndSumDirectorySizes(input)
 		end
 	until size == nil
 
+	if sum > 100000 then
+		return 0
+	end
+
 	return tonumber(sum)
 end
 
