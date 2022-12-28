@@ -21,6 +21,6 @@ jobs:
       with:
         luaVersion: "5.4.4"
 
-    - name: test
+    - name: Test
       run: |
-        LUA_PATH="$PWD/src/shared/?.lua;$PWD/luaunit/?.lua" lua ./test/FilterAndSumDirectorySizesTests.lua -v
+        LUA_PATH="$PWD/Day07NoSpaceLeftOnDevice/src/shared/?.lua;$PWD/Day07NoSpaceLeftOnDevice/luaunit/?.lua" lua ./Day07NoSpaceLeftOnDevice/test/FilterAndSumDirectorySizesTests.lua -v
