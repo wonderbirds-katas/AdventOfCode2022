@@ -5,6 +5,13 @@ name: Lua
 
 on:
   push:
+    paths-ignore:
+      - 'Day01CountCalories/**'
+      - 'Day02RockPaperScissors/**'
+      - 'Day03RucksackReorganization/**'
+      - 'Day04CampCleanup/**'
+      - 'Day05SupplyStacks/**'
+      - 'Day06TuningTrouble/**'
   pull_request:
     branches: [ "main" ]
 
