@@ -41,4 +41,16 @@ function TestFileSystem.test_create_nested_sub_directories()
 ]])
 end
 
+function TestFileSystem.test_create_file_of_size_1()
+    root = fs.CreateDirectory("/", nil)
+    fs.CreateFile("a", 1, root)
+
+    actual = fs.ToString(root)
+    
+    lu.assertEquals(actual,
+[[/ (dir)
++-- a (file, size=1)
+]])
+end
+
 return TestFileSystem

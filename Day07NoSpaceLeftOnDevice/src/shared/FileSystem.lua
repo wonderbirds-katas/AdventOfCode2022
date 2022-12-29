@@ -13,11 +13,32 @@ function M.CreateDirectory(name, parent)
 	return directory
 end
 
+function M.CreateFile(name, size, parent)
+	file = {}
+	file.name = name
+	file.parent = parent
+
+	table.insert(parent.children, file)
+
+	return file
+end
+
 function M.ToString(rootDirectory, indent)
 	indent = indent or ""
     result = ""
+	isDir = rootDirectory.children ~= nil
+	
+	if isDir then
+		typeString = " (dir)"
+	else
+		typeString = " (file, size=1)"
+	end
 
-	result = result .. indent .. rootDirectory.name .. " (dir)" .. "\n"
+	result = result .. indent .. rootDirectory.name .. typeString .. "\n"
+
+	if rootDirectory.children == nil then
+		return result
+	end
 
     if indent == "" then
         indent = "+-- "
