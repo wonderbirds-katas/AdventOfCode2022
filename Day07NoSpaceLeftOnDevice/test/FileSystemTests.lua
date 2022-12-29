@@ -7,7 +7,7 @@ function TestFileSystem.test_create_root_directory()
     root = fs.CreateDirectory("/", nil)
     actual = fs.ToString(root)
     lu.assertEquals(actual,
-[[/
+[[/ (dir)
 ]])
 end
 
@@ -19,9 +19,9 @@ function TestFileSystem.test_create_sub_directories()
     actual = fs.ToString(root)
     
     lu.assertEquals(actual, 
-[[/
-+-- a
-+-- b
+[[/ (dir)
++-- a (dir)
++-- b (dir)
 ]])
 end
 
@@ -34,10 +34,10 @@ function TestFileSystem.test_create_nested_sub_directories()
     actual = fs.ToString(root)
     
     lu.assertEquals(actual,
-[[/
-+-- a
-    +-- c
-+-- b
+[[/ (dir)
++-- a (dir)
+    +-- c (dir)
++-- b (dir)
 ]])
 end
 

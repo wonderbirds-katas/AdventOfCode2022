@@ -17,7 +17,7 @@ function M.ToString(rootDirectory, indent)
 	indent = indent or ""
     result = ""
 
-	result = result .. indent .. rootDirectory.name .. "\n"
+	result = result .. indent .. rootDirectory.name .. " (dir)" .. "\n"
 
     if indent == "" then
         indent = "+-- "
