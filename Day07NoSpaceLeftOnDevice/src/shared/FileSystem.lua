@@ -26,12 +26,15 @@ function M.CreateFile(name, size, parent)
 	return result
 end
 
+function M.IsDir(node)
+	return node.children ~= nil
+end
+
 function M.ToString(rootDirectory, indent)
 	indent = indent or ""
     result = ""
-	isDir = rootDirectory.children ~= nil
 	
-	if isDir then
+	if M.IsDir(rootDirectory) then
 		typeString = " (dir)"
 	else
 		typeString = " (file, size=1)"
