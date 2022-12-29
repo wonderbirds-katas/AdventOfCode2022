@@ -1,26 +1,29 @@
 local M = {}
 
-function M.CreateDirectory(name, parent)
-	directory = {}
-	directory.name = name
-	directory.parent = parent
-	directory.children = {}
+local function CreateNode(name, parent)
+	result = {}
+	result.name = name
+	result.parent = parent
 
+	-- TODO error handling: parent must be a directory
+	
 	if parent ~= nil then
-		table.insert(parent.children, directory)
+		table.insert(parent.children, result)
 	end
 
-	return directory
+	return result
+end
+
+function M.CreateDirectory(name, parent)
+    result = CreateNode(name, parent)
+	result.children = {}
+
+	return result
 end
 
 function M.CreateFile(name, size, parent)
-	file = {}
-	file.name = name
-	file.parent = parent
-
-	table.insert(parent.children, file)
-
-	return file
+	result = CreateNode(name, parent)
+	return result
 end
 
 function M.ToString(rootDirectory, indent)
