@@ -30,18 +30,21 @@ function M.IsDir(node)
 	return node.children ~= nil
 end
 
+local function GetNodeDetailsString(node)
+	if M.IsDir(node) then
+		return node.name .. " (dir)\n"
+	else
+		return node.name .. " (file, size=1)\n"
+	end
+end
+
 function M.ToString(node, indent)
 	indent = indent or ""
-    result = ""
+	result = indent .. GetNodeDetailsString(node)
 	
 	if not M.IsDir(node) then
-		typeString = " (file, size=1)"
-		result = result .. indent .. node.name .. typeString .. "\n"
 		return result
 	end
-
-	typeString = " (dir)"
-	result = result .. indent .. node.name .. typeString .. "\n"
 
     if indent == "" then
         indent = "+-- "
