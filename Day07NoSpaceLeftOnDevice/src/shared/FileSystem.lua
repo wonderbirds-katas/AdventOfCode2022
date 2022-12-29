@@ -34,17 +34,14 @@ function M.ToString(rootDirectory, indent)
 	indent = indent or ""
     result = ""
 	
-	if M.IsDir(rootDirectory) then
-		typeString = " (dir)"
-	else
+	if not M.IsDir(rootDirectory) then
 		typeString = " (file, size=1)"
-	end
-
-	result = result .. indent .. rootDirectory.name .. typeString .. "\n"
-
-	if rootDirectory.children == nil then
+		result = result .. indent .. rootDirectory.name .. typeString .. "\n"
 		return result
 	end
+
+	typeString = " (dir)"
+	result = result .. indent .. rootDirectory.name .. typeString .. "\n"
 
     if indent == "" then
         indent = "+-- "
