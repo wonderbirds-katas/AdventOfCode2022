@@ -28,4 +28,4 @@ jobs:
 
     - name: Test
       run: |
-        LUA_PATH="$PWD/Day07NoSpaceLeftOnDevice/src/shared/?.lua;$PWD/Day07NoSpaceLeftOnDevice/luaunit/?.lua" lua ./Day07NoSpaceLeftOnDevice/test/FilterAndSumDirectorySizesTests.lua -v
+        LUA_PATH="$PWD/Day07NoSpaceLeftOnDevice/src/shared/?.lua;$PWD/Day07NoSpaceLeftOnDevice/test/?.lua;$PWD/Day07NoSpaceLeftOnDevice/luaunit/?.lua" lua ./Day07NoSpaceLeftOnDevice/test/TestSuite.lua -v
