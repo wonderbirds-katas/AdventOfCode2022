@@ -38,19 +38,24 @@ local function GetNodeDetailsString(node)
 	end
 end
 
+local function GetNextIndent(indent)
+    if indent == "" then
+        return "+-- "
+    else
+        return "    " .. indent
+    end
+end
+
 function M.ToString(node, indent)
 	indent = indent or ""
+	
 	result = indent .. GetNodeDetailsString(node)
 	
 	if not M.IsDir(node) then
 		return result
 	end
 
-    if indent == "" then
-        indent = "+-- "
-    else
-        indent = "    " .. indent
-    end
+	indent = GetNextIndent(indent)
 
 	for _, directory in ipairs(node.children) do
 		result = result .. M.ToString(directory, indent)
