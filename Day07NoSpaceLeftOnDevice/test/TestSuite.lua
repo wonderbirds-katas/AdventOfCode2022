@@ -1,7 +1,7 @@
 local lu = require('luaunit')
 
-local TestFilterAndSumDirectorySizes = require('FilterAndSumDirectorySizesTests')
-local TestFileSystem = require('FileSystemTests')
-local TestTerminalOutputParser = require('TerminalOutputParserTests')
+require('FilterAndSumDirectorySizesTests')
+require('FileSystemTests')
+require('TerminalOutputParserTests')
 
 os.exit(lu.LuaUnit.run())

@@ -1,7 +1,7 @@
 local M = {}
 
 local function CreateNode(name, parent)
-	result = {}
+	local result = {}
 	result.name = name
 	result.parent = parent
 
@@ -15,14 +15,14 @@ local function CreateNode(name, parent)
 end
 
 function M.CreateDirectory(name, parent)
-    result = CreateNode(name, parent)
+    local result = CreateNode(name, parent)
 	result.children = {}
 
 	return result
 end
 
 function M.CreateFile(name, size, parent)
-	result = CreateNode(name, parent)
+	local result = CreateNode(name, parent)
 	result.size = size
 	return result
 end
@@ -48,9 +48,9 @@ local function GetNextIndent(indent)
 end
 
 function M.ToString(node, indent)
-	indent = indent or ""
+	local indent = indent or ""
 
-	result = indent .. GetNodeDetailsString(node)
+	local result = indent .. GetNodeDetailsString(node)
 	
 	if not M.IsDir(node) then
 		return result

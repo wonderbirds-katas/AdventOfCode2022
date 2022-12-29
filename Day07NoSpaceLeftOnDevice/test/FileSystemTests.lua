@@ -4,19 +4,19 @@ local fs = require('FileSystem')
 TestFileSystem = {}
 
 function TestFileSystem.test_create_root_directory()
-    root = fs.CreateDirectory("/", nil)
-    actual = fs.ToString(root)
+    local root = fs.CreateDirectory("/", nil)
+    local actual = fs.ToString(root)
     lu.assertEquals(actual,
 [[/ (dir)
 ]])
 end
 
 function TestFileSystem.test_create_sub_directories()
-    root = fs.CreateDirectory("/", nil)
+    local root = fs.CreateDirectory("/", nil)
     fs.CreateDirectory("a", root)
     fs.CreateDirectory("b", root)
 
-    actual = fs.ToString(root)
+    local actual = fs.ToString(root)
     
     lu.assertEquals(actual, 
 [[/ (dir)
@@ -26,12 +26,12 @@ function TestFileSystem.test_create_sub_directories()
 end
 
 function TestFileSystem.test_create_nested_sub_directories()
-    root = fs.CreateDirectory("/", nil)
-    a = fs.CreateDirectory("a", root)
+    local root = fs.CreateDirectory("/", nil)
+    local a = fs.CreateDirectory("a", root)
     fs.CreateDirectory("c", a)
     fs.CreateDirectory("b", root)
 
-    actual = fs.ToString(root)
+    local actual = fs.ToString(root)
     
     lu.assertEquals(actual,
 [[/ (dir)
@@ -42,10 +42,10 @@ function TestFileSystem.test_create_nested_sub_directories()
 end
 
 function TestFileSystem.test_create_file_of_size_1()
-    root = fs.CreateDirectory("/", nil)
+    local root = fs.CreateDirectory("/", nil)
     fs.CreateFile("a", 1, root)
 
-    actual = fs.ToString(root)
+    local actual = fs.ToString(root)
     
     lu.assertEquals(actual,
 [[/ (dir)
@@ -54,10 +54,10 @@ function TestFileSystem.test_create_file_of_size_1()
 end
 
 function TestFileSystem.test_create_file_of_size_42()
-    root = fs.CreateDirectory("/", nil)
+    local root = fs.CreateDirectory("/", nil)
     fs.CreateFile("a", 42, root)
 
-    actual = fs.ToString(root)
+    local actual = fs.ToString(root)
     
     lu.assertEquals(actual,
 [[/ (dir)
