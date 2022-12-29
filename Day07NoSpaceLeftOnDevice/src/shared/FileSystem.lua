@@ -30,18 +30,18 @@ function M.IsDir(node)
 	return node.children ~= nil
 end
 
-function M.ToString(rootDirectory, indent)
+function M.ToString(node, indent)
 	indent = indent or ""
     result = ""
 	
-	if not M.IsDir(rootDirectory) then
+	if not M.IsDir(node) then
 		typeString = " (file, size=1)"
-		result = result .. indent .. rootDirectory.name .. typeString .. "\n"
+		result = result .. indent .. node.name .. typeString .. "\n"
 		return result
 	end
 
 	typeString = " (dir)"
-	result = result .. indent .. rootDirectory.name .. typeString .. "\n"
+	result = result .. indent .. node.name .. typeString .. "\n"
 
     if indent == "" then
         indent = "+-- "
@@ -49,7 +49,7 @@ function M.ToString(rootDirectory, indent)
         indent = "    " .. indent
     end
 
-	for _, directory in ipairs(rootDirectory.children) do
+	for _, directory in ipairs(node.children) do
 		result = result .. M.ToString(directory, indent)
 	end
 
