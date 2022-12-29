@@ -23,6 +23,7 @@ end
 
 function M.CreateFile(name, size, parent)
 	result = CreateNode(name, parent)
+	result.size = size
 	return result
 end
 
@@ -34,7 +35,7 @@ local function GetNodeDetailsString(node)
 	if M.IsDir(node) then
 		return node.name .. " (dir)\n"
 	else
-		return node.name .. " (file, size=1)\n"
+		return node.name .. " (file, size=" .. node.size .. ")\n"
 	end
 end
 
@@ -48,7 +49,7 @@ end
 
 function M.ToString(node, indent)
 	indent = indent or ""
-	
+
 	result = indent .. GetNodeDetailsString(node)
 	
 	if not M.IsDir(node) then

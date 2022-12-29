@@ -53,4 +53,16 @@ function TestFileSystem.test_create_file_of_size_1()
 ]])
 end
 
+function TestFileSystem.test_create_file_of_size_42()
+    root = fs.CreateDirectory("/", nil)
+    fs.CreateFile("a", 42, root)
+
+    actual = fs.ToString(root)
+    
+    lu.assertEquals(actual,
+[[/ (dir)
++-- a (file, size=42)
+]])
+end
+
 return TestFileSystem
