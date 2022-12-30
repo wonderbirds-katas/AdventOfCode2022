@@ -126,6 +126,36 @@ $ ls
 ]])
 end
 
+function TestTerminalOutputParser.test_cd_root()
+    local terminalOutput = [[$ cd /
+$ ls
+dir a
+dir d
+$ cd a
+$ ls
+dir b
+$ cd b
+$ ls
+100 c
+$ cd /
+$ cd d
+$ ls
+200 e
+]]
+
+    local root = parser.Parse(terminalOutput)
+    local actual = fs.ToString(root)
+
+    lu.assertEquals(actual,
+[[/ (dir)
++-- a (dir)
+    +-- b (dir)
+        +-- c (file, size=100)
++-- d (dir)
+    +-- e (file, size=200)
+]])
+end
+
 function TestTerminalOutputParser.test_comprehensive_representative_command_list()
     local terminalOutput = [[$ cd /
 $ ls

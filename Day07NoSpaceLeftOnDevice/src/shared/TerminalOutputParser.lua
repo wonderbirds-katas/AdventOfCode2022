@@ -44,7 +44,9 @@ local function TryParseChangeDirectory(line, currentDirectory)
     local cdCommandAndDirectoryPattern = "$ cd (.+)"
     local dirname
     _, _, dirname = string.find(line, cdCommandAndDirectoryPattern)
-    if dirname == ".." then
+    if dirname == "/" then
+        return fs.GetRoot(currentDirectory)
+    elseif dirname == ".." then
         return fs.GetParent(currentDirectory)
     elseif dirname ~= nil then
         local subDir = fs.FindSubDirectory(dirname, currentDirectory)
