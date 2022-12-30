@@ -19,6 +19,21 @@ $ ls
 ]])
 end
 
+function TestTerminalOutputParser.test_root_directory_contains_1_file_with_underscore()
+    local terminalOutput = [[$ cd /
+$ ls
+1 name_contains_underscore
+]]
+
+    local root = parser.Parse(terminalOutput)
+    local actual = fs.ToString(root)
+
+    lu.assertEquals(actual,
+[[/ (dir)
++-- name_contains_underscore (file, size=1)
+]])
+end
+
 function TestTerminalOutputParser.test_root_directory_contains_2_files()
     local terminalOutput = [[$ cd /
 $ ls

@@ -23,7 +23,7 @@ local function SplitLines(text)
 end
 
 local function TryParseFileAndAddToDirectory(line, directoryNode)
-    local fileSizeAndNamePattern = "(%d+)%s(%a+)"
+    local fileSizeAndNamePattern = "(%d+)%s(.+)"
     local size, filename
     _, _, size, filename = string.find(line, fileSizeAndNamePattern)
     if size ~= nil and filename ~= nil then
