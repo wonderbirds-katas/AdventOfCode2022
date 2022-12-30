@@ -65,4 +65,37 @@ function TestFileSystem.test_create_file_of_size_42()
 ]])
 end
 
+function TestFileSystem.test_calculate_total_directory_sizes_1_file()
+    local root = fs.CreateDirectory("/", nil)
+    fs.CreateFile("a", 42, root)
+
+    fs.CalculateTotalDirectorySizes(root)
+    local actual = root.totalSize
+    
+    lu.assertEquals(actual, 42)
+end
+
+function TestFileSystem.test_calculate_total_directory_sizes_2_files()
+    local root = fs.CreateDirectory("/", nil)
+    fs.CreateFile("a", 42, root)
+    fs.CreateFile("b", 100, root)
+
+    fs.CalculateTotalDirectorySizes(root)
+    local actual = root.totalSize
+    
+    lu.assertEquals(actual, 142)
+end
+
+function TestFileSystem.test_calculate_total_directory_sizes_2_files_and_directory()
+    local root = fs.CreateDirectory("/", nil)
+    fs.CreateDirectory("a", root)
+    fs.CreateFile("b", 42, root)
+    fs.CreateFile("c", 100, root)
+
+    fs.CalculateTotalDirectorySizes(root)
+    local actual = root.totalSize
+    
+    lu.assertEquals(actual, 142)
+end
+
 return TestFileSystem

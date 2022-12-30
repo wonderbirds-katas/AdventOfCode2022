@@ -18,6 +18,17 @@ local function CreateNode(name, parent)
 	return result
 end
 
+function M.CalculateTotalDirectorySizes(directory)
+	directory.totalSize = 0
+
+	for _, child in ipairs(directory.children) do
+		if (M.IsDir(child)) then
+		else
+			directory.totalSize = directory.totalSize + child.size
+		end
+	end
+end
+
 function M.CreateDirectory(name, parent)
     local result = CreateNode(name, parent)
 	result.children = {}
