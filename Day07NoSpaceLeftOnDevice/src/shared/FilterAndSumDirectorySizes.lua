@@ -1,6 +1,10 @@
+local parser = require('TerminalOutputParser')
 local M = {}
 
 function M.FilterAndSumDirectorySizes(input)
+	-- TODO local root = parser.Parse(input)
+	-- TODO calculateTotalDirectorySizes(root)
+
 	local sum = 0
 	local startIndex = 0
 	local endIndex = -1
