@@ -23,6 +23,8 @@ function M.CalculateTotalDirectorySizes(directory)
 
 	for _, child in ipairs(directory.children) do
 		if (M.IsDir(child)) then
+			M.CalculateTotalDirectorySizes(child)
+			directory.totalSize = directory.totalSize + child.totalSize
 		else
 			directory.totalSize = directory.totalSize + child.size
 		end
@@ -69,7 +71,11 @@ end
 
 local function GetNodeDetailsString(node)
 	if M.IsDir(node) then
-		return node.name .. " (dir)\n"
+		if node.totalSize ~= nil then
+			return node.name .. "(dir, size=" .. node.totalSize .. ")\n"
+		else
+			return node.name .. " (dir)\n"
+		end
 	else
 		return node.name .. " (file, size=" .. node.size .. ")\n"
 	end

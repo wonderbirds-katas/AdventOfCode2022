@@ -98,4 +98,28 @@ function TestFileSystem.test_calculate_total_directory_sizes_2_files_and_directo
     lu.assertEquals(actual, 142)
 end
 
+function TestFileSystem.test_calculate_total_directory_size_considering_single_subdirectory()
+    local root = fs.CreateDirectory("/", nil)
+    local a = fs.CreateDirectory("a", root)
+    fs.CreateFile("b", 42, a)
+
+    fs.CalculateTotalDirectorySizes(root)
+    local actual = root.totalSize
+    
+    lu.assertEquals(actual, 42)
+end
+
+function TestFileSystem.test_calculate_total_directory_size_considering_nested_subdirectories()
+    local root = fs.CreateDirectory("/", nil)
+    local a = fs.CreateDirectory("a", root)
+    fs.CreateFile("c", 100, a)
+    local b = fs.CreateDirectory("b", a)
+    fs.CreateFile("d", 200, b)
+
+    fs.CalculateTotalDirectorySizes(root)
+    local actual = root.totalSize
+    
+    lu.assertEquals(actual, 300)
+end
+
 return TestFileSystem
