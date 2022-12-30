@@ -36,4 +36,19 @@ $ ls
 ]])
 end
 
+function TestTerminalOutputParser.test_root_directory_contains_a_subdirectory()
+    local terminalOutput = [[$ cd /
+$ ls
+dir a
+]]
+
+    local root = parser.Parse(terminalOutput)
+    local actual = fs.ToString(root)
+
+    lu.assertEquals(actual,
+[[/ (dir)
++-- a (dir)
+]])
+end
+
 return TestTerminalOutputParser

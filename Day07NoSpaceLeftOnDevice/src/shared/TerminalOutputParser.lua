@@ -31,10 +31,18 @@ function M.Parse(terminalOutput)
     local result = fs.CreateDirectory("/", nil)
 
     local line
-    for _, line in ipairs(lines) do        
-        _, _, size, filename = string.find(line, fileSizeAndNamePattern, 0)
+    for _, line in ipairs(lines) do
+        local size, filename
+        _, _, size, filename = string.find(line, fileSizeAndNamePattern)
         if size ~= nil and filename ~= nil then
             fs.CreateFile(filename, size, result)
+        end
+
+        local dirAndNamePattern = "dir%s(%a+)"
+        local dirname
+        _, _, dirname = string.find(line, dirAndNamePattern)
+        if dirname ~= nil then
+            fs.CreateDirectory(dirname, result)
         end
     end
 
