@@ -2,23 +2,41 @@ local fs = require('FileSystem')
 
 local M = {}
 
+local function SplitLines(text)
+    local lengthOfText = string.len(text)
+    local endOfLine = -1
+    local result = {}
+
+    repeat
+        local startOfLine = endOfLine + 1
+        
+        endOfLine = string.find(text, "\n", startOfLine)
+        if endOfLine == nil then
+            endOfLine = lengthOfText
+        end
+
+        local line = string.sub(text, startOfLine, endOfLine - 1)
+        table.insert(result, line)
+    until endOfLine == lengthOfText
+
+    return result
+end
+
 function M.Parse(terminalOutput)
+
+    local fileSizeAndNamePattern = "(%d+)%s(%a+)"
+    
+    lines = SplitLines(terminalOutput)
 
     local result = fs.CreateDirectory("/", nil)
 
-    local filePattern = "(%d+%s%a+)"
     local line
-    local endIndex = -1
-
-    repeat
-        local size, filename
-        _, endIndex, line = string.find(terminalOutput, filePattern, endIndex + 1)
-
-        if line ~= nil then
-            _, _, size, filename = string.find(line, "(%d+)%s(%a+)", 0)
+    for _, line in ipairs(lines) do        
+        _, _, size, filename = string.find(line, fileSizeAndNamePattern, 0)
+        if size ~= nil and filename ~= nil then
             fs.CreateFile(filename, size, result)
         end
-    until line == nil
+    end
 
     return result
 end
