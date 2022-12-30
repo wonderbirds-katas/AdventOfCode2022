@@ -40,16 +40,28 @@ local function TryParseDirectoryAndAddToDirectory(line, directoryNode)
     end
 end
 
+local function TryParseChangeDirectory(line, currentDirectory)
+    local cdCommandAndDirectoryPattern = "$ cd (%a+)"
+    local dirname
+    _, _, dirname = string.find(line, cdCommandAndDirectoryPattern)
+    if dirname ~= nil then
+        return fs.FindSubDirectory(dirname, currentDirectory)
+    end
+    return currentDirectory
+end
+
 function M.Parse(terminalOutput)
     
-    lines = SplitLines(terminalOutput)
+    local lines = SplitLines(terminalOutput)
 
     local result = fs.CreateDirectory("/", nil)
 
     local line
+    local currentDirectory = result
     for _, line in ipairs(lines) do
-        TryParseFileAndAddToDirectory(line, result)
-        TryParseDirectoryAndAddToDirectory(line, result)
+        currentDirectory = TryParseChangeDirectory(line, currentDirectory)
+        TryParseFileAndAddToDirectory(line, currentDirectory)
+        TryParseDirectoryAndAddToDirectory(line, currentDirectory)
     end
 
     return result

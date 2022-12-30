@@ -31,6 +31,19 @@ function M.IsDir(node)
 	return node.children ~= nil
 end
 
+function M.FindSubDirectory(name, currentDirectory)
+	local node
+	for _, node in ipairs(currentDirectory.children) do
+		if node.name == name and M.IsDir(node) then
+			return node
+		end
+	end
+
+	-- TODO Error handling: What if the current directory does not contain name?
+	-- TODO Fix all FindSubDirectory method calls ignoring the return value
+	return nil
+end
+
 local function GetNodeDetailsString(node)
 	if M.IsDir(node) then
 		return node.name .. " (dir)\n"
