@@ -32,7 +32,7 @@ local function TryParseFileAndAddToDirectory(line, directoryNode)
 end
 
 local function TryParseDirectoryAndAddToDirectory(line, directoryNode)
-    local dirAndNamePattern = "dir%s(%a+)"
+    local dirAndNamePattern = "dir%s(.+)"
     local dirname
     _, _, dirname = string.find(line, dirAndNamePattern)
     if dirname ~= nil then
