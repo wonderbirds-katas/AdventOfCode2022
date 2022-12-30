@@ -22,9 +22,16 @@ local function SplitLines(text)
     return result
 end
 
-function M.Parse(terminalOutput)
-
+local function TryParseFileAndAddToDirectory(line, directoryNode)
     local fileSizeAndNamePattern = "(%d+)%s(%a+)"
+    local size, filename
+    _, _, size, filename = string.find(line, fileSizeAndNamePattern)
+    if size ~= nil and filename ~= nil then
+        fs.CreateFile(filename, size, directoryNode)
+    end
+end
+
+function M.Parse(terminalOutput)
     
     lines = SplitLines(terminalOutput)
 
@@ -32,11 +39,7 @@ function M.Parse(terminalOutput)
 
     local line
     for _, line in ipairs(lines) do
-        local size, filename
-        _, _, size, filename = string.find(line, fileSizeAndNamePattern)
-        if size ~= nil and filename ~= nil then
-            fs.CreateFile(filename, size, result)
-        end
+        TryParseFileAndAddToDirectory(line, result)
 
         local dirAndNamePattern = "dir%s(%a+)"
         local dirname
