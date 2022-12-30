@@ -31,6 +31,15 @@ local function TryParseFileAndAddToDirectory(line, directoryNode)
     end
 end
 
+local function TryParseDirectoryAndAddToDirectory(line, directoryNode)
+    local dirAndNamePattern = "dir%s(%a+)"
+    local dirname
+    _, _, dirname = string.find(line, dirAndNamePattern)
+    if dirname ~= nil then
+        fs.CreateDirectory(dirname, directoryNode)
+    end
+end
+
 function M.Parse(terminalOutput)
     
     lines = SplitLines(terminalOutput)
@@ -40,13 +49,7 @@ function M.Parse(terminalOutput)
     local line
     for _, line in ipairs(lines) do
         TryParseFileAndAddToDirectory(line, result)
-
-        local dirAndNamePattern = "dir%s(%a+)"
-        local dirname
-        _, _, dirname = string.find(line, dirAndNamePattern)
-        if dirname ~= nil then
-            fs.CreateDirectory(dirname, result)
-        end
+        TryParseDirectoryAndAddToDirectory(line, result)
     end
 
     return result
