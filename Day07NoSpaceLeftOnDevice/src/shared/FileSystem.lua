@@ -9,6 +9,10 @@ local function CreateNode(name, parent)
 	
 	if parent ~= nil then
 		table.insert(parent.children, result)
+
+		result.root = parent.root
+	else
+		result.root = result
 	end
 
 	return result
@@ -42,6 +46,14 @@ function M.FindSubDirectory(name, currentDirectory)
 	-- TODO Error handling: What if the current directory does not contain name?
 	-- TODO Fix all FindSubDirectory method calls ignoring the return value
 	return nil
+end
+
+function M.GetParent(node)
+	return node.parent
+end
+
+function M.GetRoot(node)
+	return node.root
 end
 
 local function GetNodeDetailsString(node)

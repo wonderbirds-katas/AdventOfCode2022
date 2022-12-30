@@ -70,4 +70,30 @@ $ ls
 ]])
 end
 
+function TestTerminalOutputParser.test_root_directory_contains_two_subdirectories_with_file_in_each()
+    local terminalOutput = [[$ cd /
+$ ls
+dir a
+dir c
+$ cd a
+$ ls
+99 b
+$ cd ..
+$ cd c
+$ ls
+98 d
+]]
+
+    local root = parser.Parse(terminalOutput)
+    local actual = fs.ToString(root)
+
+    lu.assertEquals(actual,
+[[/ (dir)
++-- a (dir)
+    +-- b (file, size=99)
++-- c (dir)
+    +-- d (file, size=98)
+]])
+end
+
 return TestTerminalOutputParser

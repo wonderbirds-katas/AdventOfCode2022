@@ -45,7 +45,21 @@ local function TryParseChangeDirectory(line, currentDirectory)
     local dirname
     _, _, dirname = string.find(line, cdCommandAndDirectoryPattern)
     if dirname ~= nil then
-        return fs.FindSubDirectory(dirname, currentDirectory)
+        local subDir = fs.FindSubDirectory(dirname, currentDirectory)
+        if subDir ~= nil then
+            return subDir
+        else
+            print ("ERROR: Directory '" .. dirname .. "' not found.")
+        end
+    end
+    return currentDirectory
+end
+
+local function TryParseChangeToParentDirectory(line, currentDirectory)
+    local cdCommandAndDirectoryPattern = "$ cd .."
+    found = string.find(line, cdCommandAndDirectoryPattern)
+    if found ~= nil then
+        return fs.GetParent(currentDirectory)
     end
     return currentDirectory
 end
@@ -59,6 +73,7 @@ function M.Parse(terminalOutput)
     local line
     local currentDirectory = result
     for _, line in ipairs(lines) do
+        currentDirectory = TryParseChangeToParentDirectory(line, currentDirectory)
         currentDirectory = TryParseChangeDirectory(line, currentDirectory)
         TryParseFileAndAddToDirectory(line, currentDirectory)
         TryParseDirectoryAndAddToDirectory(line, currentDirectory)
