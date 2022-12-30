@@ -96,4 +96,63 @@ $ ls
 ]])
 end
 
+function TestTerminalOutputParser.test_comprehensive_representative_command_list()
+    local terminalOutput = [[$ cd /
+$ ls
+dir a
+dir l
+dir m
+$ cd a
+$ ls
+dir b
+dir e
+dir i
+500 j
+0 k
+$ cd b
+$ ls
+100 c
+200 d
+$ cd ..
+$ cd e
+$ ls
+dir f
+300 g
+400 h
+$ cd f
+$ ls
+$ cd ..
+$ cd ..
+$ cd i
+$ ls
+$ cd ..
+$ cd ..
+$ cd l
+$ ls
+$ cd ..
+$ cd m
+$ ls
+]]
+
+    local root = parser.Parse(terminalOutput)
+    local actual = fs.ToString(root)
+
+    lu.assertEquals(actual,
+[[/ (dir)
++-- a (dir)
+    +-- b (dir)
+        +-- c (file, size=100)
+        +-- d (file, size=200)
+    +-- e (dir)
+        +-- f (dir)
+        +-- g (file, size=300)
+        +-- h (file, size=400)
+    +-- i (dir)
+    +-- j (file, size=500)
+    +-- k (file, size=0)
++-- l (dir)
++-- m (dir)
+]])
+end
+
 return TestTerminalOutputParser
