@@ -128,4 +128,16 @@ function M.ToList(node)
 	return result
 end
 
+function M.TotalSize(node)
+	if not M.IsDir(node) then
+		print("ERROR: '" .. node.name .. "' is not a directory.")
+		return nil
+	elseif node.totalSize == nil then
+		print("ERROR: Before accessing TotalSize, call CalculateTotalDirectorySizes.")
+		return nil
+	end
+
+	return node.totalSize
+end
+
 return M
