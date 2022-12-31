@@ -6,6 +6,8 @@ function M.FilterAndSumDirectorySizes(input)
 	local root = parser.Parse(input)
 	fs.CalculateTotalDirectorySizes(root)
 
+	-- totalSizeByDirectory = map(root, function(node) if not fs.IsDir(node) return 0 end return node.totalSize end)
+
 	-- TODO: Sum sizes of dirs < 100.000
 
 	local sum = 0
