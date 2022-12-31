@@ -57,7 +57,7 @@ $ ls
 42 some_file
 ]]
     local actual = f.FilterAndSumDirectorySizes(input)
-    lu.assertEquals(actual, 42)
+    lu.assertEquals(actual, 42*2) -- because / also has a size of 42.
 end
 
 function TestFilterAndSumDirectorySizes:test_root_directory_contains_2_folders_with_1_file_in_each_having_different_sizes()
@@ -80,7 +80,7 @@ $ ls
 29 file_c
 ]]
     local actual = f.FilterAndSumDirectorySizes(input)
-    lu.assertEquals(actual, 13+23+29)
+    lu.assertEquals(actual, (13+23+29)*2) -- *2, because / has the sum size of its child directories
 end
 
 function TestFilterAndSumDirectorySizes:test_root_directory_contains_1_file__of_size_100001()

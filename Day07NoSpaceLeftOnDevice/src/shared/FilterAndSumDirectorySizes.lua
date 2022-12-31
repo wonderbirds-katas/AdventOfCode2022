@@ -1,32 +1,19 @@
 local parser = require('TerminalOutputParser')
 local fs = require('FileSystem')
+local mfr = require('MapFilterReduce')
 local M = {}
 
 function M.FilterAndSumDirectorySizes(input)
 	local root = parser.Parse(input)
 	fs.CalculateTotalDirectorySizes(root)
-
-	-- totalSizeByDirectory = map(root, function(node) if not fs.IsDir(node) return 0 end return node.totalSize end)
-
-	-- TODO: Sum sizes of dirs < 100.000
-
-	local sum = 0
-	local startIndex = 0
-	local endIndex = -1
-	local size
-
-	repeat
-		_, endIndex, size = string.find(input, "(%d+)", endIndex + 1)
-		if size ~= nil then
-			sum = sum + size
-		end
-	until size == nil
-
-	if sum > 100000 then
+	nodes = fs.ToList(root)
+	onlyDirectories = mfr.Filter(nodes, function(node) return fs.IsDir(node) end)
+	totalSize = mfr.Reduce(onlyDirectories, 0, function(acc, dir) return acc + dir.totalSize end)
+	
+	if totalSize > 100000 then
 		return 0
 	end
-
-	return tonumber(sum)
+	return totalSize
 end
 
 return M
