@@ -5,6 +5,8 @@ name: .NET
 
 on:
   push:
+    paths-ignore:
+      - 'Day07NoSpaceLeftOnDevice/**'
   pull_request:
     branches: [ "main" ]
 

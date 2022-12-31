@@ -1,8 +1,9 @@
 # Puzzles of Advent of Code '22
 
-[![Build Status Badge](https://github.com/wonderbirds-katas/AdventOfCode2022/workflows/.NET/badge.svg)](https://github.com/wonderbirds-katas/AdventOfCode2022/actions?query=workflow%3A%22.NET%22)
+[![.NET Build Status Badge](https://github.com/wonderbirds-katas/AdventOfCode2022/workflows/.NET/badge.svg)](https://github.com/wonderbirds-katas/AdventOfCode2022/actions?query=workflow%3A%22.NET%22)
+[![Lua Tests Status Badge](https://github.com/wonderbirds-katas/AdventOfCode2022/workflows/Lua/badge.svg)](https://github.com/wonderbirds-katas/AdventOfCode2022/actions?query=workflow%3A%22Lua%22)
 
-This repository contains C# solutions for the [Advent of Code 2022](https://adventofcode.com/2022/) puzzles.
+This repository contains C# and Lua solutions for the [Advent of Code 2022](https://adventofcode.com/2022/) puzzles.
 
 ## Thanks
 
@@ -25,14 +26,15 @@ dotnet test
 
 Instructions to run each puzzle are contained in the corresponding subfolder.
 
-- [Day 1: Calorie Counting](./Day01CountCalories)
-- [Day 2: Rock Paper Scissors](./Day02RockPaperScissors)
-- [Day 3: Rucksack Reorganization](./Day03RucksackReorganization)
-- [Day 4: Camp Cleanup](./Day04CampCleanup)
-- [Day 5: Supply Stacks](./Day05SupplyStacks)
-- [Day 6: Tuning Trouble](./Day06TuningTrouble)
+- C# [Day 1: Calorie Counting](./Day01CountCalories)
+- C# [Day 2: Rock Paper Scissors](./Day02RockPaperScissors)
+- C# [Day 3: Rucksack Reorganization](./Day03RucksackReorganization)
+- C# [Day 4: Camp Cleanup](./Day04CampCleanup)
+- C# [Day 5: Supply Stacks](./Day05SupplyStacks)
+- C# [Day 6: Tuning Trouble](./Day06TuningTrouble)
+- Lua [Day 7: NoSpaceLeftOnDevice](./Day07NoSpaceLeftOnDevice)
 
-## Implement the Next Puzzle
+## Implement the Next Puzzle in C#
 
 1. Run [./generate-projects.sh](./generate-projects.sh) to create new project from the [TemplateProjects](./TemplateProjects) folder
 2. Copy the name of the new folder to the clipboard - you'll need it several times

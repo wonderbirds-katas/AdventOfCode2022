@@ -1,0 +1,3 @@
+[submodule "Day07NoSpaceLeftOnDevice/luaunit"]
+	path = Day07NoSpaceLeftOnDevice/luaunit
+	url = https://github.com/bluebird75/luaunit.git
