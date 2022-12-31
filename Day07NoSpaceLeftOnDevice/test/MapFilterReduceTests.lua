@@ -83,4 +83,43 @@ function TestMapFilterReduce.test_reduce_multiple_item_list_and_func_multiplies_
     lu.assertEquals(actual, expected)
 end
 
+function TestMapFilterReduce.test_consume_empty_list()
+    local numberOfConsumerCalls = 0
+    local function consumer(x)
+        numberOfConsumerCalls = numberOfConsumerCalls + 1
+    end
+
+    local list = {}
+    m.Consume(list, consumer)
+
+    lu.assertEquals(numberOfConsumerCalls, 0)
+end
+
+function TestMapFilterReduce.test_consume_single_item_list()
+    local numberOfConsumerCalls = 0
+    local function consumer(x)
+        numberOfConsumerCalls = numberOfConsumerCalls + 1
+    end
+
+    local list = { "a" }
+    m.Consume(list, consumer)
+
+    lu.assertEquals(numberOfConsumerCalls, 1)
+end
+
+function TestMapFilterReduce.test_consume_multiple_items_list()
+    local numberOfConsumerCalls = 0
+    local lastConsumerValue
+    local function consumer(x)
+        numberOfConsumerCalls = numberOfConsumerCalls + 1
+        lastConsumerValue = x
+    end
+
+    local list = { "a", "b", "c" }
+    m.Consume(list, consumer)
+
+    lu.assertEquals(numberOfConsumerCalls, 3)
+    lu.assertEquals(lastConsumerValue, "c")
+end
+
 return TestMapFilterReduce

@@ -32,4 +32,10 @@ function M.Reduce(list, accumulator, bifunc)
     return result
 end
 
+function M.Consume(list, consumerFunc)
+    for _, value in ipairs(list) do
+        consumerFunc(value)
+    end
+end
+
 return M
