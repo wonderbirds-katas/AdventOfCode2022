@@ -22,4 +22,14 @@ function M.Filter(list, predicate)
     return result
 end
 
+function M.Reduce(list, accumulator, bifunc)
+    local result = accumulator
+
+    for _, value in ipairs(list) do
+        result = bifunc(result, value)
+    end
+
+    return result
+end
+
 return M

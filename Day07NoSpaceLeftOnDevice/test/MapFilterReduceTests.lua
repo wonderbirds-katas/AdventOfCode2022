@@ -50,4 +50,37 @@ function TestMapFilterReduce.test_map_multiple_item_list_and_func_is_true_when_e
     lu.assertEquals(actual, expected)
 end
 
+function TestMapFilterReduce.test_reduce_empty_list_accumulator_0()
+    local list = {}
+    local actual = m.Reduce(list, 0, function(accumulator, x) return 0 end)
+    lu.assertEquals(actual, 0)
+end
+
+function TestMapFilterReduce.test_reduce_empty_list_accumulator_42()
+    local list = {}
+    local actual = m.Reduce(list, 42, function(accumulator, x) return 0 end)
+    lu.assertEquals(actual, 42)
+end
+
+function TestMapFilterReduce.test_reduce_single_item_list_and_func_returns_42()
+    local list = { 1 }
+    local actual = m.Reduce(list, 0, function(accumulator, x) return 42 end)
+    local expected = 42
+    lu.assertEquals(actual, expected)
+end
+
+function TestMapFilterReduce.test_reduce_single_item_list_and_func_adds_arguments()
+    local list = { 1 }
+    local actual = m.Reduce(list, 1, function(accumulator, x) return accumulator + x end)
+    local expected = 2
+    lu.assertEquals(actual, expected)
+end
+
+function TestMapFilterReduce.test_reduce_multiple_item_list_and_func_multiplies_arguments()
+    local list = { 2, 4, 6 }
+    local actual = m.Reduce(list, 10, function(accumulator, x) return accumulator * x end)
+    local expected = 480
+    lu.assertEquals(actual, expected)
+end
+
 return TestMapFilterReduce
