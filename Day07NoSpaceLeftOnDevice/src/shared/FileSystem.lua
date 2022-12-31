@@ -107,4 +107,25 @@ function M.ToString(node, indent)
     return result
 end
 
+function M.ToList(node)
+	if node == nil then
+		return {}
+	end
+
+	local result = { node }
+
+	for _, child in ipairs(node.children) do
+		if M.IsDir(child) then
+			local childList = M.ToList(child)
+			for _, childNode in ipairs(childList) do
+				table.insert(result, childNode)
+			end
+		else
+			table.insert(result, child)
+		end
+	end
+
+	return result
+end
+
 return M
