@@ -89,8 +89,7 @@ function TestFilterAndSumDirectorySizes:test_root_directory_contains_1_file__of_
     lu.assertEquals(actual, 0)
 end
 
--- TODO activate this test next by removing the "x" in front of "test"
-function TestFilterAndSumDirectorySizes:xtest_1_of_2_folders_too_large()
+function TestFilterAndSumDirectorySizes:test_1_of_2_folders_too_large()
     local input =
 [[$ cd /
 $ ls
