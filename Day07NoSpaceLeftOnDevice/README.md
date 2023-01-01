@@ -1,6 +1,7 @@
 # Day 7: No Space Left On Device
 
-→ [Puzzle Instructions](./PUZZLE.md)
+- [Puzzle Instructions for Part 1](./PUZZLE-PART-1.md)
+- [Puzzle Instructions for Part 2](./PUZZLE-PART-2.md)
 
 ## Run with Lua
 

@@ -1,6 +1,6 @@
 # Day 7: No Space Left On Device
 
-This file is a copy of the [original puzzle instructions](https://adventofcode.com/2022/day/7):
+This file is a copy of the [original puzzle instructions, part 1](https://adventofcode.com/2022/day/7):
 
 You can hear birds chirping and raindrops hitting leaves as the expedition proceeds. Occasionally, you can even hear
 much louder sounds in the distance; how big do the animals get out here, anyway?
@@ -105,3 +105,7 @@ Find all of the directories with a total size of at most 100000. **What is the s
 directories?**
 
 To begin, [get your puzzle input](./input.txt).
+
+***
+
+Next: [Puzzle Instructions for Part 2](./PUZZLE-PART-2.md)
