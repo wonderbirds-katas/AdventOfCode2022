@@ -12,6 +12,14 @@ local function IsDirectorySmallEnough(directory)
 end
 
 function M.FilterAndSumDirectorySizes(input)
+	-- TODO: Follow the Approach to solving part 2:
+	-- 1. Find the minimum required space X
+	-- 2. List all directories >= X
+	-- 3. What is the size of the the smallest directory >= X?
+
+	-- Current step:
+	-- TODO Create an integration test running the application on an input file
+
 	local rootDirectory = parser.Parse(input)
 	fs.CalculateTotalDirectorySizes(rootDirectory)
 	local allDirectoryEntries = fs.ToList(rootDirectory)
