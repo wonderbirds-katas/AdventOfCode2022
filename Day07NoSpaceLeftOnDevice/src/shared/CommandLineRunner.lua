@@ -8,13 +8,11 @@ local function ReadFile(path)
     fileContents = file:read("a")
     file:close()
 
-    return fileContents
+    return stringOps.SplitLines(fileContents)
 end
 
 function M.Run(inputFileName)
-    local fileContents = ReadFile(inputFileName)
-    local inputFileLines = stringOps.SplitLines(fileContents)
-
+    local inputFileLines = ReadFile(inputFileName)
     local result = f.FilterAndSumDirectorySizes(inputFileLines)
     print("" .. result)
 end
