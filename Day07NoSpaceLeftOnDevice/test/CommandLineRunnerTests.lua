@@ -13,11 +13,12 @@ function TestCommandLineRunner.tearDown()
 end
 
 function TestCommandLineRunner.test_advent_of_code_sample_data()
-    local inputFile = 'data/advent_of_code_example.txt'
+    local inputFile = 'test/data/advent_of_code_example.txt'
+
     clr.Run(inputFile)
 
-    local expected = 95437
-    pai.AssertSavedOutputContains("" .. expected)
+    local expected = "95437"
+    pai.AssertSavedOutputContains(expected)
 end
 
 return TestCommandLineRunner

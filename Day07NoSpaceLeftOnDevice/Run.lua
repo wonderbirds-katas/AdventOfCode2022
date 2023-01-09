@@ -1,4 +1,4 @@
-local f = require("FilterAndSumDirectorySizes")
-local input = io.read("*a")
+local clr = require('CommandLineRunner')
 
-print(f.FilterAndSumDirectorySizes(input))
+local inputFileName = arg[1]
+clr.Run(inputFileName)

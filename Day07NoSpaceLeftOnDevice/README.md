@@ -7,7 +7,7 @@
 
 ### Get Lua by Using a Visual Studio Code Dev Container
 
-If you don't have Lua, then use the configured [Dev
+If Lua is not installed on your system, then use the configured [Dev
 Container](https://code.visualstudio.com/docs/devcontainers/create-dev-container) for Visual Studio Code. Run the
 command **Dev Containers: Open Folder in Container** from the Visual Studio Code command palette to start a a lua ready
 terminal. From there you can run the application.
@@ -15,7 +15,7 @@ terminal. From there you can run the application.
 ### Run the Application with Lua
 
 ```shell
-cat input.txt | LUA_PATH="$PWD/src/shared/?.lua" lua Run.lua
+LUA_PATH="$PWD/src/shared/?.lua" lua Run.lua input.txt
 ```
 
 You can leave the dev container by selecting **Dev Containers: Reopen Folder Locally** from the command palette.

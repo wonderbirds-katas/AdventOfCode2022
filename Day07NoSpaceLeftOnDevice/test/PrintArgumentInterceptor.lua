@@ -67,7 +67,7 @@ end
 
 function M.AssertSavedOutputContains(expected)
     local savedOutputAsString = ConvertSavedOutputToString()
-    local msg = string.format("expected captured output to contain: %s\nThe following output has been captured: %s",
+    local msg = string.format("expected captured output to contain: '%s'\nThe following output has been captured: '%s'",
         expected, savedOutputAsString)
 
     assert(IsContainedInSavedOutput(expected), msg)

@@ -2,26 +2,6 @@ local fs = require('FileSystem')
 
 local M = {}
 
-local function SplitLines(text)
-    local lengthOfText = string.len(text)
-    local endOfLine = -1
-    local result = {}
-
-    repeat
-        local startOfLine = endOfLine + 1
-        
-        endOfLine = string.find(text, "\n", startOfLine)
-        if endOfLine == nil then
-            endOfLine = lengthOfText
-        end
-
-        local line = string.sub(text, startOfLine, endOfLine - 1)
-        table.insert(result, line)
-    until endOfLine == lengthOfText
-
-    return result
-end
-
 local function TryParseFileAndAddToDirectory(line, directoryNode)
     local fileSizeAndNamePattern = "(%d+)%s(.+)"
     local size, filename
@@ -59,15 +39,12 @@ local function TryParseChangeDirectory(line, currentDirectory)
     return currentDirectory
 end
 
-function M.Parse(terminalOutput)
-    
-    local lines = SplitLines(terminalOutput)
-
+function M.Parse(inputFileLines)
     local result = fs.CreateDirectory("/", nil)
 
     local line
     local currentDirectory = result
-    for _, line in ipairs(lines) do
+    for _, line in ipairs(inputFileLines) do
         currentDirectory = TryParseChangeDirectory(line, currentDirectory)
         TryParseFileAndAddToDirectory(line, currentDirectory)
         TryParseDirectoryAndAddToDirectory(line, currentDirectory)

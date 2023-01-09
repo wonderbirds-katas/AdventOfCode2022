@@ -11,7 +11,7 @@ local function IsDirectorySmallEnough(directory)
 	return fs.TotalSize(directory) <= 100000
 end
 
-function M.FilterAndSumDirectorySizes(input)
+function M.FilterAndSumDirectorySizes(inputFileLines)
 	-- TODO: Follow the Approach to solving part 2:
 	-- 1. Find the minimum required space X
 	-- 2. List all directories >= X
@@ -20,7 +20,7 @@ function M.FilterAndSumDirectorySizes(input)
 	-- Current step:
 	-- TODO Create an integration test running the application on an input file
 
-	local rootDirectory = parser.Parse(input)
+	local rootDirectory = parser.Parse(inputFileLines)
 	fs.CalculateTotalDirectorySizes(rootDirectory)
 	local allDirectoryEntries = fs.ToList(rootDirectory)
 	local onlyDirectories = mfr.Filter(allDirectoryEntries, fs.IsDir)
