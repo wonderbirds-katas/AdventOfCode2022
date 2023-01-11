@@ -33,11 +33,6 @@ jobs:
         git submodule init
         git submodule update
 
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
-      with:
-        limit-access-to-actor: true
-
     - name: Test
       run: |
         cd ./Day07NoSpaceLeftOnDevice
