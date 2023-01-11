@@ -20,7 +20,10 @@ LUA_PATH="$PWD/src/shared/?.lua" lua Run.lua input.txt
 
 You can leave the dev container by selecting **Dev Containers: Reopen Folder Locally** from the command palette.
 
-## Run with Roblox Studio
+## BROKEN - Run with Roblox Studio
+
+Unfortunately the project does not run in Roblox at the moment. The `require` statements in this repository are
+not processed by Roblox as I would have expected.
 
 ### Prerequisites
 

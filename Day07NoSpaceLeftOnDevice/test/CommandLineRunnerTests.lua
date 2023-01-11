@@ -17,7 +17,7 @@ function TestCommandLineRunner.test_advent_of_code_sample_data()
 
     clr.Run(inputFile)
 
-    local expected = "95437"
+    local expected = "24933642"
     pai.AssertSavedOutputContains(expected)
 end
 

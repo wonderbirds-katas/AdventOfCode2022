@@ -1,8 +1,14 @@
 local M = {}
 
+function M.print(listOfLines)
+    for _, line in ipairs(listOfLines) do
+        print (line)
+    end
+end
+
 function M.SplitLines(text)
     local lengthOfText = string.len(text)
-    local endOfLine = -1
+    local endOfLine = 0
     local result = {}
 
     repeat
@@ -10,12 +16,12 @@ function M.SplitLines(text)
         
         endOfLine = string.find(text, "\n", startOfLine)
         if endOfLine == nil then
-            endOfLine = lengthOfText
+            endOfLine = lengthOfText + 1
         end
 
         local line = string.sub(text, startOfLine, endOfLine - 1)
         table.insert(result, line)
-    until endOfLine == lengthOfText
+    until endOfLine > lengthOfText
 
     return result
 end

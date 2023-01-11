@@ -3,31 +3,38 @@ local fs = require('FileSystem')
 local mfr = require('MapFilterReduce')
 local M = {}
 
-local function SumTotalSize(accumulator, directory)
-	return accumulator + fs.TotalSize(directory)
+local minimumSizeToDelete = 0
+
+local function MinimumTotalSize(accumulator, directory)
+	local dirSize = fs.TotalSize(directory)
+	if dirSize < accumulator then
+		return dirSize
+	end
+
+	return accumulator
 end
 
-local function IsDirectorySmallEnough(directory)
-	return fs.TotalSize(directory) <= 100000
+local function IsDirectoryLargeEnough(directory)
+	return fs.TotalSize(directory) >= minimumSizeToDelete
 end
 
 function M.FilterAndSumDirectorySizes(inputFileLines)
-	-- TODO: Follow the Approach to solving part 2:
-	-- 1. Find the minimum required space X
-	-- 2. List all directories >= X
-	-- 3. What is the size of the the smallest directory >= X?
-
-	-- Current step:
-	-- TODO Create an integration test running the application on an input file
+	local totalDiskSpace = 70000000
+	local requiredDiskSpace = 30000000
+	local allowedRootSize = totalDiskSpace - requiredDiskSpace
 
 	local rootDirectory = parser.Parse(inputFileLines)
 	fs.CalculateTotalDirectorySizes(rootDirectory)
+
+	local rootSize = fs.TotalSize(rootDirectory)
+	minimumSizeToDelete = rootSize - allowedRootSize
+
 	local allDirectoryEntries = fs.ToList(rootDirectory)
 	local onlyDirectories = mfr.Filter(allDirectoryEntries, fs.IsDir)
-	local onlySmallDirectories = mfr.Filter(onlyDirectories, IsDirectorySmallEnough)
-	local totalSize = mfr.Reduce(onlySmallDirectories, 0, SumTotalSize)
+	local onlyLargeEnoughDirectories = mfr.Filter(onlyDirectories, IsDirectoryLargeEnough)
+	local minimumSizeToFree = mfr.Reduce(onlyLargeEnoughDirectories, rootSize, MinimumTotalSize)
 	
-	return totalSize
+	return minimumSizeToFree
 end
 
 return M
