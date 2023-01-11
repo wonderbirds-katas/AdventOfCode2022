@@ -8,7 +8,6 @@ local minimumSizeToDelete = 0
 local function MinimumTotalSize(accumulator, directory)
 	local dirSize = fs.TotalSize(directory)
 	if dirSize < accumulator then
-		print ('Name of smaller Dir: ' .. directory.name .. ', size: ' .. dirSize)
 		return dirSize
 	end
 
