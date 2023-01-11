@@ -10,12 +10,12 @@ This repository contains C# and Lua solutions for the [Advent of Code 2022](http
 Many thanks to [JetBrains](https://www.jetbrains.com/?from=dotnet-starter) who provide
 an [Open Source License](https://www.jetbrains.com/community/opensource/) for this project ❤️.
 
-## Build and Test all Puzzles
+## Build and Test all C# Puzzles
 
-The puzzle solutions are implemented as console programs writing the result to the standard
+Most puzzle solutions are implemented as C# console programs writing the result to the standard
 output. Each puzzle has its dedicated folder.
 
-To build everything and run all tests at once, type
+To build and run tests for all C# puzzles at once, type
 
 ```sh
 dotnet build
