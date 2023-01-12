@@ -37,4 +37,13 @@ public class VisibleTreesCounterTests
         var actual = VisibleTreesCounter.CountTreesVisibleFromLeft(treeHeightGrid);
         actual.Should().Be(1);
     }
+
+    [Theory]
+    [InlineData("89")]
+    public void CountTreesVisibleFromLeft_TwoTreesWithAscendingHeight_Returns2(string treeHeightRow)
+    {
+        var treeHeightGrid = new []{ treeHeightRow };
+        var actual = VisibleTreesCounter.CountTreesVisibleFromLeft(treeHeightGrid);
+        actual.Should().Be(2);
+    }
 }
