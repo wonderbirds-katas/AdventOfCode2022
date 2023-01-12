@@ -6,7 +6,7 @@ public static class VisibleTreesCounter
     {
         if (treeHeightGrid.Any())
         {
-            var treeHeights = treeHeightGrid[0].Select(c => int.Parse(c.ToString())).ToList();
+            var treeHeights = ParseTreeHeightString(treeHeightGrid[0]);
             var count = 1;
             var previous = treeHeights[0];
             foreach (var next in treeHeights.Skip(1))
@@ -19,5 +19,10 @@ public static class VisibleTreesCounter
             return count;
         }
         return 0;
+    }
+
+    private static List<int> ParseTreeHeightString(string treeHeightString)
+    {
+        return treeHeightString.Select(c => int.Parse(c.ToString())).ToList();
     }
 }
