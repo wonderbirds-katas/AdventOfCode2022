@@ -46,4 +46,6 @@ public class VisibleTreesCounterTests
         var actual = VisibleTreesCounter.CountTreesVisibleFromLeft(treeHeightGrid);
         actual.Should().Be(2);
     }
+    
+    // TODO: Handle edge case of empty string in input tree patch string list
 }
