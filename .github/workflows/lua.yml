@@ -15,6 +15,7 @@ on:
       - 'Day04CampCleanup/**'
       - 'Day05SupplyStacks/**'
       - 'Day06TuningTrouble/**'
+      - 'Day08TreetopTreeHouse/**'
   pull_request:
     branches: [ "main" ]
 

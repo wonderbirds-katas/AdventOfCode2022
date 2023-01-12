@@ -47,3 +47,4 @@ Instructions to run each puzzle are contained in the corresponding subfolder.
 8. Run the tests
 9. Update README.md for the new project (adopt the README.md from an existing puzzle solution)
 10. Update the associated build pipeline in [.github/workflows](./.github/workflows)
+11. Remember to exclude the new directory from builds for other languages.
