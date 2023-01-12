@@ -32,7 +32,8 @@ Instructions to run each puzzle are contained in the corresponding subfolder.
 - C# [Day 4: Camp Cleanup](./Day04CampCleanup)
 - C# [Day 5: Supply Stacks](./Day05SupplyStacks)
 - C# [Day 6: Tuning Trouble](./Day06TuningTrouble)
-- Lua [Day 7: NoSpaceLeftOnDevice](./Day07NoSpaceLeftOnDevice)
+- Lua [Day 7: No Space Left on Device](./Day07NoSpaceLeftOnDevice)
+- C# [Day 8: Treetop Tree House](./Day08TreetopTreeHouse)
 
 ## Implement the Next Puzzle in C#
 
