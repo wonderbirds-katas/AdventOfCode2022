@@ -46,3 +46,4 @@ Instructions to run each puzzle are contained in the corresponding subfolder.
 7. Edit the `.csproj` of the test project and fix the dependency to the console application project
 8. Run the tests
 9. Update README.md for the new project (adopt the README.md from an existing puzzle solution)
+10. Update the associated build pipeline in [.github/workflows](./.github/workflows)
