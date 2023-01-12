@@ -39,12 +39,14 @@ public class VisibleTreesCounterTests
     }
 
     [Theory]
-    [InlineData("89")]
-    public void CountTreesVisibleFromLeft_TwoTreesWithAscendingHeight_Returns2(string treeHeightRow)
+    [InlineData("89", 2)]
+    [InlineData("789", 3)]
+    [InlineData("6789", 4)]
+    public void CountTreesVisibleFromLeft_TreesWithAscendingHeight_ReturnsCorrectNumber(string treeHeightRow, int expected)
     {
         var treeHeightGrid = new []{ treeHeightRow };
         var actual = VisibleTreesCounter.CountTreesVisibleFromLeft(treeHeightGrid);
-        actual.Should().Be(2);
+        actual.Should().Be(expected);
     }
     
     // TODO: Handle edge case of empty string in input tree patch string list
