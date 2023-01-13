@@ -4,14 +4,16 @@ public static class VisibleTreesCounter
 {
     public static int CountTreesVisibleFromLeft(IList<string> treeHeightGrid)
     {
-        if (treeHeightGrid.Any())
-        {
-            var treeHeights = ParseTreeHeightString(treeHeightGrid[0]);
-            var count = CountTreesLargerThanLeftNeighbour(treeHeights);
-            return 1 + count;
-        }
-        return 0;
+        if (!treeHeightGrid.Any()) return 0;
+        
+        var treeHeights = ParseTreeHeightString(treeHeightGrid[0]);
+        var count = CountTreesLargerThanLeftNeighbour(treeHeights);
+        
+        return 1 + count;
     }
+
+    private static IList<int> ParseTreeHeightString(string treeHeightString)
+        => treeHeightString.Select(c => int.Parse(c.ToString())).ToList();
 
     private static int CountTreesLargerThanLeftNeighbour(IList<int> treeHeights)
     {
@@ -25,17 +27,11 @@ public static class VisibleTreesCounter
     {
         var (count, highest) = accumulator;
         
-        if (next > highest)
-        {
-            count++;
-            highest = next;
-        }
+        if (next <= highest) return (count, highest);
+
+        count++;
+        highest = next;
 
         return (count, highest);
-    }
-
-    private static List<int> ParseTreeHeightString(string treeHeightString)
-    {
-        return treeHeightString.Select(c => int.Parse(c.ToString())).ToList();
     }
 }
