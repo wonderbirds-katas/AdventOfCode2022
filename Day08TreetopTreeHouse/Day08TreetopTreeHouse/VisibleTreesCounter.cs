@@ -23,6 +23,8 @@ public static class VisibleTreesCounter
             {
                 count++;
             }
+
+            previous = next;
         }
 
         return count;
