@@ -45,6 +45,8 @@ public class VisibleTreesCounterTests
     [InlineData("121", 2)]
     [InlineData("213", 2)]
     [InlineData("2354", 3)]
+    [InlineData("2756", 2)]
+    [InlineData("2858", 2)]
     public void CountTreesVisibleFromLeft_TreesWithAlternatingHeight_ReturnsCorrectNumber(string treeHeightRow, int expected)
         => GivenRowOfTreeHeights(treeHeightRow)
             .WhenCountingVisibleFromLeft()

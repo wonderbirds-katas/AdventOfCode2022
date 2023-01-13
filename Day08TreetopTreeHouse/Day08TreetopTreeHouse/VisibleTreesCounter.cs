@@ -16,15 +16,14 @@ public static class VisibleTreesCounter
     private static int CountTreesLargerThanLeftNeighbour(IList<int> treeHeights)
     {
         var count = 0;
-        var previous = treeHeights[0];
+        var highest = treeHeights[0];
         foreach (var next in treeHeights.Skip(1))
         {
-            if (next > previous)
+            if (next > highest)
             {
                 count++;
+                highest = next;
             }
-
-            previous = next;
         }
 
         return count;
