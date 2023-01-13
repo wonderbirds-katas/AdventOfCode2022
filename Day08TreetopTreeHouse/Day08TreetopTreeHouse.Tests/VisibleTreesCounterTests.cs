@@ -11,35 +11,35 @@ public class VisibleTreesCounterTests
 
     [Fact]
     public void CountTreesVisibleFromLeft_SingleTree_Returns1()
-        => GivenRowOfTreeHeights("9")
-            .WhenCountingVisibleFromLeft()
-            .ThenReturn(1);
+        => GivenThisRowOfTreeHeights("9")
+            .WhenCountingTreesVisibleFromLeft()
+            .ThenItReturns(1);
 
     [Theory]
     [InlineData("99")]
     [InlineData("11")]
     [InlineData("00")]
     public void CountTreesVisibleFromLeft_TwoTreesWithSameHeight_Returns1(string treeHeightRow)
-        => GivenRowOfTreeHeights(treeHeightRow)
-            .WhenCountingVisibleFromLeft()
-            .ThenReturn(1);
+        => GivenThisRowOfTreeHeights(treeHeightRow)
+            .WhenCountingTreesVisibleFromLeft()
+            .ThenItReturns(1);
 
     [Theory]
     [InlineData("98")]
     [InlineData("10")]
     public void CountTreesVisibleFromLeft_TwoTreesWithDescendingHeight_Returns1(string treeHeightRow)
-        => GivenRowOfTreeHeights(treeHeightRow)
-            .WhenCountingVisibleFromLeft()
-            .ThenReturn(1);
+        => GivenThisRowOfTreeHeights(treeHeightRow)
+            .WhenCountingTreesVisibleFromLeft()
+            .ThenItReturns(1);
 
     [Theory]
     [InlineData("89", 2)]
     [InlineData("789", 3)]
     [InlineData("6789", 4)]
     public void CountTreesVisibleFromLeft_TreesWithAscendingHeight_ReturnsCorrectNumber(string treeHeightRow, int expected)
-        => GivenRowOfTreeHeights(treeHeightRow)
-            .WhenCountingVisibleFromLeft()
-            .ThenReturn(expected);
+        => GivenThisRowOfTreeHeights(treeHeightRow)
+            .WhenCountingTreesVisibleFromLeft()
+            .ThenItReturns(expected);
 
     [Theory]
     [InlineData("121", 2)]
@@ -48,13 +48,13 @@ public class VisibleTreesCounterTests
     [InlineData("2756", 2)]
     [InlineData("2858", 2)]
     public void CountTreesVisibleFromLeft_TreesWithAlternatingHeight_ReturnsCorrectNumber(string treeHeightRow, int expected)
-        => GivenRowOfTreeHeights(treeHeightRow)
-            .WhenCountingVisibleFromLeft()
-            .ThenReturn(expected);
+        => GivenThisRowOfTreeHeights(treeHeightRow)
+            .WhenCountingTreesVisibleFromLeft()
+            .ThenItReturns(expected);
 
     // TODO: Handle edge case of empty string in input tree patch string list
     
-    private static TestFixture GivenRowOfTreeHeights(string treeHeightRow)
+    private static TestFixture GivenThisRowOfTreeHeights(string treeHeightRow)
     {
         return new TestFixture(treeHeightRow);
     }
@@ -67,13 +67,13 @@ public class VisibleTreesCounterTests
         public TestFixture(string treeHeightRow)
             => _treeHeightRow = treeHeightRow;
 
-        public TestFixture WhenCountingVisibleFromLeft()
+        public TestFixture WhenCountingTreesVisibleFromLeft()
         {
             _numberOfTreesVisibleFromLeft = VisibleTreesCounter.CountTreesVisibleFromLeft(new[] {_treeHeightRow});
             return this;
         }
 
-        public void ThenReturn(int expected)
+        public void ThenItReturns(int expected)
             => _numberOfTreesVisibleFromLeft.Should().Be(expected);
     }
 }
