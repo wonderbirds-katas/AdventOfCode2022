@@ -19,14 +19,23 @@ public static class VisibleTreesCounter
         var highest = treeHeights[0];
         foreach (var next in treeHeights.Skip(1))
         {
-            if (next > highest)
-            {
-                count++;
-                highest = next;
-            }
+            (count, highest) = CountIfHighestAndUpdateHighest((count, highest), next);
         }
 
         return count;
+    }
+
+    private static (int count, int highest) CountIfHighestAndUpdateHighest((int count, int highest) accumulator, int next)
+    {
+        var (count, highest) = accumulator;
+        
+        if (next > highest)
+        {
+            count++;
+            highest = next;
+        }
+
+        return (count, highest);
     }
 
     private static List<int> ParseTreeHeightString(string treeHeightString)
