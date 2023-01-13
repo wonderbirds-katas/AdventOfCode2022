@@ -41,6 +41,14 @@ public class VisibleTreesCounterTests
             .WhenCountingVisibleFromLeft()
             .ThenReturn(expected);
 
+    [Theory]
+    [InlineData("121", 2)]
+    [InlineData("213", 2)]
+    public void CountTreesVisibleFromLeft_TreesWithAlternatingHeight_ReturnsCorrectNumber(string treeHeightRow, int expected)
+        => GivenRowOfTreeHeights(treeHeightRow)
+            .WhenCountingVisibleFromLeft()
+            .ThenReturn(expected);
+
     // TODO: Handle edge case of empty string in input tree patch string list
     
     private static TestFixture GivenRowOfTreeHeights(string treeHeightRow)
