@@ -3,7 +3,7 @@ namespace Day08TreetopTreeHouse;
 public static class Transposer
 {
     /// <summary>
-    /// Transpose matrix - rotate it by 90 degrees.
+    /// Transpose matrix - rotate it by 270 degrees.
     /// </summary>
     /// <seealso href="https://stackoverflow.com/questions/5039617/turning-an-ienumerableienumerablet-90-degrees">
     /// Implementation of the algorithm presented by Jeff Mercado
