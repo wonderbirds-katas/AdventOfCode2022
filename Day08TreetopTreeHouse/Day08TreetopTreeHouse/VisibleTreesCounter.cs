@@ -5,10 +5,15 @@ public static class VisibleTreesCounter
     public static int CountTreesVisibleFromLeft(IList<string> treeHeightGrid)
     {
         if (!treeHeightGrid.Any()) return 0;
-        
-        var treeHeights = ParseTreeHeightString(treeHeightGrid[0]);
+
+        return CountTreesInRowVisibleFromLeft(treeHeightGrid[0]);
+    }
+
+    private static int CountTreesInRowVisibleFromLeft(string treeHeightRowString)
+    {
+        var treeHeights = ParseTreeHeightString(treeHeightRowString);
         var count = CountTreesLargerThanLeftNeighbour(treeHeights);
-        
+
         return 1 + count;
     }
 
