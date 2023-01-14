@@ -3,6 +3,20 @@ namespace Day08TreetopTreeHouse.Tests;
 public class TransposerTests
 {
     [Fact]
+    public void NoRows()
+    {
+        var actual = Transposer.Transpose(Array.Empty<string>());
+        actual.Should().BeEmpty();
+    }
+
+    [Fact]
+    public void NoColumns()
+    {
+        var actual = Transposer.Transpose(new []{ "" });
+        actual.Should().BeEmpty();
+    }
+    
+    [Fact]
     public void SingleElement()
     {
         var actual = Transposer.Transpose(new [] { "a" });

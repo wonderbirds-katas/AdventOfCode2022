@@ -1,4 +1,4 @@
-namespace Day08TreetopTreeHouse.Tests;
+namespace Day08TreetopTreeHouse;
 
 public static class Transposer
 {
@@ -11,7 +11,8 @@ public static class Transposer
     public static IEnumerable<IEnumerable<char>> Transpose(IEnumerable<IEnumerable<char>> matrix)
     {
         var enumerators = matrix.Select(row => row.GetEnumerator()).ToArray();
-
+        if (!enumerators.Any()) yield break;
+        
         try
         {
             while (enumerators.All(x => x.MoveNext()))

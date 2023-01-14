@@ -4,17 +4,22 @@ public static class VisibleTreesCounter
 {
     public static int Count(IEnumerable<string> treeHeightGrid)
     {
-        var enumeratedGrid = treeHeightGrid.ToList();
+        var originalGrid = treeHeightGrid.ToList();
         
-        var fromLeft = enumeratedGrid
+        var fromLeft = originalGrid
             .Select(FromLeftCounter.Count)
             .Sum();
 
-        var fromRight = enumeratedGrid
-            .Select(Enumerable.Reverse)
+        var turned180degrees = originalGrid.Select(Enumerable.Reverse).ToList();
+        var fromRight = turned180degrees
+            .Select(FromLeftCounter.Count)
+            .Sum();
+
+        var turned270degrees = Transposer.Transpose(turned180degrees).ToList();
+        var fromTop = turned270degrees
             .Select(FromLeftCounter.Count)
             .Sum();
         
-        return fromLeft + fromRight;
+        return fromLeft + fromTop + fromRight;
     }
 }

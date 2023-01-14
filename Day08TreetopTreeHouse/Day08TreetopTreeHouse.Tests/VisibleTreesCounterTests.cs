@@ -10,16 +10,17 @@ public class VisibleTreesCounterTests
     }
 
     [Fact]
-    public void TwoMixedRows()
+    public void ThreeMixedRows()
     {
         var treeHeightGrid = new[]
         {
-            "175389", // 1, 7, 8, 9 are visible from left + 9    is  visible from the right
-            "042276", // 0, 4, 7    are visible from left + 6, 7 are visible from the right
-            "367475", // 3, 6, 7    are visible from left + 5, 7 are visible from the right
+            // 9 trees: (1, 3), (7), (5, 7), (3, 4), (8), (9) are visible from the top
+            "175389", // 5 trees: 1, 7, 8, 9 are visible from left + 9    is  visible from the right
+            "042276", // 5 trees: 0, 4, 7    are visible from left + 6, 7 are visible from the right
+            "367475", // 5 trees: 3, 6, 7    are visible from left + 5, 7 are visible from the right
         };
         
         var actual = VisibleTreesCounter.Count(treeHeightGrid);
-        actual.Should().Be(4 + 1 + 3 + 2 + 3 + 2);
+        actual.Should().Be(24);
     }
 }
