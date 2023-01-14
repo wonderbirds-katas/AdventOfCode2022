@@ -2,27 +2,12 @@ namespace Day08TreetopTreeHouse;
 
 public static class VisibleTreesCounter
 {
-    public static int Count(IEnumerable<string> treeHeightGrid)
+    public static int Count(string[] treeHeightGrid)
     {
-        var originalGrid = treeHeightGrid.ToList();
-
-        return CountVisibleFromLeft(originalGrid) 
-               + CountVisibleFromTop(originalGrid) 
-               + CountVisibleFromRight(originalGrid) 
-               + CountVisibleFromBottom(originalGrid);
-    }
-
-    private static int CountVisibleFromTop(List<string> originalGrid)
-    {
-        var turned270degrees = Transposer.Transpose(originalGrid.Select(Enumerable.Reverse).ToList());
-        var fromTop = CountVisibleFromLeft(turned270degrees);
-        return fromTop;
-    }
-
-    private static int CountVisibleFromRight(List<string> originalGrid)
-    {
-        var fromRight = CountVisibleFromLeft(originalGrid.Select(Enumerable.Reverse).ToList());
-        return fromRight;
+        return CountVisibleFromLeft(treeHeightGrid) 
+               + CountVisibleFromTop(treeHeightGrid) 
+               + CountVisibleFromRight(treeHeightGrid) 
+               + CountVisibleFromBottom(treeHeightGrid);
     }
 
     private static int CountVisibleFromLeft(IEnumerable<IEnumerable<char>> treeHeightGrid) =>
@@ -30,12 +15,15 @@ public static class VisibleTreesCounter
             .Select(FromLeftCounter.Count)
             .Sum();
 
-    private static int CountVisibleFromBottom(IEnumerable<string> originalGrid)
-    {
-        var fromBottomInput = originalGrid.ReverseRowsAndColumns().Transpose();
-        return CountVisibleFromLeft(fromBottomInput);
-    }
+    private static int CountVisibleFromTop(IEnumerable<IEnumerable<char>> originalGrid)
+        => CountVisibleFromLeft(originalGrid.Transpose());
 
-    private static IEnumerable<IEnumerable<char>> ReverseRowsAndColumns(this IEnumerable<string> originalGrid)
+    private static int CountVisibleFromRight(IEnumerable<IEnumerable<char>> originalGrid)
+        => CountVisibleFromLeft(originalGrid.ReverseRowsAndColumns());
+
+    private static int CountVisibleFromBottom(IEnumerable<IEnumerable<char>> originalGrid)
+        => CountVisibleFromLeft(originalGrid.ReverseRowsAndColumns().Transpose());
+
+    private static IEnumerable<IEnumerable<char>> ReverseRowsAndColumns(this IEnumerable<IEnumerable<char>> originalGrid)
         => originalGrid.Select(Enumerable.Reverse).Reverse();
 }
