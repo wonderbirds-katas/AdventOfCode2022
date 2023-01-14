@@ -4,6 +4,7 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine($"Input file is '{args[0]}'");
+        var numberOfVisibleTrees = VisibleTreesCounter.Count(File.ReadAllLines(args[0]));
+        Console.WriteLine(numberOfVisibleTrees);
     }
 }
