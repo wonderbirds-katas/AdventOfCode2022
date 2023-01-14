@@ -2,7 +2,7 @@ namespace Day08TreetopTreeHouse;
 
 public static class FromLeftCounter
 {
-    public static int Count(string treeHeightRowString)
+    public static int Count(IEnumerable<char> treeHeightRowString)
     {
         var treeHeights = ParseTreeHeightString(treeHeightRowString);
         var count = Count(treeHeights);
@@ -10,7 +10,7 @@ public static class FromLeftCounter
         return 1 + count;
     }
 
-    private static IList<int> ParseTreeHeightString(string treeHeightString)
+    private static IList<int> ParseTreeHeightString(IEnumerable<char> treeHeightString)
         => treeHeightString.Select(c => int.Parse(c.ToString())).ToList();
 
     private static int Count(IList<int> treeHeights)
