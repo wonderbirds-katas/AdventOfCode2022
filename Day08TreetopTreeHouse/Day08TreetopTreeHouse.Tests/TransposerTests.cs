@@ -6,6 +6,46 @@ public class TransposerTests
     public void SingleElement()
     {
         var actual = Transposer.Transpose(new [] { "a" });
-        actual.Should().ContainInOrder("a");
+        AssertEquals(new[] { "a" }, actual);
+    }
+
+    [Fact]
+    public void SingleRowWithTwoColumns()
+    {
+        var actual = Transposer.Transpose(new [] { "ab" });
+        AssertEquals(new[] {"a", "b"}, actual);
+    }
+
+    [Fact]
+    public void ThreeRowsWithFiveColumns()
+    {
+        var input = new []
+        {
+            "abcde",
+            "12345",
+            "vwxyz"
+        };
+        
+        var actual = Transposer.Transpose(input);
+
+        var expected = new[]
+        {
+            "a1v",
+            "b2w",
+            "c3x",
+            "d4y",
+            "e5z"
+        };
+        AssertEquals(expected, actual);
+    }
+
+    private static void AssertEquals(string[] expected, IEnumerable<IEnumerable<char>> actual)
+    {
+        var actualAsStringList = actual
+            .Select(row => new string(row.ToArray()))
+            .ToList();
+        
+        actualAsStringList.Should().ContainInConsecutiveOrder(expected);
+        actualAsStringList.Should().HaveCount(expected.Length);
     }
 }
