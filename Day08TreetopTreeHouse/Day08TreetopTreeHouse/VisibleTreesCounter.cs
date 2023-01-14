@@ -12,15 +12,6 @@ public static class VisibleTreesCounter
                + CountVisibleFromBottom(originalGrid);
     }
 
-    private static int CountVisibleFromBottom(List<string> originalGrid)
-    {
-        var temp = originalGrid.Select(Enumerable.Reverse).ToList().ToList();
-        temp.Reverse();
-        var fromBottomInput = Transposer.Transpose(temp);
-        var fromBottom = CountVisibleFromLeft(fromBottomInput);
-        return fromBottom;
-    }
-
     private static int CountVisibleFromTop(List<string> originalGrid)
     {
         var turned270degrees = Transposer.Transpose(originalGrid.Select(Enumerable.Reverse).ToList());
@@ -38,4 +29,13 @@ public static class VisibleTreesCounter
         treeHeightGrid
             .Select(FromLeftCounter.Count)
             .Sum();
+
+    private static int CountVisibleFromBottom(IEnumerable<string> originalGrid)
+    {
+        var fromBottomInput = originalGrid.ReverseRowsAndColumns().Transpose();
+        return CountVisibleFromLeft(fromBottomInput);
+    }
+
+    private static IEnumerable<IEnumerable<char>> ReverseRowsAndColumns(this IEnumerable<string> originalGrid)
+        => originalGrid.Select(Enumerable.Reverse).Reverse();
 }

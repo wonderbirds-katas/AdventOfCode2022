@@ -8,7 +8,7 @@ public static class Transposer
     /// <seealso href="https://stackoverflow.com/questions/5039617/turning-an-ienumerableienumerablet-90-degrees">
     /// Implementation of the algorithm presented by Jeff Mercado
     /// </seealso>
-    public static IEnumerable<IEnumerable<char>> Transpose(IEnumerable<IEnumerable<char>> matrix)
+    public static IEnumerable<IEnumerable<char>> Transpose(this IEnumerable<IEnumerable<char>> matrix)
     {
         var enumerators = matrix.Select(row => row.GetEnumerator()).ToArray();
         if (!enumerators.Any()) yield break;
