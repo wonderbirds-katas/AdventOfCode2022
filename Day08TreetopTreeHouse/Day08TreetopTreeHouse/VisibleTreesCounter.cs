@@ -2,11 +2,11 @@ namespace Day08TreetopTreeHouse;
 
 public static class VisibleTreesCounter
 {
-    public static int CountTreesVisibleFromLeft(IList<string> treeHeightGrid)
+    public static int CountTreesVisibleFromLeft(IEnumerable<string> treeHeightGrid)
     {
-        if (!treeHeightGrid.Any()) return 0;
-
-        return CountTreesInRowVisibleFromLeft(treeHeightGrid[0]);
+        return treeHeightGrid
+            .Select(CountTreesInRowVisibleFromLeft)
+            .Sum();
     }
 
     private static int CountTreesInRowVisibleFromLeft(string treeHeightRowString)

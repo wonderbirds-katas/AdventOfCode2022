@@ -1,14 +1,7 @@
 namespace Day08TreetopTreeHouse.Tests;
 
-public class VisibleTreesCounterTests
+public class CountSingleRowTests
 {
-    [Fact]
-    public void CountTreesVisibleFromLeft_EmptyPatch_Returns0()
-    {
-        var actual = VisibleTreesCounter.CountTreesVisibleFromLeft(Array.Empty<string>());
-        actual.Should().Be(0);
-    }
-
     [Fact]
     public void CountTreesVisibleFromLeft_SingleTree_Returns1()
         => GivenThisRowOfTreeHeights("9")
@@ -52,11 +45,11 @@ public class VisibleTreesCounterTests
             .WhenCountingTreesVisibleFromLeft()
             .ThenItReturns(expected);
 
-    // TODO: Handle edge case of empty string in input tree patch string list
+    // TODO: Handle edge case of empty string in input tree grid string list
     
-    private static TestFixture GivenThisRowOfTreeHeights(string treeHeightRow)
+    private static CountSingleRowTests.TestFixture GivenThisRowOfTreeHeights(string treeHeightRow)
     {
-        return new TestFixture(treeHeightRow);
+        return new CountSingleRowTests.TestFixture(treeHeightRow);
     }
 
     internal class TestFixture
@@ -67,7 +60,7 @@ public class VisibleTreesCounterTests
         public TestFixture(string treeHeightRow)
             => _treeHeightRow = treeHeightRow;
 
-        public TestFixture WhenCountingTreesVisibleFromLeft()
+        public CountSingleRowTests.TestFixture WhenCountingTreesVisibleFromLeft()
         {
             _numberOfTreesVisibleFromLeft = VisibleTreesCounter.CountTreesVisibleFromLeft(new[] {_treeHeightRow});
             return this;
