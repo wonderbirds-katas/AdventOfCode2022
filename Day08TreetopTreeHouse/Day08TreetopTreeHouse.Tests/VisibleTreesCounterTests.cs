@@ -10,6 +10,14 @@ public class VisibleTreesCounterTests
     }
 
     [Fact]
+    public void SingleTree()
+    {
+        var treeHeightGrid = new[] { "1" };
+        var actual = VisibleTreesCounter.Count(treeHeightGrid);
+        actual.Should().Be(1);
+    }
+
+    [Fact]
     public void ThreeMixedRows()
     {
         var treeHeightGrid = new[]
@@ -24,7 +32,7 @@ public class VisibleTreesCounterTests
         // 110011 - Sum: 4
         // 111111 - Sum: 6
         // Sum of visible trees: 6+4+6 = 16
-        var expected = 16;
+        const int expected = 16;
         
         var actual = VisibleTreesCounter.Count(treeHeightGrid);
         actual.Should().Be(expected);
