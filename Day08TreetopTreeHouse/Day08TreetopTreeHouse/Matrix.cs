@@ -29,7 +29,7 @@ class Matrix<T>
         get { return _matrix.GetLength(1); }
     }
 
-    public static Matrix<T> FromList(List<string> list, Func<string, T> parse)
+    public static Matrix<int> FromList(List<string> list)
     {
         if (list.Count == 0)
         {
@@ -42,12 +42,12 @@ class Matrix<T>
             throw new ArgumentException("All strings in the list must have the same length");
         }
 
-        Matrix<T> matrix = new Matrix<T>(list.Count, length);
+        Matrix<int> matrix = new Matrix<int>(list.Count, length);
         for (int row = 0; row < list.Count; row++)
         {
             for (int col = 0; col < length; col++)
             {
-                matrix.SetValue(row, col, parse(list[row][col].ToString()));
+                matrix.SetValue(row, col, int.Parse(list[row][col].ToString()));
             }
         }
 
