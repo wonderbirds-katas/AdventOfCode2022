@@ -42,12 +42,12 @@ class Matrix<T>
             throw new ArgumentException("All strings in the list must have the same length");
         }
 
-        Matrix<int> matrix = new Matrix<int>(list.Count, length);
+        Matrix<int> matrix = new Matrix<int>(length, list.Count);
         for (int row = 0; row < list.Count; row++)
         {
             for (int col = 0; col < length; col++)
             {
-                matrix.SetValue(row, col, int.Parse(list[row][col].ToString()));
+                matrix.SetValue(col,row, int.Parse(list[row][col].ToString()));
             }
         }
 
