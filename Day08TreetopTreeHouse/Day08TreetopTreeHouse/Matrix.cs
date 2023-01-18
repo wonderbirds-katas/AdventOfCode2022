@@ -1,6 +1,6 @@
 namespace Day08TreetopTreeHouse;
 
-class Matrix<T>
+public class Matrix<T>
 {
     private T[,] _matrix;
 
