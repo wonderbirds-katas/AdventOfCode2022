@@ -33,7 +33,7 @@ class Matrix<T>
     {
         if (list.Count == 0)
         {
-            throw new ArgumentException("List cannot be empty");
+            return new Matrix<int>(0, 0);
         }
 
         int length = list[0].Length;
