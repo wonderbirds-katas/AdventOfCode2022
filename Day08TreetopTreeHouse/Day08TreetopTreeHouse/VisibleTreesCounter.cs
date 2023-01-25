@@ -4,6 +4,9 @@ public static class VisibleTreesCounter
 {
     public static int Count(string[] treeHeightGrid)
     {
+        var treeHeights = Matrix<int>.FromList(treeHeightGrid.ToList());
+        var isVisible = new Matrix<bool>(treeHeights.Rows, treeHeights.Cols);
+        
         return CountVisibleFromLeft(treeHeightGrid) 
                + CountVisibleFromTop(treeHeightGrid) 
                + CountVisibleFromRight(treeHeightGrid) 

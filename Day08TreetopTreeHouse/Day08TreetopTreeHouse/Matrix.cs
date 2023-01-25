@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace Day08TreetopTreeHouse;
 
 /// <summary>
@@ -68,5 +70,10 @@ public class Matrix<T>
         }
 
         return matrix;
+    }
+    
+    public override string ToString()
+    {
+        return $"{Rows}x{Cols} {JsonConvert.SerializeObject(_matrix)}";
     }
 }
