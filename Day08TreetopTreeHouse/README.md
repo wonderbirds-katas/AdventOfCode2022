@@ -1,6 +1,6 @@
 # Day 8: Treetop Tree House
 
-→ [Puzzle Instructions](./PUZZLE.md)
+→ [Puzzle Instructions](./PUZZLE-PART-1.md)
 
 ## Build and Test
 
