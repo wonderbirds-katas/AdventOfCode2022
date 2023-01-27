@@ -72,5 +72,41 @@ namespace Day08TreetopTreeHouse.Tests
             Assert.Equal(7, matrix.GetValue(1, 2));
             Assert.Equal(8, matrix.GetValue(1, 3));
         }
+        
+        [Fact]
+        public void SetBorderValues_SetsAllBorderValuesToGivenValue()
+        {
+            // Arrange
+            var matrix = new Matrix<int>(3, 4);
+            matrix.SetValue(0, 0, 1);
+            matrix.SetValue(0, 1, 2);
+            matrix.SetValue(0, 2, 3);
+            matrix.SetValue(0, 3, 4);
+            matrix.SetValue(1, 0, 5);
+            matrix.SetValue(1, 1, 6);
+            matrix.SetValue(1, 2, 7);
+            matrix.SetValue(1, 3, 8);
+            matrix.SetValue(2, 0, 9);
+            matrix.SetValue(2, 1, 10);
+            matrix.SetValue(2, 2, 11);
+            matrix.SetValue(2, 3, 12);
+
+            // Act
+            matrix.SetBorderValues(0);
+
+            // Assert
+            Assert.Equal(0, matrix.GetValue(0, 0));
+            Assert.Equal(0, matrix.GetValue(0, 1));
+            Assert.Equal(0, matrix.GetValue(0, 2));
+            Assert.Equal(0, matrix.GetValue(0, 3));
+            Assert.Equal(0, matrix.GetValue(1, 0));
+            Assert.Equal(6, matrix.GetValue(1, 1));
+            Assert.Equal(7, matrix.GetValue(1, 2));
+            Assert.Equal(0, matrix.GetValue(1, 3));
+            Assert.Equal(0, matrix.GetValue(2, 0));
+            Assert.Equal(10, matrix.GetValue(2, 1));
+            Assert.Equal(11, matrix.GetValue(2, 2));
+            Assert.Equal(0, matrix.GetValue(2, 3));
+        }
     }
 }

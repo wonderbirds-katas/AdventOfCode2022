@@ -76,4 +76,22 @@ public class Matrix<T>
     {
         return $"{Rows}x{Cols} {JsonConvert.SerializeObject(_matrix)}";
     }
+    
+    public void SetBorderValues(T value)
+    {
+        int rows = _matrix.GetLength(0);
+        int cols = _matrix.GetLength(1);
+
+        for (int i = 0; i < rows; i++)
+        {
+            _matrix[i, 0] = value;
+            _matrix[i, cols - 1] = value;
+        }
+
+        for (int i = 0; i < cols; i++)
+        {
+            _matrix[0, i] = value;
+            _matrix[rows - 1, i] = value;
+        }
+    }
 }
