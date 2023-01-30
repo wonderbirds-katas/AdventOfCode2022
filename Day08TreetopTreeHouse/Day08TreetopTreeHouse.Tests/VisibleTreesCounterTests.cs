@@ -38,3 +38,14 @@ public class VisibleTreesCounterTests
         actual.Should().Be(expected);
     }
 }
+
+public class TestsReplacingTheirCounterpartsInVisibleTreesCounterTests
+{
+    [Fact]
+    public void SingleTree()
+    {
+        var treeHeightGrid = new[] { "1" };
+        var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
+        actual.Should().Be(1);
+    }
+}

@@ -44,7 +44,12 @@ public class temp_fixName_VisibleTreesCounter
     public static int Count(string[] treeHeightGrid)
     {
         var counter = new temp_fixName_VisibleTreesCounter(treeHeightGrid);
-        
-        return 0;
+        return counter.Count();
+    }
+
+    private int Count()
+    {
+        _visibilities.SetBorderValues(true);
+        return _visibilities.ToEnumerable().Count(isVisible => isVisible);
     }
 }

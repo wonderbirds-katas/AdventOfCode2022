@@ -94,4 +94,9 @@ public class Matrix<T>
             _matrix[rows - 1, i] = value;
         }
     }
+
+    public IEnumerable<T> ToEnumerable()
+    {
+        yield break;
+    }
 }
