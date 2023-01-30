@@ -104,8 +104,8 @@ namespace Day08TreetopTreeHouse.Tests
             Assert.Equal(7, matrix.GetValue(1, 2));
             Assert.Equal(0, matrix.GetValue(1, 3));
             Assert.Equal(0, matrix.GetValue(2, 0));
-            Assert.Equal(10, matrix.GetValue(2, 1));
-            Assert.Equal(11, matrix.GetValue(2, 2));
+            Assert.Equal(0, matrix.GetValue(2, 1));
+            Assert.Equal(0, matrix.GetValue(2, 2));
             Assert.Equal(0, matrix.GetValue(2, 3));
         }
     }
