@@ -72,4 +72,12 @@ public class TestsReplacingTheirCounterpartsInVisibleTreesCounterTests
         var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
         actual.Should().Be(8);
     }
+
+    [Fact]
+    public void NineTreesWithOuterTreesSmallerThanMiddle()
+    {
+        var treeHeightGrid = new[] { "111", "121", "111" };
+        var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
+        actual.Should().Be(9);
+    }
 }
