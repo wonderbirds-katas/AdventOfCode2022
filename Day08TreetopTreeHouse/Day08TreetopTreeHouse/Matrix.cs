@@ -95,8 +95,18 @@ public class Matrix<T>
         }
     }
 
+    /// <summary>
+    /// Returns an enumerable sequence that contains all elements in the matrix.
+    /// </summary>
+    /// <returns>An enumerable sequence of elements in the matrix</returns>
     public IEnumerable<T> ToEnumerable()
     {
-        yield break;
+        for (int row = 0; row < Rows; row++)
+        {
+            for (int col = 0; col < Cols; col++)
+            {
+                yield return _matrix[row, col];
+            }
+        }
     }
 }
