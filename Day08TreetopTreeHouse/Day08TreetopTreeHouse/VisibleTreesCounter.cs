@@ -4,7 +4,7 @@ public static class VisibleTreesCounter
 {
     public static int Count(string[] treeHeightGrid)
     {
-        var counter = new temp_fixName_VisibleTreesCounter(treeHeightGrid);
+        temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
         
         return CountVisibleFromLeft(treeHeightGrid) 
                + CountVisibleFromTop(treeHeightGrid) 
@@ -35,9 +35,16 @@ public class temp_fixName_VisibleTreesCounter
     private readonly Matrix<int> _heights;
     private readonly Matrix<bool> _visibilities;
 
-    public temp_fixName_VisibleTreesCounter(string[] treeHeightGrid)
+    private temp_fixName_VisibleTreesCounter(string[] treeHeightGrid)
     {
         _heights = Matrix<int>.FromList(treeHeightGrid.ToList());
         _visibilities = new Matrix<bool>(_heights.Rows, _heights.Cols);
+    }
+
+    public static int Count(string[] treeHeightGrid)
+    {
+        var counter = new temp_fixName_VisibleTreesCounter(treeHeightGrid);
+        
+        return 0;
     }
 }
