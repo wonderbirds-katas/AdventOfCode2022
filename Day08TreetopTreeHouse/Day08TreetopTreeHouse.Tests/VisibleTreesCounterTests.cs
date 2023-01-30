@@ -48,4 +48,12 @@ public class TestsReplacingTheirCounterpartsInVisibleTreesCounterTests
         var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
         actual.Should().Be(1);
     }
+
+    [Fact]
+    public void FourTrees()
+    {
+        var treeHeightGrid = new[] { "11", "11" };
+        var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
+        actual.Should().Be(4);
+    }
 }
