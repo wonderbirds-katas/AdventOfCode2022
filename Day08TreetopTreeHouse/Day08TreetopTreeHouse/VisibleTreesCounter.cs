@@ -62,6 +62,7 @@ public class temp_fixName_VisibleTreesCounter
         
         if (gridWidthHeight <= 2) return;
         
+        // MarkTreesVisibleFromTop
         for (var row = 1; row < gridWidthHeight - 1; row++)
         {
             for (var col = 1; col < gridWidthHeight - 1; col++)
@@ -69,9 +70,45 @@ public class temp_fixName_VisibleTreesCounter
                 var isVisible = _visibilities.GetValue(row, col);
                 
                 isVisible = isVisible || _heights.GetValue(row - 1, col) < _heights.GetValue(row, col);
-                isVisible = isVisible || _heights.GetValue(row, col - 1) < _heights.GetValue(row, col);
-                isVisible = isVisible || _heights.GetValue(row, col + 1) < _heights.GetValue(row, col);
+
+                _visibilities.SetValue(row, col, isVisible);
+            }
+        }
+
+        // MarkTreesVisibleFromBottom
+        for (var row = 1; row < gridWidthHeight - 1; row++)
+        {
+            for (var col = 1; col < gridWidthHeight - 1; col++)
+            {
+                var isVisible = _visibilities.GetValue(row, col);
+                
                 isVisible = isVisible || _heights.GetValue(row + 1, col) < _heights.GetValue(row, col);
+
+                _visibilities.SetValue(row, col, isVisible);
+            }
+        }
+        
+        // MarkTreesVisibleFromLeft
+        for (var row = 1; row < gridWidthHeight - 1; row++)
+        {
+            for (var col = 1; col < gridWidthHeight - 1; col++)
+            {
+                var isVisible = _visibilities.GetValue(row, col);
+                
+                isVisible = isVisible || _heights.GetValue(row, col - 1) < _heights.GetValue(row, col);
+
+                _visibilities.SetValue(row, col, isVisible);
+            }
+        }
+
+        // MarkTreesVisibleFromRight
+        for (var row = 1; row < gridWidthHeight - 1; row++)
+        {
+            for (var col = 1; col < gridWidthHeight - 1; col++)
+            {
+                var isVisible = _visibilities.GetValue(row, col);
+                
+                isVisible = isVisible || _heights.GetValue(row, col + 1) < _heights.GetValue(row, col);
                 
                 _visibilities.SetValue(row, col, isVisible);
             }

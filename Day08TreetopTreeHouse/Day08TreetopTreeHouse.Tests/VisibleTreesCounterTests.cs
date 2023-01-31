@@ -104,4 +104,19 @@ public class TestsReplacingTheirCounterpartsInVisibleTreesCounterTests
         var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
         actual.Should().Be(9);
     }
+    
+    [Fact]
+    public void SixteenTreesWithInnerTreeLargerThanNeighbourButNotVisible()
+    {
+        var treeHeightGrid = new[]
+        {
+            "5555",
+            "5235",
+            "5555",
+            "5555"
+        };
+        var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
+        actual.Should().Be(12);
+    }
+
 }
