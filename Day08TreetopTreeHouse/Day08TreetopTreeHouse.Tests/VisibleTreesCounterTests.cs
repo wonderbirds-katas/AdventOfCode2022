@@ -80,4 +80,12 @@ public class TestsReplacingTheirCounterpartsInVisibleTreesCounterTests
         var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
         actual.Should().Be(9);
     }
+
+    [Fact]
+    public void NineTreesWithMiddleTreeOnlyVisibleFromTop()
+    {
+        var treeHeightGrid = new[] { "919", "929", "999" };
+        var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
+        actual.Should().Be(9);
+    }
 }

@@ -51,12 +51,12 @@ public class temp_fixName_VisibleTreesCounter
     {
         _visibilities.SetBorderValues(true);
         
-        MarkVisibleFromLeft();
+        MarkVisible();
 
         return _visibilities.ToEnumerable().Count(isVisible => isVisible);
     }
 
-    private void MarkVisibleFromLeft()
+    private void MarkVisible()
     {
         var gridWidthHeight = _visibilities.Rows;
         
@@ -66,7 +66,10 @@ public class temp_fixName_VisibleTreesCounter
         {
             for (var col = 1; col < gridWidthHeight - 1; col++)
             {
-                var isVisible = _heights.GetValue(row, col - 1) < _heights.GetValue(row, col);
+                var isVisible = _visibilities.GetValue(row, col);
+                
+                isVisible = isVisible || _heights.GetValue(row - 1, col) < _heights.GetValue(row, col);
+                isVisible = isVisible || _heights.GetValue(row, col - 1) < _heights.GetValue(row, col);
                 _visibilities.SetValue(row, col, isVisible);
             }
         }
