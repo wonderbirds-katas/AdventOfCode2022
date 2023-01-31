@@ -71,6 +71,7 @@ public class temp_fixName_VisibleTreesCounter
                 isVisible = isVisible || _heights.GetValue(row - 1, col) < _heights.GetValue(row, col);
                 isVisible = isVisible || _heights.GetValue(row, col - 1) < _heights.GetValue(row, col);
                 isVisible = isVisible || _heights.GetValue(row, col + 1) < _heights.GetValue(row, col);
+                isVisible = isVisible || _heights.GetValue(row + 1, col) < _heights.GetValue(row, col);
                 _visibilities.SetValue(row, col, isVisible);
             }
         }
