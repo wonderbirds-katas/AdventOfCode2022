@@ -58,15 +58,16 @@ public class temp_fixName_VisibleTreesCounter
 
     private void MarkVisibleInnerTrees()
     {
-        var gridWidthHeight = _visibilities.Rows;
+        var rows = _visibilities.Rows;
+        var cols = _visibilities.Cols;
         
-        if (gridWidthHeight <= 2) return;
+        if (rows <= 2 || cols <= 2) return;
         
         // MarkTreesVisibleFromTop
-        for (var col = 1; col < gridWidthHeight - 1; col++)
+        for (var col = 1; col < cols - 1; col++)
         {
             var largest = _heights.GetValue(0, col);
-            for (var row = 1; row < gridWidthHeight - 1; row++)
+            for (var row = 1; row < rows - 1; row++)
             {
                 var current = _heights.GetValue(row, col);
                 
@@ -79,10 +80,10 @@ public class temp_fixName_VisibleTreesCounter
         }
 
         // MarkTreesVisibleFromBottom
-        for (var col = 1; col < gridWidthHeight - 1; col++)
+        for (var col = 1; col < cols - 1; col++)
         {
-            var largest = _heights.GetValue(gridWidthHeight - 1, col);
-            for (var row = gridWidthHeight - 2; row > 0; row--)
+            var largest = _heights.GetValue(rows - 1, col);
+            for (var row = rows - 2; row > 0; row--)
             {
                 var current = _heights.GetValue(row, col);
                 
@@ -95,10 +96,10 @@ public class temp_fixName_VisibleTreesCounter
         }
         
         // MarkTreesVisibleFromLeft
-        for (var row = 1; row < gridWidthHeight - 1; row++)
+        for (var row = 1; row < rows - 1; row++)
         {
             var largest = _heights.GetValue(row, 0);
-            for (var col = 1; col < gridWidthHeight - 1; col++)
+            for (var col = 1; col < cols - 1; col++)
             {
                 var current = _heights.GetValue(row, col);
                 
@@ -111,10 +112,10 @@ public class temp_fixName_VisibleTreesCounter
         }
 
         // MarkTreesVisibleFromRight
-        for (var row = 1; row < gridWidthHeight - 1; row++)
+        for (var row = 1; row < rows - 1; row++)
         {
-            var largest = _heights.GetValue(row, gridWidthHeight - 1);
-            for (var col = gridWidthHeight - 2; col > 0; col--)
+            var largest = _heights.GetValue(row, rows - 1);
+            for (var col = cols - 2; col > 0; col--)
             {
                 var current = _heights.GetValue(row, col);
                 
