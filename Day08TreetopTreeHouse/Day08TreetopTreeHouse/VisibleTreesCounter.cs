@@ -65,52 +65,64 @@ public class temp_fixName_VisibleTreesCounter
         // MarkTreesVisibleFromTop
         for (var col = 1; col < gridWidthHeight - 1; col++)
         {
+            var largest = _heights.GetValue(0, col);
             for (var row = 1; row < gridWidthHeight - 1; row++)
             {
-                var isVisible = _visibilities.GetValue(row, col);
+                var current = _heights.GetValue(row, col);
                 
-                isVisible = isVisible || _heights.GetValue(row - 1, col) < _heights.GetValue(row, col);
-
-                _visibilities.SetValue(row, col, isVisible);
+                if (current > largest)
+                {
+                    _visibilities.SetValue(row, col, true);
+                    largest = current;
+                }
             }
         }
 
         // MarkTreesVisibleFromBottom
         for (var col = 1; col < gridWidthHeight - 1; col++)
         {
+            var largest = _heights.GetValue(gridWidthHeight - 1, col);
             for (var row = gridWidthHeight - 2; row > 0; row--)
             {
-                var isVisible = _visibilities.GetValue(row, col);
+                var current = _heights.GetValue(row, col);
                 
-                isVisible = isVisible || _heights.GetValue(row + 1, col) < _heights.GetValue(row, col);
-
-                _visibilities.SetValue(row, col, isVisible);
+                if (current > largest)
+                {
+                    _visibilities.SetValue(row, col, true);
+                    largest = current;
+                }
             }
         }
         
         // MarkTreesVisibleFromLeft
         for (var row = 1; row < gridWidthHeight - 1; row++)
         {
+            var largest = _heights.GetValue(row, 0);
             for (var col = 1; col < gridWidthHeight - 1; col++)
             {
-                var isVisible = _visibilities.GetValue(row, col);
+                var current = _heights.GetValue(row, col);
                 
-                isVisible = isVisible || _heights.GetValue(row, col - 1) < _heights.GetValue(row, col);
-
-                _visibilities.SetValue(row, col, isVisible);
+                if (current > largest)
+                {
+                    _visibilities.SetValue(row, col, true);
+                    largest = current;
+                }
             }
         }
 
         // MarkTreesVisibleFromRight
         for (var row = 1; row < gridWidthHeight - 1; row++)
         {
+            var largest = _heights.GetValue(row, gridWidthHeight - 1);
             for (var col = gridWidthHeight - 2; col > 0; col--)
             {
-                var isVisible = _visibilities.GetValue(row, col);
+                var current = _heights.GetValue(row, col);
                 
-                isVisible = isVisible || _heights.GetValue(row, col + 1) < _heights.GetValue(row, col);
-                
-                _visibilities.SetValue(row, col, isVisible);
+                if (current > largest)
+                {
+                    _visibilities.SetValue(row, col, true);
+                    largest = current;
+                }
             }
         }
     }

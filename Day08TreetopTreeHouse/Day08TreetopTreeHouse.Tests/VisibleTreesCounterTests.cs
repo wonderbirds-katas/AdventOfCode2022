@@ -13,7 +13,7 @@ public class VisibleTreesCounterTests
     public void SingleTree()
     {
         var treeHeightGrid = new[] { "1" };
-        var actual = VisibleTreesCounter.Count(treeHeightGrid);
+        var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
         actual.Should().Be(1);
     }
 
@@ -34,7 +34,7 @@ public class VisibleTreesCounterTests
         // Sum of visible trees: 6+4+6 = 16
         const int expected = 16;
         
-        var actual = VisibleTreesCounter.Count(treeHeightGrid);
+        var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
         actual.Should().Be(expected);
     }
 }
@@ -100,7 +100,7 @@ public class TestsReplacingTheirCounterpartsInVisibleTreesCounterTests
     [Fact]
     public void NineTreesWithMiddleTreeOnlyVisibleFromBottom()
     {
-        var treeHeightGrid = new[] { "999", "921", "999" };
+        var treeHeightGrid = new[] { "999", "929", "919" };
         var actual = temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
         actual.Should().Be(9);
     }
