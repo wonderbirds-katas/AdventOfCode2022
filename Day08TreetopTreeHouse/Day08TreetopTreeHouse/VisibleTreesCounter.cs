@@ -78,7 +78,7 @@ public class temp_fixName_VisibleTreesCounter
         // MarkTreesVisibleFromBottom
         for (var col = 1; col < gridWidthHeight - 1; col++)
         {
-            for (var row = 1; row < gridWidthHeight - 1; row++)
+            for (var row = gridWidthHeight - 2; row > 0; row--)
             {
                 var isVisible = _visibilities.GetValue(row, col);
                 
