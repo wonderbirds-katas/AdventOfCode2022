@@ -104,7 +104,7 @@ public class temp_fixName_VisibleTreesCounter
         // MarkTreesVisibleFromRight
         for (var row = 1; row < gridWidthHeight - 1; row++)
         {
-            for (var col = 1; col < gridWidthHeight - 1; col++)
+            for (var col = gridWidthHeight - 2; col > 0; col--)
             {
                 var isVisible = _visibilities.GetValue(row, col);
                 
