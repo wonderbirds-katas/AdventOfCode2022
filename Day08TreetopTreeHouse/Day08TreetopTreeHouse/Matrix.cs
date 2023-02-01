@@ -112,15 +112,29 @@ public class Matrix<T>
     
     public IEnumerable<IEnumerable<T>> EnumerateByColumn()
     {
-        for (var col = 0; col < Cols; col++)
+        for (var colIndex = 0; colIndex < Cols; colIndex++)
         {
             var column = new List<T>();
-            for (var row = 0; row < Rows; row++)
+            for (var rowIndex = 0; rowIndex < Rows; rowIndex++)
             {
-                column.Add(_matrix[row, col]);
+                column.Add(_matrix[rowIndex, colIndex]);
             }
 
             yield return column;
+        }
+    }
+
+    public IEnumerable<IEnumerable<T>> EnumerateByRow()
+    {
+        for (var rowIndex = 0; rowIndex < Rows; rowIndex++)
+        {
+            var row = new List<T>();
+            for (var colIndex = 0; colIndex < Cols; colIndex++)
+            {
+                row.Add(_matrix[rowIndex, colIndex]);
+            }
+
+            yield return row;
         }
     }
 }

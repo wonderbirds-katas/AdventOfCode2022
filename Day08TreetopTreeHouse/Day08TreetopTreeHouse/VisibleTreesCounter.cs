@@ -58,10 +58,7 @@ public class temp_fixName_VisibleTreesCounter
 
     private void MarkVisibleInnerTrees()
     {
-        var rows = _visibilities.Rows;
-        var cols = _visibilities.Cols;
-        
-        if (rows <= 2 || cols <= 2) return;
+        if (_visibilities.Rows <= 2 || _visibilities.Cols <= 2) return;
 
         // MarkTreesVisibleFromTop
         var columns = _heights.EnumerateByColumn().ToList();
@@ -94,33 +91,31 @@ public class temp_fixName_VisibleTreesCounter
         }
         
         // MarkTreesVisibleFromLeft
-        for (var row = 1; row < rows - 1; row++)
+        var rows = _heights.EnumerateByRow().ToList();
+        foreach (var dimension1Iter in rows.Select((dimension2, index) => new {dimension2, index}))
         {
-            var largest = _heights.GetValue(row, 0);
-            for (var col = 1; col < cols - 1; col++)
+            var largest = dimension1Iter.dimension2.First();
+            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((height, index) => new { height, index }).Skip(1))
             {
-                var current = _heights.GetValue(row, col);
-                
-                if (current > largest)
+                if (dimension2Iter.height > largest)
                 {
-                    _visibilities.SetValue(row, col, true);
-                    largest = current;
+                    _visibilities.SetValue(dimension1Iter.index, dimension2Iter.index, true);
+                    largest = dimension2Iter.height;
                 }
             }
         }
 
         // MarkTreesVisibleFromRight
-        for (var row = 1; row < rows - 1; row++)
+        rows = _heights.EnumerateByRow().Select(row => row.Reverse()).ToList();
+        foreach (var dimension1Iter in rows.Select((dimension2, index) => new {dimension2, index}))
         {
-            var largest = _heights.GetValue(row, rows - 1);
-            for (var col = cols - 2; col > 0; col--)
+            var largest = dimension1Iter.dimension2.First();
+            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((height, index) => new { height, index }).Skip(1))
             {
-                var current = _heights.GetValue(row, col);
-                
-                if (current > largest)
+                if (dimension2Iter.height > largest)
                 {
-                    _visibilities.SetValue(row, col, true);
-                    largest = current;
+                    _visibilities.SetValue(dimension1Iter.index, dimension2Iter.index, true);
+                    largest = dimension2Iter.height;
                 }
             }
         }
