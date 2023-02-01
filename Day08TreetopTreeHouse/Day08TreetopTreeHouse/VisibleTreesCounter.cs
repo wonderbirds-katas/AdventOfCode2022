@@ -65,30 +65,30 @@ public class temp_fixName_VisibleTreesCounter
 
         // MarkTreesVisibleFromTop
         var columns = _heights.EnumerateByColumn().ToList();
-        foreach (var columnIter in columns.Select((column, index) => new {column, index}))
+        foreach (var dimension1Iter in columns.Select((dimension2, index) => new {dimension2, index}))
         {
-            var largest = columnIter.column.First();
-            foreach (var rowIter in columnIter.column.Select((height, index) => new { height, index }).Skip(1))
+            var largest = dimension1Iter.dimension2.First();
+            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((height, index) => new { height, index }).Skip(1))
             {
-                if (rowIter.height > largest)
+                if (dimension2Iter.height > largest)
                 {
-                    _visibilities.SetValue(rowIter.index, columnIter.index, true);
-                    largest = rowIter.height;
+                    _visibilities.SetValue(dimension2Iter.index, dimension1Iter.index, true);
+                    largest = dimension2Iter.height;
                 }
             }
         }
 
         // MarkTreesVisibleFromBottom
         columns = _heights.EnumerateByColumn().Select(col => col.Reverse()).ToList();
-        foreach (var columnIter in columns.Select((column, index) => new {column, index}))
+        foreach (var dimension1Iter in columns.Select((dimension2, index) => new {dimension2, index}))
         {
-            var largest = columnIter.column.First();
-            foreach (var rowIter in columnIter.column.Select((height, index) => new { height, index }).Skip(1))
+            var largest = dimension1Iter.dimension2.First();
+            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((height, index) => new { height, index }).Skip(1))
             {
-                if (rowIter.height > largest)
+                if (dimension2Iter.height > largest)
                 {
-                    _visibilities.SetValue(rowIter.index, columnIter.index, true);
-                    largest = rowIter.height;
+                    _visibilities.SetValue(dimension2Iter.index, dimension1Iter.index, true);
+                    largest = dimension2Iter.height;
                 }
             }
         }
