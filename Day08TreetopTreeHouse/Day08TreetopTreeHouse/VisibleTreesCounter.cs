@@ -79,17 +79,16 @@ public class temp_fixName_VisibleTreesCounter
         }
 
         // MarkTreesVisibleFromBottom
-        for (var col = 1; col < cols - 1; col++)
+        columns = _heights.EnumerateByColumn().Select(col => col.Reverse()).ToList();
+        foreach (var columnIter in columns.Select((column, index) => new {column, index}))
         {
-            var largest = _heights.GetValue(rows - 1, col);
-            for (var row = rows - 2; row > 0; row--)
+            var largest = columnIter.column.First();
+            foreach (var rowIter in columnIter.column.Select((height, index) => new { height, index }).Skip(1))
             {
-                var current = _heights.GetValue(row, col);
-                
-                if (current > largest)
+                if (rowIter.height > largest)
                 {
-                    _visibilities.SetValue(row, col, true);
-                    largest = current;
+                    _visibilities.SetValue(rowIter.index, columnIter.index, true);
+                    largest = rowIter.height;
                 }
             }
         }
