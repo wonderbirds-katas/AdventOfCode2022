@@ -109,4 +109,18 @@ public class Matrix<T>
             }
         }
     }
+    
+    public IEnumerable<IEnumerable<T>> EnumerateByColumn()
+    {
+        for (var col = 0; col < Cols; col++)
+        {
+            var column = new List<T>();
+            for (var row = 0; row < Rows; row++)
+            {
+                column.Add(_matrix[row, col]);
+            }
+
+            yield return column;
+        }
+    }
 }
