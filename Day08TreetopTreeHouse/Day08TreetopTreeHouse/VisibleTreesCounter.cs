@@ -1,120 +1,88 @@
 namespace Day08TreetopTreeHouse;
 
-public static class VisibleTreesCounter
+public class VisibleTreesCounter
 {
-    public static int Count(string[] treeHeightGrid)
+    private readonly Matrix<Tree> _trees;
+
+    private VisibleTreesCounter(string[] treeHeightGrid)
     {
-        temp_fixName_VisibleTreesCounter.Count(treeHeightGrid);
-        
-        return CountVisibleFromLeft(treeHeightGrid) 
-               + CountVisibleFromTop(treeHeightGrid) 
-               + CountVisibleFromRight(treeHeightGrid) 
-               + CountVisibleFromBottom(treeHeightGrid);
-    }
-
-    private static int CountVisibleFromLeft(IEnumerable<IEnumerable<char>> treeHeightGrid) =>
-        treeHeightGrid
-            .Select(FromLeftCounter.Count)
-            .Sum();
-
-    private static int CountVisibleFromTop(IEnumerable<IEnumerable<char>> originalGrid)
-        => CountVisibleFromLeft(originalGrid.Transpose());
-
-    private static int CountVisibleFromRight(IEnumerable<IEnumerable<char>> originalGrid)
-        => CountVisibleFromLeft(originalGrid.ReverseRowsAndColumns());
-
-    private static int CountVisibleFromBottom(IEnumerable<IEnumerable<char>> originalGrid)
-        => CountVisibleFromLeft(originalGrid.ReverseRowsAndColumns().Transpose());
-
-    private static IEnumerable<IEnumerable<char>> ReverseRowsAndColumns(this IEnumerable<IEnumerable<char>> originalGrid)
-        => originalGrid.Select(Enumerable.Reverse).Reverse();
-}
-
-public class temp_fixName_VisibleTreesCounter
-{
-    private readonly Matrix<int> _heights;
-    private readonly Matrix<bool> _visibilities;
-
-    private temp_fixName_VisibleTreesCounter(string[] treeHeightGrid)
-    {
-        _heights = Matrix<int>.FromList(treeHeightGrid.ToList());
-        _visibilities = new Matrix<bool>(_heights.Rows, _heights.Cols);
+        _trees = Matrix<Tree>.FromList(treeHeightGrid.ToList(), s => new Tree(int.Parse(s), false));
     }
 
     public static int Count(string[] treeHeightGrid)
     {
-        var counter = new temp_fixName_VisibleTreesCounter(treeHeightGrid);
+        var counter = new VisibleTreesCounter(treeHeightGrid);
         return counter.Count();
     }
 
     private int Count()
     {
-        _visibilities.SetBorderValues(true);
-        
+        _trees.TransformBorderValues(tree => new Tree(tree.Height, true));
+
         MarkVisibleInnerTrees();
 
-        return _visibilities.ToEnumerable().Count(isVisible => isVisible);
+        return _trees.ToEnumerable().Count(tree => tree.IsVisible);
     }
 
     private void MarkVisibleInnerTrees()
     {
-        if (_visibilities.Rows <= 2 || _visibilities.Cols <= 2) return;
+        if (_trees.Rows <= 2 || _trees.Cols <= 2) return;
 
         // MarkTreesVisibleFromTop
-        var columns = _heights.EnumerateByColumn().ToList();
+        var columns = _trees.EnumerateByColumn().ToList();
         foreach (var dimension1Iter in columns.Select((dimension2, index) => new {dimension2, index}))
         {
-            var largest = dimension1Iter.dimension2.First();
-            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((height, index) => new { height, index }).Skip(1))
+            var largest = dimension1Iter.dimension2.First().Height;
+            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((tree, index) => new { height = tree.Height, index }).Skip(1))
             {
                 if (dimension2Iter.height > largest)
                 {
-                    _visibilities.SetValue(dimension2Iter.index, dimension1Iter.index, true);
+                    _trees.SetValue(dimension2Iter.index, dimension1Iter.index, new Tree(dimension2Iter.height, true));
                     largest = dimension2Iter.height;
                 }
             }
         }
 
         // MarkTreesVisibleFromBottom
-        columns = _heights.EnumerateByColumn().Select(col => col.Reverse()).ToList();
+        columns = _trees.EnumerateByColumn().Select(col => col.Reverse()).ToList();
         foreach (var dimension1Iter in columns.Select((dimension2, index) => new {dimension2, index}))
         {
-            var largest = dimension1Iter.dimension2.First();
-            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((height, index) => new { height, index }).Skip(1))
+            var largest = dimension1Iter.dimension2.First().Height;
+            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((tree, index) => new { height = tree.Height, index }).Skip(1))
             {
                 if (dimension2Iter.height > largest)
                 {
-                    _visibilities.SetValue(dimension2Iter.index, dimension1Iter.index, true);
+                    _trees.SetValue(dimension2Iter.index, dimension1Iter.index, new Tree(dimension2Iter.height, true));
                     largest = dimension2Iter.height;
                 }
             }
         }
         
         // MarkTreesVisibleFromLeft
-        var rows = _heights.EnumerateByRow().ToList();
+        var rows = _trees.EnumerateByRow().ToList();
         foreach (var dimension1Iter in rows.Select((dimension2, index) => new {dimension2, index}))
         {
-            var largest = dimension1Iter.dimension2.First();
-            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((height, index) => new { height, index }).Skip(1))
+            var largest = dimension1Iter.dimension2.First().Height;
+            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((tree, index) => new { height = tree.Height, index }).Skip(1))
             {
                 if (dimension2Iter.height > largest)
                 {
-                    _visibilities.SetValue(dimension1Iter.index, dimension2Iter.index, true);
+                    _trees.SetValue(dimension1Iter.index, dimension2Iter.index, new Tree(dimension2Iter.height, true));
                     largest = dimension2Iter.height;
                 }
             }
         }
 
         // MarkTreesVisibleFromRight
-        rows = _heights.EnumerateByRow().Select(row => row.Reverse()).ToList();
+        rows = _trees.EnumerateByRow().Select(row => row.Reverse()).ToList();
         foreach (var dimension1Iter in rows.Select((dimension2, index) => new {dimension2, index}))
         {
-            var largest = dimension1Iter.dimension2.First();
-            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((height, index) => new { height, index }).Skip(1))
+            var largest = dimension1Iter.dimension2.First().Height;
+            foreach (var dimension2Iter in dimension1Iter.dimension2.Select((tree, index) => new { height = tree.Height, index }).Skip(1))
             {
                 if (dimension2Iter.height > largest)
                 {
-                    _visibilities.SetValue(dimension1Iter.index, dimension2Iter.index, true);
+                    _trees.SetValue(dimension1Iter.index, dimension2Iter.index, new Tree(dimension2Iter.height, true));
                     largest = dimension2Iter.height;
                 }
             }

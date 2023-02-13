@@ -44,13 +44,14 @@ public class Matrix<T>
     /// Each character in the string represents a column of the matrix.
     /// </summary>
     /// <param name="list">A list of strings with same length</param>
+    /// <param name="map">Map a character to its corresponding value in the matrix</param>
     /// <returns>A matrix created from the input list</returns>
     /// <returns>0x0 matrix if input list is empty</returns>
-    public static Matrix<int> FromList(List<string> list)
+    public static Matrix<T> FromList(List<string> list, Func<string, T> map)
     {
         if (list.Count == 0)
         {
-            return new Matrix<int>(0, 0);
+            return new Matrix<T>(0, 0);
         }
 
         int rows = list.Count;
@@ -60,18 +61,28 @@ public class Matrix<T>
             throw new ArgumentException("All strings in the list must have the same length");
         }
 
-        Matrix<int> matrix = new Matrix<int>(rows, cols);
+        Matrix<T> matrix = new Matrix<T>(rows, cols);
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < cols; col++)
             {
-                matrix.SetValue(row,col, int.Parse(list[row][col].ToString()));
+                matrix.SetValue(row,col, map(list[row][col].ToString()));
             }
         }
 
         return matrix;
     }
-    
+
+    /// <summary>
+    /// Creates a matrix from a list of strings.
+    /// Each string in the list represents a row of the matrix.
+    /// Each character in the string represents a column of the matrix.
+    /// </summary>
+    /// <param name="list">A list of strings with same length</param>
+    /// <returns>A matrix created from the input list</returns>
+    /// <returns>0x0 matrix if input list is empty</returns>
+    public static Matrix<int> FromList(List<string> list) => Matrix<int>.FromList(list, int.Parse);
+
     public override string ToString()
     {
         return $"{Rows}x{Cols} {JsonConvert.SerializeObject(_matrix)}";
@@ -79,19 +90,24 @@ public class Matrix<T>
     
     public void SetBorderValues(T value)
     {
+        TransformBorderValues(_ => value);
+    }
+
+    public void TransformBorderValues(Func<T, T> transform)
+    {
         int rows = _matrix.GetLength(0);
         int cols = _matrix.GetLength(1);
 
         for (int i = 0; i < rows; i++)
         {
-            _matrix[i, 0] = value;
-            _matrix[i, cols - 1] = value;
+            _matrix[i, 0] = transform(_matrix[i, 0]);
+            _matrix[i, cols - 1] = transform(_matrix[i, cols - 1]);
         }
 
-        for (int i = 0; i < cols; i++)
+        for (int i = 1; i < cols - 1; i++)
         {
-            _matrix[0, i] = value;
-            _matrix[rows - 1, i] = value;
+            _matrix[0, i] = transform(_matrix[0, i]);
+            _matrix[rows - 1, i] = transform(_matrix[rows - 1, i]);
         }
     }
 
@@ -109,7 +125,7 @@ public class Matrix<T>
             }
         }
     }
-    
+
     public IEnumerable<IEnumerable<T>> EnumerateByColumn()
     {
         for (var colIndex = 0; colIndex < Cols; colIndex++)

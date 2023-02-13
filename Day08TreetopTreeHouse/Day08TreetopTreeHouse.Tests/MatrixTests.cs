@@ -72,7 +72,14 @@ namespace Day08TreetopTreeHouse.Tests
             Assert.Equal(7, matrix.GetValue(1, 2));
             Assert.Equal(8, matrix.GetValue(1, 3));
         }
-        
+
+        [Fact]
+        public void Test_Matrix_FromList_Method_Divide_By_10()
+        {
+            var matrix = Matrix<double>.FromList(new List<string>() {"1"}, s => double.Parse(s) / 10.0);
+            Assert.Equal(0.1, matrix.GetValue(0, 0));
+        }
+
         [Fact]
         public void SetBorderValues_SetsAllBorderValuesToGivenValue()
         {
@@ -107,6 +114,18 @@ namespace Day08TreetopTreeHouse.Tests
             Assert.Equal(0, matrix.GetValue(2, 1));
             Assert.Equal(0, matrix.GetValue(2, 2));
             Assert.Equal(0, matrix.GetValue(2, 3));
+        }
+
+        [Fact]
+        public void Test_Matrix_TransformBorderValues()
+        {
+            var matrix = Matrix<int>.FromList(new List<string> {"123", "456", "789"});
+
+            matrix.TransformBorderValues(i => i * 2);
+            
+            Assert.Equal(2, matrix.GetValue(0, 0));
+            Assert.Equal(5, matrix.GetValue(1, 1));
+            Assert.Equal(18, matrix.GetValue(2, 2));
         }
     }
 }
