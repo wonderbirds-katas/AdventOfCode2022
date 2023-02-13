@@ -3,15 +3,14 @@
 
 name: .NET
 
+# Save energy - only build main branch updates
 on:
-  schedule:
-    # Run every Sunday at midnight
-    - cron: 0 0 * * 0
   push:
-    paths-ignore:
-      - 'Day07NoSpaceLeftOnDevice/**'
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build-and-test:
