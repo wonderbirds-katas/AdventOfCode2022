@@ -140,4 +140,23 @@ public class Matrix<T>
             yield return row;
         }
     }
+
+    public void PrintColorized(Func<T, bool> isGreen, Func<T, string> toString)
+    {
+        const string green = "\x1b[32m";
+        const string red = "\x1b[31m";
+        const string reset = "\x1b[0m";
+
+        for (var row = 0; row < Rows; row++)
+        {
+            for (var col = 0; col < Cols; col++)
+            {
+                var value = GetValue(row, col);
+                var color = isGreen(value) ? green : red;
+                Console.Write($"{color}{toString(value)}");
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine(reset);
+    }
 }

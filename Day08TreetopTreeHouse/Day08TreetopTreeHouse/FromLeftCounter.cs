@@ -10,8 +10,8 @@ public static class FromLeftCounter
         return 1 + count;
     }
 
-    private static IList<int> ParseTreeHeightString(IEnumerable<char> treeHeightString)
-        => treeHeightString.Select(c => int.Parse(c.ToString())).ToList();
+    private static IList<int> ParseTreeHeightString(IEnumerable<char> treeHeightString) =>
+        treeHeightString.Select(c => int.Parse(c.ToString())).ToList();
 
     private static int Count(IList<int> treeHeights)
     {
@@ -21,11 +21,15 @@ public static class FromLeftCounter
         return count;
     }
 
-    private static (int count, int highest) CountIfHighestAndUpdateHighest((int count, int highest) accumulator, int next)
+    private static (int count, int highest) CountIfHighestAndUpdateHighest(
+        (int count, int highest) accumulator,
+        int next
+    )
     {
         var (count, highest) = accumulator;
-        
-        if (next <= highest) return (count, highest);
+
+        if (next <= highest)
+            return (count, highest);
 
         count++;
         highest = next;

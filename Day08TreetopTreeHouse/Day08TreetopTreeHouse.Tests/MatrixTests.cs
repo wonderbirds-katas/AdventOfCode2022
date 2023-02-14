@@ -26,9 +26,9 @@ namespace Day08TreetopTreeHouse.Tests
         {
             var list = new List<string>() { "123", "456", "789" };
             var matrix = Matrix<int>.FromList(list);
-            Assert.Equal(1, matrix.GetValue(0,0));
-            Assert.Equal(5, matrix.GetValue(1,1));
-            Assert.Equal(9, matrix.GetValue(2,2));
+            Assert.Equal(1, matrix.GetValue(0, 0));
+            Assert.Equal(5, matrix.GetValue(1, 1));
+            Assert.Equal(9, matrix.GetValue(2, 2));
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace Day08TreetopTreeHouse.Tests
             var list = new List<string>() { "1234", "5678", "901" };
             Assert.Throws<ArgumentException>(() => Matrix<int>.FromList(list));
         }
-        
+
         [Fact]
         public void Test_Matrix_FromList_Method_More_Cols_Than_Rows()
         {
@@ -76,7 +76,10 @@ namespace Day08TreetopTreeHouse.Tests
         [Fact]
         public void Test_Matrix_FromList_Method_Divide_By_10()
         {
-            var matrix = Matrix<double>.FromList(new List<string>() {"1"}, s => double.Parse(s) / 10.0);
+            var matrix = Matrix<double>.FromList(
+                new List<string>() { "1" },
+                s => double.Parse(s) / 10.0
+            );
             Assert.Equal(0.1, matrix.GetValue(0, 0));
         }
 
@@ -119,10 +122,10 @@ namespace Day08TreetopTreeHouse.Tests
         [Fact]
         public void Test_Matrix_TransformBorderValues()
         {
-            var matrix = Matrix<int>.FromList(new List<string> {"123", "456", "789"});
+            var matrix = Matrix<int>.FromList(new List<string> { "123", "456", "789" });
 
             matrix.TransformBorderValues(i => i * 2);
-            
+
             Assert.Equal(2, matrix.GetValue(0, 0));
             Assert.Equal(5, matrix.GetValue(1, 1));
             Assert.Equal(18, matrix.GetValue(2, 2));

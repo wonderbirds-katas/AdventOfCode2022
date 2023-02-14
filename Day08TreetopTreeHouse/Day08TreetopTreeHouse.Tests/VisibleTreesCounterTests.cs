@@ -20,20 +20,15 @@ public class VisibleTreesCounterTests
     [Fact]
     public void ThreeMixedRows()
     {
-        var treeHeightGrid = new[]
-        {
-            "175389",
-            "042276",
-            "367475"
-        };
-        
+        var treeHeightGrid = new[] { "175389", "042276", "367475" };
+
         // Matrix of visible trees (1 = visible, 0 = not visible)
         // 111111 - Sum: 6
         // 110011 - Sum: 4
         // 111111 - Sum: 6
         // Sum of visible trees: 6+4+6 = 16
         const int expected = 16;
-        
+
         var actual = VisibleTreesCounter.Count(treeHeightGrid);
         actual.Should().Be(expected);
     }
@@ -104,19 +99,12 @@ public class TestsReplacingTheirCounterpartsInVisibleTreesCounterTests
         var actual = VisibleTreesCounter.Count(treeHeightGrid);
         actual.Should().Be(9);
     }
-    
+
     [Fact]
     public void SixteenTreesWithInnerTreeLargerThanNeighbourButNotVisible()
     {
-        var treeHeightGrid = new[]
-        {
-            "5555",
-            "5235",
-            "5555",
-            "5555"
-        };
+        var treeHeightGrid = new[] { "5555", "5235", "5555", "5555" };
         var actual = VisibleTreesCounter.Count(treeHeightGrid);
         actual.Should().Be(12);
     }
-
 }
