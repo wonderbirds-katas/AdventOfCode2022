@@ -29,36 +29,19 @@ public class VisibleTreesCounter
         if (_trees.Rows <= 2 || _trees.Cols <= 2) return;
 
         // MarkTreesVisibleFromTop
-        MarkInnerTreesVisibleFromTop(_trees.EnumerateByColumn());
+        MarkInnerTreesVisible(_trees.EnumerateByColumn(), false);
 
         // MarkTreesVisibleFromBottom
-        MarkInnerTreesVisibleFromTop(_trees.EnumerateByColumn().Select(col => col.Reverse()));
+        MarkInnerTreesVisible(_trees.EnumerateByColumn().Select(col => col.Reverse()), false);
         
         // MarkTreesVisibleFromLeft
-        MarkInnerTreesVisibleFromLeft(_trees.EnumerateByRow());
+        MarkInnerTreesVisible(_trees.EnumerateByRow(), true);
 
         // MarkTreesVisibleFromRight
-        MarkInnerTreesVisibleFromLeft(_trees.EnumerateByRow().Select(row => row.Reverse()));
+        MarkInnerTreesVisible(_trees.EnumerateByRow().Select(row => row.Reverse()), true);
     }
 
-    private void MarkInnerTreesVisibleFromTop(IEnumerable<IEnumerable<Tree>> columns)
-    {
-        foreach (var dimension1Iter in columns.Select((dimension2, index) => new {dimension2, index}))
-        {
-            var largest = dimension1Iter.dimension2.First().Height;
-            foreach (var dimension2Iter in dimension1Iter.dimension2
-                         .Select((tree, index) => new {height = tree.Height, index}).Skip(1))
-            {
-                if (dimension2Iter.height > largest)
-                {
-                    _trees.SetValue(dimension2Iter.index, dimension1Iter.index, new Tree(dimension2Iter.height, true));
-                    largest = dimension2Iter.height;
-                }
-            }
-        }
-    }
-
-    private void MarkInnerTreesVisibleFromLeft(IEnumerable<IEnumerable<Tree>> rows)
+    private void MarkInnerTreesVisible(IEnumerable<IEnumerable<Tree>> rows, bool outerDimensionIsRows)
     {
         foreach (var dimension1Iter in rows.Select((dimension2, index) => new {dimension2, index}))
         {
@@ -68,7 +51,14 @@ public class VisibleTreesCounter
             {
                 if (dimension2Iter.height > largest)
                 {
-                    _trees.SetValue(dimension1Iter.index, dimension2Iter.index, new Tree(dimension2Iter.height, true));
+                    if (outerDimensionIsRows)
+                    {
+                        _trees.SetValue(dimension1Iter.index, dimension2Iter.index, new Tree(dimension2Iter.height, true));
+                    }
+                    else
+                    {
+                        _trees.SetValue(dimension2Iter.index, dimension1Iter.index, new Tree(dimension2Iter.height, true));
+                    }
                     largest = dimension2Iter.height;
                 }
             }
