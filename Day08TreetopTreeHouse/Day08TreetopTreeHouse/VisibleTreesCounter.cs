@@ -4,20 +4,14 @@ public class VisibleTreesCounter
 {
     private readonly Matrix<Tree> _trees;
 
-    private VisibleTreesCounter(string[] treeHeightGrid)
-    {
-        _trees = Matrix<Tree>.FromList(treeHeightGrid.ToList(), s => new Tree(int.Parse(s), false));
-    }
+    private VisibleTreesCounter(IEnumerable<string> treeHeightGrid) 
+        => _trees = Matrix<Tree>.FromList(treeHeightGrid.ToList(), digit => new Tree(int.Parse(digit), false));
 
-    public static int Count(string[] treeHeightGrid)
-    {
-        var counter = new VisibleTreesCounter(treeHeightGrid);
-        return counter.Count();
-    }
+    public static int Count(IEnumerable<string> treeHeightGrid) => new VisibleTreesCounter(treeHeightGrid).Count();
 
     private int Count()
     {
-        _trees.TransformBorderValues(tree => new Tree(tree.Height, true));
+        _trees.TransformBorderValues(tree => tree with {IsVisible = true});
 
         MarkVisibleInnerTrees();
 
