@@ -3,12 +3,18 @@
 
 name: .NET
 
+# Save energy - only build main branch updates
 on:
   push:
+    branches:
+      - main
     paths-ignore:
       - 'Day07NoSpaceLeftOnDevice/**'
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+    paths-ignore:
+      - 'Day07NoSpaceLeftOnDevice/**'
 
 jobs:
   build-and-test:

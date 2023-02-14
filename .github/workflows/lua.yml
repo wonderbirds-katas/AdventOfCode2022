@@ -3,8 +3,11 @@
 
 name: Lua
 
+# Save energy - only build main branch updates
 on:
   push:
+    branches:
+      - main
     paths-ignore:
       - 'Day01CountCalories/**'
       - 'Day02RockPaperScissors/**'
@@ -12,8 +15,18 @@ on:
       - 'Day04CampCleanup/**'
       - 'Day05SupplyStacks/**'
       - 'Day06TuningTrouble/**'
+      - 'Day08TreetopTreeHouse/**'
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
+    paths-ignore:
+      - 'Day01CountCalories/**'
+      - 'Day02RockPaperScissors/**'
+      - 'Day03RucksackReorganization/**'
+      - 'Day04CampCleanup/**'
+      - 'Day05SupplyStacks/**'
+      - 'Day06TuningTrouble/**'
+      - 'Day08TreetopTreeHouse/**'
 
 jobs:
   test:
