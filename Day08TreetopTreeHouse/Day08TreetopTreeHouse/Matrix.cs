@@ -159,4 +159,43 @@ public class Matrix<T>
         }
         Console.WriteLine(reset);
     }
+
+    protected bool Equals(Matrix<T> other)
+    {
+        for (var row = 0; row < Rows; row++)
+        {
+            for (var col = 0; col < Cols; col++)
+            {
+                if (!_matrix[row, col].Equals(other._matrix[row, col]))
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((Matrix<T>) obj);
+    }
+
+    public override int GetHashCode()
+    {
+        throw new NotImplementedException();
+    }
+
+    public static bool operator ==(Matrix<T>? left, Matrix<T>? right)
+    {
+        return Equals(left, right);
+    }
+
+    public static bool operator !=(Matrix<T>? left, Matrix<T>? right)
+    {
+        return !Equals(left, right);
+    }
 }

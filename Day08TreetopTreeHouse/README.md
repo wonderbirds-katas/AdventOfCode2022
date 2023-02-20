@@ -12,7 +12,14 @@ See [Instructions in the parent folder](../README.md).
 From this folder, run the following command to execute the application:
 
 ```shell
-dotnet run --project Day08TreetopTreeHouse -- --file Day08TreetopTreeHouse/input.txt
+# Get help
+dotnet run --project Day08TreetopTreeHouse -- --help
+
+# Solve part 1
+dotnet run --project Day08TreetopTreeHouse -- --part 1 --file Day08TreetopTreeHouse/input.txt
+
+# Solve part 2
+dotnet run --project Day08TreetopTreeHouse -- --part 2 --file Day08TreetopTreeHouse/input.txt
 ```
 
 ATTENTION:
@@ -20,3 +27,7 @@ ATTENTION:
 This application differs from the previous solutions in the way the command line
 arguments are handled. As a consequence you must specify the `--file` option
 explicitly.
+
+## Documentation of System.CommandLine.DragonFruit
+
+- 
