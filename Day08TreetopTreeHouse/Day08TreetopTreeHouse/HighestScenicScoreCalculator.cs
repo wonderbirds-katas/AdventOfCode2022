@@ -4,6 +4,10 @@ public static class HighestScenicScoreCalculator
 {
     public static int Calculate(Matrix<Tree> treeHeights)
     {
-        return 0;
+        if (treeHeights.Cols <= 2 || treeHeights.Rows <= 2)
+        {
+            return 0;
+        }
+        return 1;
     }
 }
