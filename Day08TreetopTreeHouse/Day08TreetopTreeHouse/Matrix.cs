@@ -40,7 +40,7 @@ public class Matrix<T>
     /// <param name="map">Map a character to its corresponding value in the matrix</param>
     /// <returns>A matrix created from the input list</returns>
     /// <returns>0x0 matrix if input list is empty</returns>
-    public static Matrix<T> FromList(List<string> list, Func<string, T> map)
+    public static Matrix<T> FromList(IList<string> list, Func<string, T> map)
     {
         if (list.Count == 0)
         {

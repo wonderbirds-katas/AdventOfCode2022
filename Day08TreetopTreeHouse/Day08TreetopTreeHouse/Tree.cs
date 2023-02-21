@@ -1,3 +1,3 @@
 namespace Day08TreetopTreeHouse;
 
-internal readonly record struct Tree(int Height, bool IsVisible);
+public readonly record struct Tree(int Height, bool IsVisible, int ScenicScore);
